@@ -161,3 +161,6 @@ const vitoriaColuna = (arr) => {
 // vitoriaColuna(arr);
 // console.log(vitoriaColuna(arr));
 
+function deuEmpate(arr){
+    return ![...arr].includes(0);
+}
