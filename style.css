@@ -23,14 +23,16 @@ body{
     flex-direction: column-reverse;
 }
 
-.quadrado{
+.bolinhaJogador1{
     height: 100px;
     width: 100px;
     background-color: black;
+    border-radius: 100%;
 }
 
-.triangulo{
+.bolinhaJogador2{
     height: 100px;
     width: 100px;
     background-color:red;
+    border-radius: 100%;
 }
