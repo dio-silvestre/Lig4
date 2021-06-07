@@ -29,11 +29,15 @@ body{
     border: solid 2px rgb(0, 0, 0);
     display: flex;
     flex-direction: column-reverse;
-
+    cursor: alias;
     background: rgba(211, 213, 218, 0.808);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-
 }
+
+.torre:hover{
+    background: rgba(255, 255, 255, 0.87);
+}
+
 
 .bolinhaJogador1{
     height: 25px;
@@ -52,13 +56,22 @@ body{
     background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, rgba(255,0,0,0.9108018207282913) 50%);
 }
 
-.vitoria-alerta{
+.vitoria-alerta, .empate-alerta{
+    padding: 20px;
+    font-size: 2rem;
+    bottom: 300px;
 
+    position: absolute;
+    border: white;
+    bottom: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
+    background-color: darkblue;
+    color:white;
 }
 
-.empate-alerta{
-
-}
 
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
@@ -92,8 +105,90 @@ body{
     }
     }
 
+
+@media (min-width:480px) {
+    #game{
+        height: 300px;
+        width: 400px;
+    }
+    
+    .torre{
+        width: 100px;
+        height: 300px;
+    }
+
+    .bolinhaJogador1{
+        height: 50px;
+        width: 50px;
+    }
+    
+    .bolinhaJogador2{
+        height:50px ;
+        width: 50px;
+    }
+
+    .vitoria-alerta, .empate-alerta{
+        padding: 20px;
+        font-size: 3rem;
+        bottom: 300px;
+
+}
+@media (min-width:600px) { 
+    #game{
+        height: 450px;
+        width: 600px;
+    }
+    
+    .torre{
+        width: 100px;
+        height: 450px;
+    }
+
+    .bolinhaJogador1{
+        height: 75px;
+        width: 75px;
+    }
+    
+    .bolinhaJogador2{
+        height: 75px;
+        width: 75px;
+    }
+    .vitoria-alerta, .empate-alerta{
+        padding: 20px;
+        font-size: 5rem;
+        bottom: 300px;
+}     
+@media (min-width:801px) { 
+    #game{
+        height: 600px;
+        width: 800px;
+    }
+    
+    .torre{
+        width: 100px;
+        height: 600px;
+    }
+
+    .bolinhaJogador1{
+        height: 100px;
+        width: 100px;
+    }
+    
+    .bolinhaJogador2{
+        height: 100px;
+        width: 100px;
+    }
+
+    .vitoria-alerta, .empate-alerta{
+    padding: 20px;
+    font-size: 7rem;
+    bottom: 300px;
+    }
+
+}
+
 /* EFEITO 2 */
-/* .bolinhaJogador1, .bolinhaJogador2 {
+.vitoria-alerta, .empate-alerta{
     -webkit-animation-name: rubberBand;
     animation-name: rubberBand;
     -webkit-animation-duration: 1s;
@@ -160,70 +255,4 @@ body{
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
     }
-    }  */
-
-
-@media (min-width:480px) {
-    #game{
-        height: 300px;
-        width: 400px;
-    }
-    
-    .torre{
-        width: 100px;
-        height: 300px;
-    }
-
-    .bolinhaJogador1{
-        height: 50px;
-        width: 50px;
-    }
-    
-    .bolinhaJogador2{
-        height:50px ;
-        width: 50px;
-    }
-}
-@media (min-width:600px) { 
-    #game{
-        height: 450px;
-        width: 600px;
-    }
-    
-    .torre{
-        width: 100px;
-        height: 450px;
-    }
-
-    .bolinhaJogador1{
-        height: 75px;
-        width: 75px;
-    }
-    
-    .bolinhaJogador2{
-        height: 75px;
-        width: 75px;
-    }
-}     
-@media (min-width:801px) { 
-    #game{
-        height: 600px;
-        width: 800px;
-    }
-    
-    .torre{
-        width: 100px;
-        height: 600px;
-    }
-
-    .bolinhaJogador1{
-        height: 100px;
-        width: 100px;
-    }
-    
-    .bolinhaJogador2{
-        height: 100px;
-        width: 100px;
-    }
-
-}
+    }  
