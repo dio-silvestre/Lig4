@@ -13,9 +13,6 @@ cor[0] = 1;
 
 let posicao = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
 
-let pos = 0;
-
-
 const vitoriaLinha = (arr) => {
     const condicao = new RegExp('1111','g');
 
@@ -40,8 +37,8 @@ function deuEmpate(arr){
     return !newArr.includes(0);
 }
 
-
 function criarBolinhas(t,cor,posicao,num){
+    let pos = 0;
     if(t.childElementCount != 6){
         if(cor[0] == 1){
             let quadradox = document.createElement("div");
