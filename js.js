@@ -1,13 +1,5 @@
 const game = document.getElementById("game");
 
-const t1 = document.getElementById("t1");
-const t2 = document.getElementById("t2");
-const t3 = document.getElementById("t3");
-const t4 = document.getElementById("t4");
-const t5 = document.getElementById("t5");
-const t6 = document.getElementById("t6");
-const t7 = document.getElementById("t7");
-
 let cor = [];
 cor[0] = 1;
 
@@ -89,10 +81,10 @@ function criarBolinhas(t,cor,posicao,indexColuna){
     }
 }
 
-t1.addEventListener("click",function(){criarBolinhas(t1,cor,posicao,0)});
-t2.addEventListener("click",function(){criarBolinhas(t2,cor,posicao,1)});
-t3.addEventListener("click",function(){criarBolinhas(t3,cor,posicao,2)});
-t4.addEventListener("click",function(){criarBolinhas(t4,cor,posicao,3)});
-t5.addEventListener("click",function(){criarBolinhas(t5,cor,posicao,4)});
-t6.addEventListener("click",function(){criarBolinhas(t6,cor,posicao,5)});
-t7.addEventListener("click",function(){criarBolinhas(t7,cor,posicao,6)});
+game.addEventListener("click",(e) => {
+    if(e.target.className === 'torre'){
+        const t = e.target;
+        const indexColuna = Number(e.target.id[1]) - 1;
+        criarBolinhas(t,cor,posicao,indexColuna);
+    }
+});
