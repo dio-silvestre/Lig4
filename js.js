@@ -47,7 +47,7 @@ const deuEmpate = (arr) => {
 
 
 const criarBolinhas = (t,cor,posicao,indexColuna) => {
-    if(t.childElementCount !== 6 && jogoAcabou === false){
+    if (t.childElementCount !== 6 && jogoAcabou === false) {
         let bolinhaX = document.createElement("div");
         pos = t.childElementCount ;
         let indexLinha = 5-pos;
@@ -63,7 +63,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 jogoAcabou = true;
             }
             cor[0] = 0;
-        }else{
+        } else {
             bolinhaX.className = "bolinhaJogador2";
             posicao[indexLinha][indexColuna] = 2;
             if(vitoriaLinha(posicao,indexLinha,2) || vitoriaColuna(posicao,indexColuna,2)){
@@ -77,7 +77,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             cor[0] = 1;
         }
         t.appendChild(bolinhaX);
-        if(deuEmpate(posicao)){
+        if (deuEmpate(posicao)) {
             let empateAlerta = document.createElement("p");
             empateAlerta.className = 'empate-alerta';
             empateAlerta.innerText = 'Empate!!';
@@ -89,7 +89,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
 }
 
 game.addEventListener("click",(e) => {
-    if(e.target.className === 'torre'){
+    if (e.target.className === 'torre') {
         const t = e.target;
         const indexColuna = Number(e.target.id[1]) - 1;
         criarBolinhas(t,cor,posicao,indexColuna);
