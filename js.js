@@ -14,20 +14,29 @@ let posicao = [
     [0,0,0,0,0,0,0]
 ];
 
-const vitoriaLinha = (arr) => {
+const vitoriaLinha = (arr,indexLinha,jogador) => {
     //verificar se ocorreu vitoria no sentido horizontal
-    const condicao = new RegExp('1111','g');
-    let arrStr = arr.reduce((acc,el) => `${acc} ${el.join('')}`,'');
-    return condicao.test(arrStr);
+
+    let contador = arr[indexLinha].reduce((acc,el) => {
+        if(el === jogador){
+            acc++;
+        }
+        return acc;
+    },0);
+    return contador === 4;
 }
 
-const vitoriaColuna = (arr) => {
+const vitoriaColuna = (arr,indexColuna,jogador) => {
     //verificar se ocorreu vitoria no sentido vertical
-    let newArr = [];
-    for(let i = 0;i < 7;i++){
-        newArr.push(arr.map((el) => el[i]));
+    console.log(arr)
+    let contador = 0;
+    for(let i = 0;i < 6;i++){
+        if(arr[i][indexColuna] === jogador){
+            contador++;
+        }
     }
-    return vitoriaLinha(newArr);
+    console.log(contador);
+    return contador === 4;
 }
 
 const deuEmpate = (arr) => {
@@ -41,10 +50,11 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
     if (t.childElementCount !== 6 && jogoAcabou === false) {
         let bolinhaX = document.createElement("div");
         pos = t.childElementCount ;
-        if (cor[0] === 1) {
+        let indexLinha = 5-pos;
+        if(cor[0] === 1){
             bolinhaX.className = "bolinhaJogador1";
-            posicao[5-pos][indexColuna] = 1;
-            if (vitoriaLinha(posicao) || vitoriaColuna(posicao)) {
+            posicao[indexLinha][indexColuna] = 1;
+            if(vitoriaLinha(posicao,indexLinha,1) || vitoriaColuna(posicao,indexColuna,1)){
                 let vitoriaAlerta = document.createElement("p");
                 vitoriaAlerta.className = 'vitoria-alerta';
                 vitoriaAlerta.innerText = 'Jogador 1 venceu!!';
@@ -55,8 +65,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             cor[0] = 0;
         } else {
             bolinhaX.className = "bolinhaJogador2";
-            posicao[5-pos][indexColuna] = 2;
-            if(vitoriaLinha(posicao) || vitoriaColuna(posicao)){
+            posicao[indexLinha][indexColuna] = 2;
+            if(vitoriaLinha(posicao,indexLinha,2) || vitoriaColuna(posicao,indexColuna,2)){
                 let vitoriaAlerta = document.createElement("p");
                 vitoriaAlerta.className = 'vitoria-alerta';
                 vitoriaAlerta.innerText = 'Jogador 2 venceu!!';
