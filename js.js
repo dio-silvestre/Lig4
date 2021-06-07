@@ -22,9 +22,6 @@ let posicao = [
     [0,0,0,0,0,0,0]
 ];
 
-let pos = 0;
-
-
 const vitoriaLinha = (arr) => {
     //verificar se ocorreu vitoria no sentido horizontal
     const condicao = new RegExp('1111','g');
