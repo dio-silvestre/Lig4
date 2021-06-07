@@ -8,12 +8,18 @@ const t5 = document.getElementById("t5");
 const t6 = document.getElementById("t6");
 const t7 = document.getElementById("t7");
 
-let cor = 1;
+let cor = [];
+cor[0] = 1;
 
 let posicao = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
 
 let pos = 0;
 
+
+
+
+
+/*
 t1.addEventListener("click", function(){
     if(t1.childElementCount != 6){
         if(cor == 1){
@@ -164,3 +170,5 @@ const vitoriaColuna = (arr) => {
 function deuEmpate(arr){
     return ![...arr].includes(0);
 }
+
+*/
