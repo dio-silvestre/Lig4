@@ -30,14 +30,14 @@ const vitoriaColuna = (arr) => {
     return vitoriaLinha(newArr);
 }
 
-function deuEmpate(arr){
+const deuEmpate = (arr) => {
     //verifica se preencheu tudo
     let newArr = [].concat(...arr)
     return !newArr.includes(0);
 }
 
 
-function criarBolinhas(t,cor,posicao,indexColuna){
+const criarBolinhas = (t,cor,posicao,indexColuna) => {
     if(t.childElementCount !== 6 && jogoAcabou === false){
         let bolinhaX = document.createElement("div");
         pos = t.childElementCount ;
