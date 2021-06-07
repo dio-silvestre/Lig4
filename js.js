@@ -45,14 +45,14 @@ function criarBolinhas(t,cor,posicao,num){
     if(t.childElementCount != 6){
         if(cor[0] == 1){
             let quadradox = document.createElement("div");
-            quadradox.className = "quadrado";
+            quadradox.className = "bolinhaJogador1";
             pos = t.childElementCount ;
             posicao[5-pos][num] = 1;
             t.appendChild(quadradox);
             cor[0] = 0;
         }else{
             let quadradox = document.createElement("div");
-            quadradox.className = "triangulo";
+            quadradox.className = "bolinhaJogador2";
             pos = t.childElementCount;
             posicao[5-pos][num] = 2;
             t.appendChild(quadradox);
