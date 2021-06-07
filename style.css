@@ -1,38 +1,229 @@
+
+
 body{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("back.jpg");
+    background-size: cover;
+
 }
 
 #game{
-    height: 600px;
-    width: 800px;
+    height: 150px;
+    width: 200px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-around;
     margin: auto;   
+
+
+    
 }
 
 .torre{
-    width: 100px;
-    height: 600px;
-    border: solid 2px black;
+    width: 50px;
+    height: 150px;
+    border: solid 2px rgb(0, 0, 0);
     display: flex;
     flex-direction: column-reverse;
+
+    background: rgba(211, 213, 218, 0.808);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+
 }
 
 .bolinhaJogador1{
-    height: 100px;
-    width: 100px;
-    background-color: black;
+    height: 25px;
+    width: 25px;
     border-radius: 100%;
-}
+    background: rgb(144,145,145);
+    background: rgb(144,145,145);
+    background: radial-gradient(circle at top left, rgba(144,145,145,0.8883928571428571) 17%, rgba(55,64,77,0.8883928571428571) 36%, rgba(0,0,0,0.9108018207282913) 100%);}
 
 .bolinhaJogador2{
-    height: 100px;
-    width: 100px;
-    background-color:red;
+    height: 25px;
+    width: 25px;
     border-radius: 100%;
+    background: rgb(249,249,249);
+    background: rgb(249,249,249);
+    background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, rgba(255,0,0,0.9108018207282913) 50%);
+}
+
+.vitoria-alerta{
+
+}
+
+.empate-alerta{
+
+}
+
+/* EFEITO 1 */
+.bolinhaJogador1, .bolinhaJogador2 {
+    -webkit-animation-name: slideInDown;
+    animation-name: slideInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes slideInDown {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+    }
+    @keyframes slideInDown {
+    0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    }
+    }
+
+/* EFEITO 2 */
+/* .bolinhaJogador1, .bolinhaJogador2 {
+    -webkit-animation-name: rubberBand;
+    animation-name: rubberBand;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes rubberBand {
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(.95, 1.05, 1);
+    }
+    75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, .95, 1);
+    }
+    100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    }
+    @keyframes rubberBand {
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(.95, 1.05, 1);
+    }
+    75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, .95, 1);
+    }
+    100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    }  */
+
+
+@media (min-width:480px) {
+    #game{
+        height: 300px;
+        width: 400px;
+    }
+    
+    .torre{
+        width: 100px;
+        height: 300px;
+    }
+
+    .bolinhaJogador1{
+        height: 50px;
+        width: 50px;
+    }
+    
+    .bolinhaJogador2{
+        height:50px ;
+        width: 50px;
+    }
+}
+@media (min-width:600px) { 
+    #game{
+        height: 450px;
+        width: 600px;
+    }
+    
+    .torre{
+        width: 100px;
+        height: 450px;
+    }
+
+    .bolinhaJogador1{
+        height: 75px;
+        width: 75px;
+    }
+    
+    .bolinhaJogador2{
+        height: 75px;
+        width: 75px;
+    }
+}     
+@media (min-width:801px) { 
+    #game{
+        height: 600px;
+        width: 800px;
+    }
+    
+    .torre{
+        width: 100px;
+        height: 600px;
+    }
+
+    .bolinhaJogador1{
+        height: 100px;
+        width: 100px;
+    }
+    
+    .bolinhaJogador2{
+        height: 100px;
+        width: 100px;
+    }
+
 }
