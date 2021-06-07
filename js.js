@@ -8,134 +8,12 @@ const t5 = document.getElementById("t5");
 const t6 = document.getElementById("t6");
 const t7 = document.getElementById("t7");
 
-let cor = 1;
+let cor = [];
+cor[0] = 1;
 
 let posicao = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
 
 let pos = 0;
-
-t1.addEventListener("click", function(){
-    if(t1.childElementCount != 6){
-        if(cor == 1){
-            let quadradox = document.createElement("div");
-            quadradox.className = "quadrado";
-
-            pos = t1.childElementCount ;
-            posicao[5-pos][0] = 1;
-
-            t1.appendChild(quadradox);
-            cor = 0;
-
-        }else{
-            
-            let quadradox = document.createElement("div");
-            quadradox.className = "triangulo";
-
-            pos = t1.childElementCount;
-            posicao[5-pos][0] = 2;
-
-            t1.appendChild(quadradox);
-            
-            cor = 1;
-        }
-    }
-});
-
-t2.addEventListener("click", function(){
-    if(t2.childElementCount != 6){
-        if(cor == 1){
-            let quadradox = document.createElement("div");
-            quadradox.className = "quadrado";
-            t2.appendChild(quadradox);
-            cor = 0;
-        }else{
-            let quadradox = document.createElement("div");
-            quadradox.className = "triangulo";
-            t2.appendChild(quadradox);
-            cor = 1;
-        }
-    }
-});
-
-t3.addEventListener("click", function(){
-    if(t3.childElementCount != 6){
-        if(cor == 1){
-            let quadradox = document.createElement("div");
-            quadradox.className = "quadrado";
-            t3.appendChild(quadradox);
-            cor = 0;
-        }else{
-            let quadradox = document.createElement("div");
-            quadradox.className = "triangulo";
-            t3.appendChild(quadradox);
-            cor = 1;
-        }
-    }
-});
-
-t4.addEventListener("click", function(){
-    if(t4.childElementCount != 6){
-        if(cor == 1){
-            let quadradox = document.createElement("div");
-            quadradox.className = "quadrado";
-            t4.appendChild(quadradox);
-            cor = 0;
-        }else{
-            let quadradox = document.createElement("div");
-            quadradox.className = "triangulo";
-            t4.appendChild(quadradox);
-            cor = 1;
-        }
-    }
-});
-
-t5.addEventListener("click", function(){
-    if(t5.childElementCount != 6){
-        if(cor == 1){
-            let quadradox = document.createElement("div");
-            quadradox.className = "quadrado";
-            t5.appendChild(quadradox);
-            cor = 0;
-        }else{
-            let quadradox = document.createElement("div");
-            quadradox.className = "triangulo";
-            t5.appendChild(quadradox);
-            cor = 1;
-        }
-    }
-});
-
-t6.addEventListener("click", function(){
-    if(t6.childElementCount != 6){
-        if(cor == 1){
-            let quadradox = document.createElement("div");
-            quadradox.className = "quadrado";
-            t6.appendChild(quadradox);
-            cor = 0;
-        }else{
-            let quadradox = document.createElement("div");
-            quadradox.className = "triangulo";
-            t6.appendChild(quadradox);
-            cor = 1;
-        }
-    }
-});
-
-t7.addEventListener("click", function(){
-    if(t7.childElementCount != 6){
-        if(cor == 1){
-            let quadradox = document.createElement("div");
-            quadradox.className = "quadrado";
-            t7.appendChild(quadradox);
-            cor = 0;
-        }else{
-            let quadradox = document.createElement("div");
-            quadradox.className = "triangulo";
-            t7.appendChild(quadradox);
-            cor = 1;
-        }
-    }
-});
 
 
 const vitoriaLinha = (arr) => {
@@ -146,8 +24,6 @@ const vitoriaLinha = (arr) => {
     return condicao.test(arrStr);
 }
 vitoriaLinha(posicao);
-console.log(vitoriaLinha(posicao));
-
 
 const vitoriaColuna = (arr) => {
     let newArr = [];
@@ -158,9 +34,41 @@ const vitoriaColuna = (arr) => {
 
     return vitoriaLinha(newArr);
 }
-// vitoriaColuna(arr);
-// console.log(vitoriaColuna(arr));
 
 function deuEmpate(arr){
-    return ![...arr].includes(0);
+    let newArr = [].concat(...arr)
+    return !newArr.includes(0);
 }
+
+
+function criarBolinhas(t,cor,posicao,num){
+    if(t.childElementCount != 6){
+        if(cor[0] == 1){
+            let quadradox = document.createElement("div");
+            quadradox.className = "quadrado";
+            pos = t.childElementCount ;
+            posicao[5-pos][num] = 1;
+            t.appendChild(quadradox);
+            cor[0] = 0;
+        }else{
+            let quadradox = document.createElement("div");
+            quadradox.className = "triangulo";
+            pos = t.childElementCount;
+            posicao[5-pos][num] = 2;
+            t.appendChild(quadradox);
+            cor[0] = 1;
+        }
+
+        vitoriaColuna(posicao);
+        vitoriaLinha(posicao);
+
+    }
+}
+
+t1.addEventListener("click",function(){criarBolinhas(t1,cor,posicao,0)});
+t2.addEventListener("click",function(){criarBolinhas(t2,cor,posicao,1)});
+t3.addEventListener("click",function(){criarBolinhas(t3,cor,posicao,2)});
+t4.addEventListener("click",function(){criarBolinhas(t4,cor,posicao,3)});
+t5.addEventListener("click",function(){criarBolinhas(t5,cor,posicao,4)});
+t6.addEventListener("click",function(){criarBolinhas(t6,cor,posicao,5)});
+t7.addEventListener("click",function(){criarBolinhas(t7,cor,posicao,6)});
