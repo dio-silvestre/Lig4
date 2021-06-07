@@ -146,7 +146,7 @@ const vitoriaLinha = (arr) => {
     return condicao.test(arrStr);
 }
 vitoriaLinha(posicao);
-console.log(vitoriaLinha(posicao));
+// console.log(vitoriaLinha(posicao));
 
 
 const vitoriaColuna = (arr) => {
@@ -161,6 +161,12 @@ const vitoriaColuna = (arr) => {
 // vitoriaColuna(arr);
 // console.log(vitoriaColuna(arr));
 
+
 function deuEmpate(arr){
-    return ![...arr].includes(0);
+    let newArr = [].concat(...arr)
+    return !newArr.includes(0);
 }
+
+// const arrTeste = [[1,1,1,0,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1]];
+
+console.log(deuEmpate(arrTeste));
