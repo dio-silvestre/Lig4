@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#game{
+    height: 600px;
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-around;
+    margin: auto;   
+}
+
+.torre{
+    width: 100px;
+    height: 600px;
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.quadrado{
+    height: 100px;
+    width: 100px;
+    background-color: black;
+}
+
+.triangulo{
+    height: 100px;
+    width: 100px;
+    background-color:red;
+}
