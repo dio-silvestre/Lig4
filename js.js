@@ -30,21 +30,21 @@ const vitoriaColuna = (arr) => {
     return vitoriaLinha(newArr);
 }
 
-function deuEmpate(arr){
+const deuEmpate = (arr) => {
     //verifica se preencheu tudo
     let newArr = [].concat(...arr)
     return !newArr.includes(0);
 }
 
 
-function criarBolinhas(t,cor,posicao,indexColuna){
-    if(t.childElementCount !== 6 && jogoAcabou === false){
+const criarBolinhas = (t,cor,posicao,indexColuna) => {
+    if (t.childElementCount !== 6 && jogoAcabou === false) {
         let bolinhaX = document.createElement("div");
         pos = t.childElementCount ;
-        if(cor[0] === 1){
+        if (cor[0] === 1) {
             bolinhaX.className = "bolinhaJogador1";
             posicao[5-pos][indexColuna] = 1;
-            if(vitoriaLinha(posicao) || vitoriaColuna(posicao)){
+            if (vitoriaLinha(posicao) || vitoriaColuna(posicao)) {
                 let vitoriaAlerta = document.createElement("p");
                 vitoriaAlerta.className = 'vitoria-alerta';
                 vitoriaAlerta.innerText = 'Jogador 1 venceu!!';
@@ -53,7 +53,7 @@ function criarBolinhas(t,cor,posicao,indexColuna){
                 jogoAcabou = true;
             }
             cor[0] = 0;
-        }else{
+        } else {
             bolinhaX.className = "bolinhaJogador2";
             posicao[5-pos][indexColuna] = 2;
             if(vitoriaLinha(posicao) || vitoriaColuna(posicao)){
@@ -67,7 +67,7 @@ function criarBolinhas(t,cor,posicao,indexColuna){
             cor[0] = 1;
         }
         t.appendChild(bolinhaX);
-        if(deuEmpate(posicao)){
+        if (deuEmpate(posicao)) {
             let empateAlerta = document.createElement("p");
             empateAlerta.className = 'empate-alerta';
             empateAlerta.innerText = 'Empate!!';
@@ -79,7 +79,7 @@ function criarBolinhas(t,cor,posicao,indexColuna){
 }
 
 game.addEventListener("click",(e) => {
-    if(e.target.className === 'torre'){
+    if (e.target.className === 'torre') {
         const t = e.target;
         const indexColuna = Number(e.target.id[1]) - 1;
         criarBolinhas(t,cor,posicao,indexColuna);
