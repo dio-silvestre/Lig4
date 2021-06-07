@@ -8,12 +8,18 @@ const t5 = document.getElementById("t5");
 const t6 = document.getElementById("t6");
 const t7 = document.getElementById("t7");
 
-let cor = 1;
+let cor = [];
+cor[0] = 1;
 
 let posicao = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
 
 let pos = 0;
 
+
+
+
+
+/*
 t1.addEventListener("click", function(){
     if(t1.childElementCount != 6){
         if(cor == 1){
@@ -163,6 +169,12 @@ const vitoriaColuna = (arr) => {
 
 
 function deuEmpate(arr){
+<<<<<<< HEAD
+    return ![...arr].includes(0);
+}
+
+*/
+=======
     let newArr = [].concat(...arr)
     return !newArr.includes(0);
 }
@@ -170,3 +182,4 @@ function deuEmpate(arr){
 // const arrTeste = [[1,1,1,0,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1]];
 
 console.log(deuEmpate(arrTeste));
+>>>>>>> 52b420e8a75f9602426a33a95b6afd2f59c00e0d
