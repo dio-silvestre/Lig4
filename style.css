@@ -41,7 +41,7 @@ body{
     border-radius: 100%;
     background: rgb(144,145,145);
     background: rgb(144,145,145);
-    background: radial-gradient(circle at top left, rgba(144,145,145,0.8883928571428571) 17%, rgba(55,64,77,0.8883928571428571) 36%, rgba(0,0,0,0.9108018207282913) 100%);}
+    background: radial-gradient(circle at top left, rgba(144,145,145,0.8883928571428571) 17%, rgba(37, 63, 149, 0.888) 36%, rgba(14, 29, 158, 0.911) 100%);}
 
 .bolinhaJogador2{
     height: 25px;
