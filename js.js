@@ -79,7 +79,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
 }
 
 game.addEventListener("click",(e) => {
-    if(e.target.className === 'torre'){
+    if (e.target.className === 'torre') {
         const t = e.target;
         const indexColuna = Number(e.target.id[1]) - 1;
         criarBolinhas(t,cor,posicao,indexColuna);
