@@ -17,26 +17,34 @@ let posicao = [
 const vitoriaLinha = (arr,indexLinha,jogador) => {
     //verificar se ocorreu vitoria no sentido horizontal
 
-    let contador = arr[indexLinha].reduce((acc,el) => {
-        if(el === jogador){
-            acc++;
+    let contador = 0;
+    for(let i = 0;i < arr[indexLinha].length;i++) {
+        if(arr[indexLinha][i] === jogador){
+            contador++;
+            if(contador === 4){
+                return true;
+            }
+        } else {
+            contador = 0;
         }
-        return acc;
-    },0);
-    return contador === 4;
+    }
+    return false;
 }
 
 const vitoriaColuna = (arr,indexColuna,jogador) => {
     //verificar se ocorreu vitoria no sentido vertical
-    console.log(arr)
     let contador = 0;
     for(let i = 0;i < 6;i++){
         if(arr[i][indexColuna] === jogador){
             contador++;
+            if(contador === 4){
+                return true;
+            }
+        }else{
+            contador = 0;
         }
     }
-    console.log(contador);
-    return contador === 4;
+    return false;
 }
 
 const deuEmpate = (arr) => {
