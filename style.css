@@ -5,9 +5,14 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("back.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./back.jpg");
     background-size: cover;
 
+}
+.img1{
+    position: absolute;
+    top:10px;
+    display:none;
 }
 
 #game{
