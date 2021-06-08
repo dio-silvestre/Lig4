@@ -229,12 +229,14 @@ iniciar.addEventListener("click", () => {
 });
 
 const pronto = document.getElementById("pronto");
+const placar = document.getElementById("caixa-placar");
 const hidden = document.querySelectorAll(".hidden");
 pronto.addEventListener("click", () => {
-    form.style.display = "none";
     game.style.display = "flex";
+    form.style.display = "none";
+    placar.style.display = "flex";
 
     for (let i = 0; i < hidden.length; i++) {
         hidden[i].style.display = "inline-block";
     }
-})
+});
