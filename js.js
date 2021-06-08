@@ -1,5 +1,8 @@
 const game = document.getElementById("game");
 
+const placar1 = document.getElementsByClassName("placar--pontos")[0];
+const placar2 = document.getElementsByClassName("placar--pontos")[1];
+
 let cor = [];   //variavel para alternar de jogador em cada turno
 cor[0] = 1;
 
@@ -163,6 +166,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
+                placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta1'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = 'Jogador 1 venceu!!'; //Texto que terá na tag p
@@ -182,6 +186,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
                 //Se ele venceu...
+                placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta2'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = 'Jogador 2 venceu!!'; //Texto que terá na tag p
