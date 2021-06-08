@@ -2,6 +2,7 @@ const game = document.getElementById("game");
 
 const placar1 = document.getElementsByClassName("placar--pontos")[0];
 const placar2 = document.getElementsByClassName("placar--pontos")[1];
+const timerValor = document.querySelector("#valor-timer")
 
 let cor = [];   //variavel para alternar de jogador em cada turno
 cor[0] = 1;
@@ -148,6 +149,9 @@ const deuEmpate = (arr) => {
     return !newArr.includes(0);
 }
 
+const timer = () => {
+    timerValor.innerText = Number(timerValor.innerText)+1;
+}
 
 const criarBolinhas = (t,cor,posicao,indexColuna) => { 
     // t = a torre no DOM
@@ -208,15 +212,18 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             jogoAcabou = true; //Variável para verificar se o jogo acabou
 
             let img = document.createElement("img");
-                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
-                game.appendChild(img)
+            img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+            game.appendChild(img);
         }
+        window.setInterval(timer, 1000);
     }
 }
 
 //Técnica Event Delegation:
 game.addEventListener("click",(e) => { 
     //'e' é o parametro event do addEventListener ele recebe e.target de tudo que recebeu o clique dentro da div game
+    window.clearInterval(timer);
+    timerValor.innerText = '0';
     if (e.target.className === 'torre') { //só o e.target de uma torre passa
         const torre = e.target; //só pra deixar mais explícito que é uma torre
         const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
@@ -255,7 +262,7 @@ let btn_reiniciar = document.getElementById("reiniciar");
 btn_reiniciar.addEventListener("click", reiniciar=()=>{
     let pai = document.querySelectorAll('.torre');
     for(let i=0; i<pai.length; i++){
-        pai[i].innerHTML=""
+        pai[i].innerHTML="";
     }          
     posicao = [
             [0,0,0,0,0,0,0],
@@ -268,7 +275,7 @@ btn_reiniciar.addEventListener("click", reiniciar=()=>{
 });
 
 let btn_zerar = document.getElementById("zerar");
-    btn_zerar.addEventListener("click", zerar=()=>{
-        placar1.innerText = Number('0')
-        placar2.innerText = Number('0')
-    });
+btn_zerar.addEventListener("click", zerar=()=>{
+    placar1.innerText = Number('0');
+    placar2.innerText = Number('0');
+});
