@@ -64,11 +64,15 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             posicao[indexLinha][indexColuna] = 1;
             if(vitoriaLinha(posicao,indexLinha,1) || vitoriaColuna(posicao,indexColuna,1)){
                 let vitoriaAlerta = document.createElement("p");
-                vitoriaAlerta.className = 'vitoria-alerta';
+                vitoriaAlerta.className = 'vitoria-alerta1';
                 vitoriaAlerta.innerText = 'Jogador 1 venceu!!';
                 game.appendChild(vitoriaAlerta);
                 console.log('Jogador 1 venceu!!');
                 jogoAcabou = true;
+
+                let img = document.createElement("img");
+                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+                game.appendChild(img)
             }
             cor[0] = 0;
         } else {
@@ -76,11 +80,15 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             posicao[indexLinha][indexColuna] = 2;
             if(vitoriaLinha(posicao,indexLinha,2) || vitoriaColuna(posicao,indexColuna,2)){
                 let vitoriaAlerta = document.createElement("p");
-                vitoriaAlerta.className = 'vitoria-alerta';
+                vitoriaAlerta.className = 'vitoria-alerta2';
                 vitoriaAlerta.innerText = 'Jogador 2 venceu!!';
                 game.appendChild(vitoriaAlerta);
                 console.log('Jogador 2 venceu!!');
                 jogoAcabou = true;
+
+                let img = document.createElement("img");
+                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+                game.appendChild(img)
             }
             cor[0] = 1;
         }
@@ -92,6 +100,10 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             game.appendChild(empateAlerta);
             console.log('Empate!!');
             jogoAcabou = true;
+
+            let img = document.createElement("img");
+            img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+            game.appendChild(img)
         }
     }
 }
