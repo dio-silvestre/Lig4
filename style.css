@@ -1,4 +1,6 @@
-
+:root{
+    --largira-display: 280px;
+}
 
 body{
     text-align: center;
@@ -72,7 +74,7 @@ button:active {
 
 #game{
     height: 200px;
-    width: 280px;
+    width: var(--largira-display);
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -142,8 +144,29 @@ button:active {
     background-color: rgb(0, 139, 58);
 }
 
-
-
+#caixa-placar{
+    display: flex;
+    width: var(--largira-display);
+    margin: 1rem auto;
+    justify-content: space-around;
+}
+.placar{
+    background-color: white;
+    border-radius: 5px;
+    width: 30%;
+}
+#palcar-jogador-1{
+    background-color: rgba(14, 29, 158, 0.911);
+}
+#palcar-jogador-2{
+    background-color: rgba(255,0,0,0.9108018207282913);
+}
+.placar--pontos{
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
 
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
@@ -179,9 +202,12 @@ button:active {
 
 
 @media (min-width:480px) {
+    :root{
+        --largura-display: 400px;
+    }
     #game{
         height: 300px;
-        width: 400px;
+        width: var(--largura-display);
     }
     
     .torre{
@@ -203,12 +229,20 @@ button:active {
         padding: 20px;
         font-size: 3rem;
         bottom: 300px;
+    }
+
+    #caixa-placar{
+        width: var(--largura-display);
+    }
 
 }
-@media (min-width:600px) { 
+@media (min-width:600px) {
+    :root{
+        --largura-display: 600px;
+    }
     #game{
         height: 450px;
-        width: 600px;
+        width: var(--largura-display);
     }
     
     .torre{
@@ -229,11 +263,20 @@ button:active {
         padding: 20px;
         font-size: 5rem;
         bottom: 300px;
+    }
+
+    #caixa-placar{
+        width: var(--largura-display);
+    }
 }     
 @media (min-width:801px) { 
+    :root{
+        --largura-display: 800px;
+    }
+
     #game{
         height: 600px;
-        width: 800px;
+        width: var(--largura-display);
     }
     
     .torre{
@@ -259,6 +302,10 @@ button:active {
 
     button {
         font-size: 1.75rem;
+    }
+
+    #caixa-placar{
+        width: var(--largura-display);
     }
 
 }
