@@ -216,6 +216,10 @@ button:active {
     margin: 0;
 }
 
+#timer{
+    display: none;
+}
+
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
     /* -webkit-animation-name: slideInDown; */

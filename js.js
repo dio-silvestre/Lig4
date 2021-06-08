@@ -3,6 +3,7 @@ const game = document.getElementById("game");
 const placar1 = document.getElementsByClassName("placar--pontos")[0];
 const placar2 = document.getElementsByClassName("placar--pontos")[1];
 const timerValor = document.querySelector("#valor-timer")
+const caixaTimer = document.getElementById("timer")
 
 let cor = [];   //variavel para alternar de jogador em cada turno
 cor[0] = 1;
@@ -17,6 +18,7 @@ let posicao = [
     [0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0]
 ];
+let timerAtual;
 
 //FUNÇÃO COMUM:
 //function nomeFuncao(parametros){
@@ -218,14 +220,14 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 img.id = 'vitoria'
                 game.appendChild(img)
         }
-        window.setInterval(timer, 1000);
+        timerAtual = setInterval(timer, 1000);
     }
 }
 
 //Técnica Event Delegation:
 game.addEventListener("click",(e) => { 
     //'e' é o parametro event do addEventListener ele recebe e.target de tudo que recebeu o clique dentro da div game
-    window.clearInterval(timer);
+    window.clearInterval(timerAtual);
     timerValor.innerText = '0';
     if (e.target.className === 'torre') { //só o e.target de uma torre passa
         const torre = e.target; //só pra deixar mais explícito que é uma torre
@@ -250,6 +252,7 @@ pronto.addEventListener("click", () => {
     form.style.display = "none";
     placar.style.display = "flex";
     pronto.style.display = "none";
+    caixaTimer.style.display = "block";
 
     for (let i = 0; i < hidden.length; i++) {
         hidden[i].style.display = "inline-block";
