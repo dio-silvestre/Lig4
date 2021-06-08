@@ -77,29 +77,63 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
     return false; // percorreu tudo e não retornou true é porque não tem 4 bolinhas seguidas
 }
 
-const vitoriaDiagonal1 = (arr,jogador) => { //verifica diagonal assim --> /
-    //provavelmente tem alguma forma mais esperta de fazer essa função...
-    let newArr = [];
-    for(let i = 0;i < arr.length;i++){
-        newArr[i] = arr[i].map((el) => el);
+const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica diagonal assim --> /
+    let diagonal = [];
+    let i = indexLinha;
+    let j = indexColuna;
+    for(;i >= 0 && j < arr[0].length;){
+        diagonal.push(arr[i][j])
+        i--;
+        j++;
     }
-    for(let i = 0;i < newArr.length;i++){
-        for(let j = 0;j < i;j++){
-            newArr[i].unshift(0)
+    i = indexLinha + 1;
+    j = indexColuna - 1;
+    for(;i < arr.length && j >= 0;){
+        diagonal.unshift(arr[i][j])
+        i++;
+        j--;
+    }
+    let contador = 0; //verifica se tem 4 bolinhas em linha
+    for(i = 0;i < diagonal.length;i++){ 
+        if(diagonal[i] === jogador){
+            contador++; //se achou bolinha soma contador
+            if(contador === 4){ 
+                return true; //4 bolinhas = vitória
+            }
+        }else{
+            contador = 0;
+            //se achou um valor diferente do número do jogador ao percorrer tem que reiniciar a contagem, porque só interessa se encontrar quatro seguidos
         }
     }
-    console.log(newArr);
-    for(let i = 0;i < newArr[0].length;i++){ 
-        let contador = 0;
-        for(let j = 0;j < newArr.length;j++){
-            if(newArr[j][i] === jogador){
-                contador++;
-                if(contador === 4){ 
-                    return true;
-                }
-            }else{
-                contador = 0;
+    return false;
+}
+
+const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica diagonal assim --> \
+    let diagonal = [];
+    let i = indexLinha;
+    let j = indexColuna;
+    for(;i >= 0 && j >= 0;){
+        diagonal.push(arr[i][j])
+        i--;
+        j--;
+    }
+    i = indexLinha + 1;
+    j = indexColuna + 1;
+    for(;i < arr.length && j < arr[0].length;){
+        diagonal.unshift(arr[i][j])
+        i++;
+        j++;
+    }
+    let contador = 0; //verifica se tem 4 bolinhas em linha
+    for(i = 0;i < diagonal.length;i++){ 
+        if(diagonal[i] === jogador){
+            contador++; //se achou bolinha soma contador
+            if(contador === 4){ 
+                return true; //4 bolinhas = vitória
             }
+        }else{
+            contador = 0;
+            //se achou um valor diferente do número do jogador ao percorrer tem que reiniciar a contagem, porque só interessa se encontrar quatro seguidos
         }
     }
     return false;
@@ -126,7 +160,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             if(vitoriaLinha(posicao,indexLinha,1) 
                 || vitoriaColuna(posicao,indexColuna,1) 
-                || vitoriaDiagonal1(posicao,1)) {
+                || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
+                || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta'; //Classe da tag p para estilizar no CSS
@@ -140,7 +175,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             if(vitoriaLinha(posicao,indexLinha,2)
                 || vitoriaColuna(posicao,indexColuna,2)
-                || vitoriaDiagonal1(posicao,2)) {
+                || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
+                || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
                 //Se ele venceu...
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta'; //Classe da tag p para estilizar no CSS
