@@ -229,7 +229,7 @@ game.addEventListener("click",(e) => {
  
          btn_reiniciar.addEventListener("click", reiniciar=()=>{
 
-            var pai = document.querySelectorAll('.torre')
+            let pai = document.querySelectorAll('.torre')
             for(let i=0; i<pai.length; i++){
                 pai[i].innerHTML=""
             }
@@ -245,4 +245,9 @@ game.addEventListener("click",(e) => {
         
          });
 
+         let btn_zerar = document.getElementById("zerar");
 
+         btn_zerar.addEventListener("click", zerar=()=>{
+         placar1.innerText = Number('0')
+         placar2.innerText = Number('0')
+         });
