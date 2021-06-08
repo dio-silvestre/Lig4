@@ -219,3 +219,29 @@ game.addEventListener("click",(e) => {
         criarBolinhas(torre,cor,posicao,indexColuna); //chama a função para criar a bola nesta torre
     }
 });
+
+//Botões
+        //Martelei um Refresh
+        // function refreshPage(){
+        //      window.location.reload();
+        // } 
+        // let btn_res = document.getElementById("res");
+ 
+        // btn_res.addEventListener("click", refreshPage);
+
+  //
+        // let btn_reiniciar = document.getElementById("reiniciar");
+ 
+        // btn_reiniciar.addEventListener("click", reiniciar=()=>{
+
+            var pai = document.querySelectorAll('.bolinhaJogador1, .bolinhaJogador2')
+            pai.parentNode.removeChild(pai.children[2]);
+        
+        // });
+//
+
+        // Removendo um nó a partir do pai
+    // var node = document.querySelectorAll('.bolinhaJogador1, .bolinhaJogador2')
+    // if (node.parentNode) {
+    // node.parentNode.removeChild(node);
+
