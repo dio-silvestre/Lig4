@@ -169,7 +169,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta1'; //Classe da tag p para estilizar no CSS
-                vitoriaAlerta.innerText = `${jogador[0]} venceu!!`; //Texto que terá na tag p
+                vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
 
@@ -189,7 +189,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta2'; //Classe da tag p para estilizar no CSS
-                vitoriaAlerta.innerText = `${jogador[1]} venceu!!`; //Texto que terá na tag p
+                vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
 
