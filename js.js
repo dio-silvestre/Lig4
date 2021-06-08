@@ -169,7 +169,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta1'; //Classe da tag p para estilizar no CSS
-                vitoriaAlerta.innerText = 'Jogador 1 venceu!!'; //Texto que terá na tag p
+                vitoriaAlerta.innerText = `${jogador[0]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
 
@@ -189,9 +189,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta2'; //Classe da tag p para estilizar no CSS
-                vitoriaAlerta.innerText = 'Jogador 2 venceu!!'; //Texto que terá na tag p
+                vitoriaAlerta.innerText = `${jogador[1]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
-                console.log('Jogador 2 venceu!!');
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
 
                 let img = document.createElement("img");
@@ -225,29 +224,51 @@ game.addEventListener("click",(e) => {
     }
 });
 
-         let btn_reiniciar = document.getElementById("reiniciar");
- 
-         btn_reiniciar.addEventListener("click", reiniciar=()=>{
+const iniciar = document.getElementById("iniciar");
+const form = document.querySelector(".form");
+iniciar.addEventListener("click", () => {
+    iniciar.style.display = "none";
+    form.style.display = "block";
+});
 
-            let pai = document.querySelectorAll('.torre')
-            for(let i=0; i<pai.length; i++){
-                pai[i].innerHTML=""
-            }
-            posicao = [
-                [0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0]
+let jogadores = [];
+const pronto = document.getElementById("pronto");
+const placar = document.getElementById("caixa-placar");
+const hidden = document.querySelectorAll(".hidden");
+pronto.addEventListener("click", () => {
+    game.style.display = "flex";
+    form.style.display = "none";
+    placar.style.display = "flex";
+    pronto.style.display = "none";
+
+    for (let i = 0; i < hidden.length; i++) {
+        hidden[i].style.display = "inline-block";
+    }
+
+    const jogador1 = document.getElementById("jogador1");
+    const jogador2 = document.getElementById("jogador2");
+    jogadores.push(jogador1.value);
+    jogadores.push(jogador2.value);
+});
+
+let btn_reiniciar = document.getElementById("reiniciar");
+btn_reiniciar.addEventListener("click", reiniciar=()=>{
+    let pai = document.querySelectorAll('.torre');
+    for(let i=0; i<pai.length; i++){
+        pai[i].innerHTML=""
+    }          
+    posicao = [
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0]
             ];
+});
 
-        
-         });
-
-         let btn_zerar = document.getElementById("zerar");
-
-         btn_zerar.addEventListener("click", zerar=()=>{
-         placar1.innerText = Number('0')
-         placar2.innerText = Number('0')
-         });
+let btn_zerar = document.getElementById("zerar");
+    btn_zerar.addEventListener("click", zerar=()=>{
+        placar1.innerText = Number('0')
+        placar2.innerText = Number('0')
+    });

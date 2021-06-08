@@ -1,5 +1,18 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p,
+a, img, strong, b, u, i, ol, ul, li,
+article, aside, figure, figcaption, footer, header, 
+menu, nav, section, summary,
+time, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
 :root{
-    --largira-display: 280px;
+    --largura-display: 280px;
 }
 
 body{
@@ -10,7 +23,7 @@ body{
 
 }
 img{
-    position: absolute
+    position: absolute;
     
 }
 
@@ -19,6 +32,7 @@ header {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    margin: 3rem;
 }
 
 header h1 {
@@ -70,18 +84,52 @@ button:active {
     color: white;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+    transition-duration: 0.25s;
   }
+
+#iniciar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none;
+}
+
+.form {
+    display: none;
+}
+
+.jogadores-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .jogadores-form input {
+        font-size: 1.25rem;
+        font-family: 'Games', sans-serif;
+        margin: 0.5rem;
+        padding: 0.75rem;
+        border: solid 2px rgb(0, 0, 0);
+        border-radius: 15px;
+    }
+
+    .jogadores-form button:active {
+        background-color: rgba(138, 246, 123, 0.808);
+    }
 
 #game{
     height: 200px;
-    width: var(--largira-display);
-    display: flex;
+    width: 280px;
+    display: none;
+    width: var(--largura-display);
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-around;
     margin: auto;
-
-    
 }
 
 .torre{
@@ -145,7 +193,7 @@ button:active {
 }
 
 #caixa-placar{
-    display: flex;
+    display: none;
     width: var(--largira-display);
     margin: 1rem auto;
     justify-content: space-around;
@@ -155,10 +203,10 @@ button:active {
     border-radius: 5px;
     width: 30%;
 }
-#palcar-jogador-1{
+#placar-jogador-1{
     background-color: rgba(14, 29, 158, 0.911);
 }
-#palcar-jogador-2{
+#placar-jogador-2{
     background-color: rgba(255,0,0,0.9108018207282913);
 }
 .placar--pontos{
