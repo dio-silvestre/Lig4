@@ -77,6 +77,34 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
     return false; // percorreu tudo e não retornou true é porque não tem 4 bolinhas seguidas
 }
 
+const vitoriaDiagonal1 = (arr,jogador) => { //verifica diagonal assim --> /
+    //provavelmente tem alguma forma mais esperta de fazer essa função...
+    let newArr = [];
+    for(let i = 0;i < arr.length;i++){
+        newArr[i] = arr[i].map((el) => el);
+    }
+    for(let i = 0;i < newArr.length;i++){
+        for(let j = 0;j < i;j++){
+            newArr[i].unshift(0)
+        }
+    }
+    console.log(newArr);
+    for(let i = 0;i < newArr[0].length;i++){ 
+        let contador = 0;
+        for(let j = 0;j < newArr.length;j++){
+            if(newArr[j][i] === jogador){
+                contador++;
+                if(contador === 4){ 
+                    return true;
+                }
+            }else{
+                contador = 0;
+            }
+        }
+    }
+    return false;
+}
+
 const deuEmpate = (arr) => {
     //verifica se preencheu tudo
     let newArr = [].concat(...arr)
@@ -96,7 +124,9 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
             bolinhaX.className = "bolinhaJogador1"; //Classe das bolinhas do jogador 1
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
-            if(vitoriaLinha(posicao,indexLinha,1) || vitoriaColuna(posicao,indexColuna,1)){
+            if(vitoriaLinha(posicao,indexLinha,1) 
+                || vitoriaColuna(posicao,indexColuna,1) 
+                || vitoriaDiagonal1(posicao,1)) {
                 //Se ele venceu...
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta'; //Classe da tag p para estilizar no CSS
@@ -108,7 +138,9 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         } else { //Esse bloco se refere ao jogador 2
             bolinhaX.className = "bolinhaJogador2"; //Classe das bolinhas do jogador 2
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
-            if(vitoriaLinha(posicao,indexLinha,2) || vitoriaColuna(posicao,indexColuna,2)){
+            if(vitoriaLinha(posicao,indexLinha,2)
+                || vitoriaColuna(posicao,indexColuna,2)
+                || vitoriaDiagonal1(posicao,2)) {
                 //Se ele venceu...
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta'; //Classe da tag p para estilizar no CSS
