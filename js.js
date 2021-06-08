@@ -77,6 +77,68 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
     return false; // percorreu tudo e não retornou true é porque não tem 4 bolinhas seguidas
 }
 
+const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica diagonal assim --> /
+    let diagonal = [];
+    let i = indexLinha;
+    let j = indexColuna;
+    for(;i >= 0 && j < arr[0].length;){
+        diagonal.push(arr[i][j])
+        i--;
+        j++;
+    }
+    i = indexLinha + 1;
+    j = indexColuna - 1;
+    for(;i < arr.length && j >= 0;){
+        diagonal.unshift(arr[i][j])
+        i++;
+        j--;
+    }
+    let contador = 0; //verifica se tem 4 bolinhas em linha
+    for(i = 0;i < diagonal.length;i++){ 
+        if(diagonal[i] === jogador){
+            contador++; //se achou bolinha soma contador
+            if(contador === 4){ 
+                return true; //4 bolinhas = vitória
+            }
+        }else{
+            contador = 0;
+            //se achou um valor diferente do número do jogador ao percorrer tem que reiniciar a contagem, porque só interessa se encontrar quatro seguidos
+        }
+    }
+    return false;
+}
+
+const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica diagonal assim --> \
+    let diagonal = [];
+    let i = indexLinha;
+    let j = indexColuna;
+    for(;i >= 0 && j >= 0;){
+        diagonal.push(arr[i][j])
+        i--;
+        j--;
+    }
+    i = indexLinha + 1;
+    j = indexColuna + 1;
+    for(;i < arr.length && j < arr[0].length;){
+        diagonal.unshift(arr[i][j])
+        i++;
+        j++;
+    }
+    let contador = 0; //verifica se tem 4 bolinhas em linha
+    for(i = 0;i < diagonal.length;i++){ 
+        if(diagonal[i] === jogador){
+            contador++; //se achou bolinha soma contador
+            if(contador === 4){ 
+                return true; //4 bolinhas = vitória
+            }
+        }else{
+            contador = 0;
+            //se achou um valor diferente do número do jogador ao percorrer tem que reiniciar a contagem, porque só interessa se encontrar quatro seguidos
+        }
+    }
+    return false;
+}
+
 const deuEmpate = (arr) => {
     //verifica se preencheu tudo
     let newArr = [].concat(...arr)
@@ -96,7 +158,10 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
             bolinhaX.className = "bolinhaJogador1"; //Classe das bolinhas do jogador 1
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
-            if(vitoriaLinha(posicao,indexLinha,1) || vitoriaColuna(posicao,indexColuna,1)){
+            if(vitoriaLinha(posicao,indexLinha,1) 
+                || vitoriaColuna(posicao,indexColuna,1) 
+                || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
+                || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta1'; //Classe da tag p para estilizar no CSS
@@ -112,7 +177,10 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         } else { //Esse bloco se refere ao jogador 2
             bolinhaX.className = "bolinhaJogador2"; //Classe das bolinhas do jogador 2
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
-            if(vitoriaLinha(posicao,indexLinha,2) || vitoriaColuna(posicao,indexColuna,2)){
+            if(vitoriaLinha(posicao,indexLinha,2)
+                || vitoriaColuna(posicao,indexColuna,2)
+                || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
+                || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
                 //Se ele venceu...
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'vitoria-alerta2'; //Classe da tag p para estilizar no CSS
@@ -152,13 +220,21 @@ game.addEventListener("click",(e) => {
     }
 });
 
-const hidden = document.querySelectorAll(".hidden");
 const iniciar = document.getElementById("iniciar");
-iniciar.addEventListener("click", function() {
-    game.style.display = "flex";
+const form = document.querySelector(".form");
+iniciar.addEventListener("click", () => {
     iniciar.style.display = "none";
+    form.style.display = "block";
+
+});
+
+const pronto = document.getElementById("pronto");
+const hidden = document.querySelectorAll(".hidden");
+pronto.addEventListener("click", () => {
+    form.style.display = "none";
+    game.style.display = "flex";
 
     for (let i = 0; i < hidden.length; i++) {
         hidden[i].style.display = "inline-block";
     }
-});
+})

@@ -88,17 +88,39 @@ button:active {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    transition-duration: 0.25s;
-    animation-name: Hide;
-    animation-duration: 4s;
 }
 
-@
+.hidden {
+    display: none;
+}
+
+.form {
+    display: none;
+}
+
+.jogadores-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .jogadores-form input {
+        font-size: 1.25rem;
+        font-family: 'Games', sans-serif;
+        margin: 0.5rem;
+        padding: 0.75rem;
+        border: solid 2px rgb(0, 0, 0);
+        border-radius: 15px;
+    }
+
+    .jogadores-form button:active {
+        background-color: rgba(138, 246, 123, 0.808);
+    }
 
 #game{
     height: 200px;
     width: 280px;
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-around;
@@ -127,7 +149,9 @@ button:active {
     border-radius: 100%;
     background: rgb(144,145,145);
     background: rgb(144,145,145);
-    background: radial-gradient(circle at top left, rgba(144,145,145,0.8883928571428571) 17%, rgba(37, 63, 149, 0.888) 36%, rgba(14, 29, 158, 0.911) 100%);}
+    background: radial-gradient(circle at top left, rgba(144,145,145,0.8883928571428571) 17%, rgba(37, 63, 149, 0.888) 36%, rgba(14, 29, 158, 0.911) 100%);
+    pointer-events: none;
+}
 
 .bolinhaJogador2{
     height: 25px;
@@ -136,6 +160,7 @@ button:active {
     background: rgb(249,249,249);
     background: rgb(249,249,249);
     background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, rgba(255,0,0,0.9108018207282913) 50%);
+    pointer-events: none;
 }
 
 .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
@@ -322,34 +347,3 @@ button:active {
     transform: scale3d(1, 1, 1);
     }
     }
-    @keyframes rubberBand {
-    0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-    }
-    30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-    transform: scale3d(1.25, 0.75, 1);
-    }
-    40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-    transform: scale3d(0.75, 1.25, 1);
-    }
-    50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-    transform: scale3d(1.15, 0.85, 1);
-    }
-    65% {
-    -webkit-transform: scale3d(.95, 1.05, 1);
-    transform: scale3d(.95, 1.05, 1);
-    }
-    75% {
-    -webkit-transform: scale3d(1.05, .95, 1);
-    transform: scale3d(1.05, .95, 1);
-    }
-    100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-    }
-    }
-
