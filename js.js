@@ -151,3 +151,14 @@ game.addEventListener("click",(e) => {
         criarBolinhas(torre,cor,posicao,indexColuna); //chama a função para criar a bola nesta torre
     }
 });
+
+const hidden = document.querySelectorAll(".hidden");
+const iniciar = document.getElementById("iniciar");
+iniciar.addEventListener("click", function() {
+    game.style.display = "flex";
+    iniciar.style.display = "none";
+
+    for (let i = 0; i < hidden.length; i++) {
+        hidden[i].style.display = "inline-block";
+    }
+});

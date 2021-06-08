@@ -1,4 +1,15 @@
-
+html, body, div, span, h1, h2, h3, h4, h5, h6, p,
+a, img, strong, b, u, i, ol, ul, li,
+article, aside, figure, figcaption, footer, header, 
+menu, nav, section, summary,
+time, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
 
 body{
     text-align: center;
@@ -8,7 +19,7 @@ body{
 
 }
 img{
-    position: absolute
+    position: absolute;
     
 }
 
@@ -17,6 +28,7 @@ header {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    margin: 3rem;
 }
 
 header h1 {
@@ -68,7 +80,20 @@ button:active {
     color: white;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+    transition-duration: 0.25s;
   }
+
+#iniciar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.25s;
+    animation-name: Hide;
+    animation-duration: 4s;
+}
+
+@
 
 #game{
     height: 200px;
@@ -78,8 +103,6 @@ button:active {
     align-items: flex-end;
     justify-content: space-around;
     margin: auto;
-
-    
 }
 
 .torre{
