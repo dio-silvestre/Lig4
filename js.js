@@ -220,28 +220,24 @@ game.addEventListener("click",(e) => {
     }
 });
 
-//Botões
-        //Martelei um Refresh
-        // function refreshPage(){
-        //      window.location.reload();
-        // } 
-        // let btn_res = document.getElementById("res");
+         let btn_reiniciar = document.getElementById("reiniciar");
  
-        // btn_res.addEventListener("click", refreshPage);
+         btn_reiniciar.addEventListener("click", reiniciar=()=>{
 
-  //
-        // let btn_reiniciar = document.getElementById("reiniciar");
- 
-        // btn_reiniciar.addEventListener("click", reiniciar=()=>{
+            var pai = document.querySelectorAll('.torre')
+            for(let i=0; i<pai.length; i++){
+                pai[i].innerHTML=""
+            }
+            posicao = [
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0]
+            ];
 
-            var pai = document.querySelectorAll('.bolinhaJogador1, .bolinhaJogador2')
-            pai.parentNode.removeChild(pai.children[2]);
         
-        // });
-//
+         });
 
-        // Removendo um nó a partir do pai
-    // var node = document.querySelectorAll('.bolinhaJogador1, .bolinhaJogador2')
-    // if (node.parentNode) {
-    // node.parentNode.removeChild(node);
 
