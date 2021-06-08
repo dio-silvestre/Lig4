@@ -168,13 +168,14 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 //Se ele venceu...
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
-                vitoriaAlerta.className = 'vitoria-alerta1'; //Classe da tag p para estilizar no CSS
+                vitoriaAlerta.className = 'vitoria vitoria-alerta1'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
 
                 let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+                img.id = 'vitoria';
                 game.appendChild(img)
             }
             cor[0] = 0; //Alterna de jogador para a próxima jogada
@@ -188,13 +189,14 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 //Se ele venceu...
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
-                vitoriaAlerta.className = 'vitoria-alerta2'; //Classe da tag p para estilizar no CSS
+                vitoriaAlerta.className = 'vitoria vitoria-alerta2'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
 
                 let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+                img.id = 'vitoria';
                 game.appendChild(img)
             }
             cor[0] = 1; //Alterna de jogador para a próxima jogada
@@ -209,6 +211,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
 
             let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+                img.id = 'vitoria'
                 game.appendChild(img)
         }
     }
@@ -255,8 +258,10 @@ let btn_reiniciar = document.getElementById("reiniciar");
 btn_reiniciar.addEventListener("click", reiniciar=()=>{
     let pai = document.querySelectorAll('.torre');
     for(let i=0; i<pai.length; i++){
-        pai[i].innerHTML=""
-    }          
+        pai[i].innerHTML = "";
+    }
+    
+    jogoAcabou = false;
     posicao = [
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
@@ -265,6 +270,13 @@ btn_reiniciar.addEventListener("click", reiniciar=()=>{
             [0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0]
             ];
+
+    let mensagemVitoria = document.getElementsByClassName("vitoria");
+    let imagemVitoria = document.getElementById("vitoria");
+    for (let i = 0; i < mensagemVitoria.length; i++) {
+        mensagemVitoria[i].remove();
+        imagemVitoria.remove();
+    }
 });
 
 let btn_zerar = document.getElementById("zerar");
