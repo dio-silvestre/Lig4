@@ -245,3 +245,19 @@ pronto.addEventListener("click", () => {
         hidden[i].style.display = "inline-block";
     }
 });
+
+let btn_reiniciar = document.getElementById("reiniciar");
+btn_reiniciar.addEventListener("click", reiniciar=()=>{
+    let pai = document.querySelectorAll('.torre');
+    for(let i=0; i<pai.length; i++){
+        pai[i].innerHTML=""
+    }          
+    posicao = [
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0]
+            ];
+});
