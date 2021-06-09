@@ -3,6 +3,7 @@ const game = document.getElementById("game");
 const placar1 = document.getElementsByClassName("placar--pontos")[0];
 const placarFundo1 = placar1.closest('.placar');
 const placar2 = document.getElementsByClassName("placar--pontos")[1];
+const placarFundo2 = placar2.closest('.placar');
 const timerValor = document.querySelector("#valor-timer")
 const caixaTimer = document.getElementById("timer")
 
@@ -176,11 +177,11 @@ const timer = () => {
     timerValor.innerText = Number(timerValor.innerText)+1;
 }
 
-const easterEgg1 = (nome,bolinhaX,placarFundo) => {
-    if(nome.toLowerCase() === 'duck'){
-        bolinhaX.classList.add("duck");
+const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
+    if(nome.toLowerCase() === img){
+        bolinhaX.classList.add(img);
         bolinhaX.style.borderRadius = '0';
-        placarFundo.style.backgroundColor = 'yellow';
+        placarFundo.style.backgroundColor = cor;
     }
 }
 
@@ -195,7 +196,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         let indexLinha = 5-pos; //variavel com a linha clicada
         if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
             bolinhaX.classList.add("bolinhaJogador1"); //Classe das bolinhas do jogador 1
-            easterEgg1(jogador1.value,bolinhaX,placarFundo1);
+            easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','blue');
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             somBolinha.play();
             if(vitoriaLinha(posicao,indexLinha,1) 
@@ -218,7 +219,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             }
             cor[0] = 0; //Alterna de jogador para a próxima jogada
         } else { //Esse bloco se refere ao jogador 2
-            bolinhaX.className = "bolinhaJogador2"; //Classe das bolinhas do jogador 2
+            bolinhaX.classList.add("bolinhaJogador2"); //Classe das bolinhas do jogador 2
+            easterEgg(jogador2.value,bolinhaX,placarFundo2,'duck','yellow');
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             somBolinha.play();
             if(vitoriaLinha(posicao,indexLinha,2)
