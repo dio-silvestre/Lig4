@@ -20,19 +20,31 @@ let posicao = [
 ];
 let timerAtual;
 
+// Efeitos sonoros
+let somClick = new Audio();
+somClick.src = './sounds/wet-click.wav';
+
+let somBolinha = new Audio();
+somBolinha.src = './sounds/boing-sfx.mp3';
+
+let somVitoria = new Audio();
+somVitoria.src = './sounds/victoryff-swf.mp3';
+
+let somEmpate = new Audio();
+somEmpate.src = './sounds/game-over.wav';
+
 //FUNÇÃO COMUM:
-//function nomeFuncao(parametros){
-    //codigo...
+//function nomeFuncao(parâmetros){
+    //código...
 //}
 
-//anonima:
-//function(parametros){codigos...}
-
-
-//ARROY FUNCTION
+//ARROW FUNCTION
 //const nomeFuncao = (parametros) => {
     //codigos...
 //}
+
+//FUNÇÃO ANÔNIMA:
+//function() {códigos...}
 
 //anonima:
 //(parametros) => {
@@ -147,7 +159,7 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
 
 const deuEmpate = (arr) => {
     //verifica se preencheu tudo
-    let newArr = [].concat(...arr)
+    let newArr = [].concat(...arr);
     return !newArr.includes(0);
 }
 
@@ -167,6 +179,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
             bolinhaX.className = "bolinhaJogador1"; //Classe das bolinhas do jogador 1
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
+            somBolinha.play();
             if(vitoriaLinha(posicao,indexLinha,1) 
                 || vitoriaColuna(posicao,indexColuna,1) 
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
@@ -174,7 +187,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 //Se ele venceu...
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
-                vitoriaAlerta.className = 'vitoria vitoria-alerta1'; //Classe da tag p para estilizar no CSS
+                vitoriaAlerta.className = 'alerta vitoria-alerta1'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
@@ -183,11 +196,13 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
                 img.id = 'vitoria';
                 game.appendChild(img)
+                somVitoria.play();
             }
             cor[0] = 0; //Alterna de jogador para a próxima jogada
         } else { //Esse bloco se refere ao jogador 2
             bolinhaX.className = "bolinhaJogador2"; //Classe das bolinhas do jogador 2
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
+            somBolinha.play();
             if(vitoriaLinha(posicao,indexLinha,2)
                 || vitoriaColuna(posicao,indexColuna,2)
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
@@ -195,7 +210,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 //Se ele venceu...
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
-                vitoriaAlerta.className = 'vitoria vitoria-alerta2'; //Classe da tag p para estilizar no CSS
+                vitoriaAlerta.className = 'alerta vitoria-alerta2'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
@@ -204,13 +219,14 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
                 img.id = 'vitoria';
                 game.appendChild(img)
+                somVitoria.play();
             }
             cor[0] = 1; //Alterna de jogador para a próxima jogada
         }
         t.appendChild(bolinhaX); // Por fim, põe a bolinha criada no jogo
         if (deuEmpate(posicao)) { //Preencheram tudo
             let empateAlerta = document.createElement("p"); //Cria tag p para por a mensagem
-            empateAlerta.className = 'empate-alerta'; //Classe da tag p para estilizar no CSS
+            empateAlerta.className = 'alerta empate-alerta'; //Classe da tag p para estilizar no CSS
             empateAlerta.innerText = 'Empate!!'; //Texto que terá na tag p
             game.appendChild(empateAlerta); //Coloca a tag p na tela
             jogoAcabou = true; //Variável para verificar se o jogo acabou
@@ -219,6 +235,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
                 img.id = 'vitoria'
                 game.appendChild(img)
+                somEmpate.play();
         }
         timerAtual = setInterval(timer, 1000);
     }
@@ -241,6 +258,8 @@ const form = document.querySelector(".form");
 iniciar.addEventListener("click", () => {
     iniciar.style.display = "none";
     form.style.display = "block";
+
+    somClick.play();
 });
 
 let jogadores = [];
@@ -262,6 +281,8 @@ pronto.addEventListener("click", () => {
     const jogador2 = document.getElementById("jogador2");
     jogadores.push(jogador1.value);
     jogadores.push(jogador2.value);
+
+    somClick.play();
 });
 
 let btn_reiniciar = document.getElementById("reiniciar");
@@ -281,16 +302,20 @@ btn_reiniciar.addEventListener("click", reiniciar=()=>{
             [0,0,0,0,0,0,0]
             ];
 
-    let mensagemVitoria = document.getElementsByClassName("vitoria");
+    let mensagemVitoria = document.getElementsByClassName("alerta");
     let imagemVitoria = document.getElementById("vitoria");
     for (let i = 0; i < mensagemVitoria.length; i++) {
         mensagemVitoria[i].remove();
         imagemVitoria.remove();
     }
+
+    somClick.play();
 });
 
 let btn_zerar = document.getElementById("zerar");
 btn_zerar.addEventListener("click", zerar=()=>{
     placar1.innerText = Number('0');
     placar2.innerText = Number('0');
+
+    somClick.play();
 });
