@@ -475,7 +475,7 @@ pronto.addEventListener("click", () => {
         form.style.display = "none";
         placar.style.display = "flex";
         pronto.style.display = "none";
-        caixaTimer.style.display = "block";
+        caixaTimer.style.display = "flex";
 
         for (let i = 0; i < hidden.length; i++) {
             hidden[i].style.display = "inline-block";
