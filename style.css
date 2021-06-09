@@ -168,8 +168,14 @@ button:active {
 }
 
 .duck{
+    border-radius: 100%;
     background-image: url(img/pato.svg);
 }
+.kenzie{
+    background-repeat: no-repeat;
+    background-image: url(img/logokenzie.svg);
+}
+
 
 .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
     padding: 20px;
