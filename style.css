@@ -167,6 +167,10 @@ button:active {
     pointer-events: none;
 }
 
+.duck{
+    background-image: url(img/pato.svg);
+}
+
 .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
     padding: 20px;
     font-size: 2rem;
