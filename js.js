@@ -1,9 +1,18 @@
 const game = document.getElementById("game");
 
 const placar1 = document.getElementsByClassName("placar--pontos")[0];
+const placarFundo1 = placar1.closest('.placar');
 const placar2 = document.getElementsByClassName("placar--pontos")[1];
 const timerValor = document.querySelector("#valor-timer")
 const caixaTimer = document.getElementById("timer")
+
+const pronto = document.getElementById("pronto");
+const placar = document.getElementById("caixa-placar");
+const hidden = document.querySelectorAll(".hidden");
+const jogador1 = document.getElementById("jogador1");
+const jogador2 = document.getElementById("jogador2");
+
+let jogadores = [];
 
 let cor = [];   //variavel para alternar de jogador em cada turno
 cor[0] = 1;
@@ -167,6 +176,14 @@ const timer = () => {
     timerValor.innerText = Number(timerValor.innerText)+1;
 }
 
+const easterEgg1 = (nome,bolinhaX,placarFundo) => {
+    if(nome.toLowerCase() === 'duck'){
+        bolinhaX.classList.add("duck");
+        bolinhaX.style.borderRadius = '0';
+        placarFundo.style.backgroundColor = 'yellow';
+    }
+}
+
 const criarBolinhas = (t,cor,posicao,indexColuna) => { 
     // t = a torre no DOM
     // cor = jogador desse turno
@@ -177,7 +194,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         pos = t.childElementCount;  //variavel para ter uma referencia de qual linha foi clicada
         let indexLinha = 5-pos; //variavel com a linha clicada
         if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
-            bolinhaX.className = "bolinhaJogador1"; //Classe das bolinhas do jogador 1
+            bolinhaX.classList.add("bolinhaJogador1"); //Classe das bolinhas do jogador 1
+            easterEgg1(jogador1.value,bolinhaX,placarFundo1);
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             somBolinha.play();
             if(vitoriaLinha(posicao,indexLinha,1) 
@@ -262,12 +280,6 @@ iniciar.addEventListener("click", () => {
     somClick.play();
 });
 
-let jogadores = [];
-const pronto = document.getElementById("pronto");
-const placar = document.getElementById("caixa-placar");
-const hidden = document.querySelectorAll(".hidden");
-const jogador1 = document.getElementById("jogador1");
-const jogador2 = document.getElementById("jogador2");
 pronto.addEventListener("click", () => {
     
     if (jogador1.value === "") {
