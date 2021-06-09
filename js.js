@@ -64,6 +64,26 @@ somEmpate.src = './sounds/game-over.wav';
 //anonima com return implícito:
 //(paramentros) => codigos...
 
+function escolherTorre(col){
+    let x = col + 1;
+    if(x == 1){
+        return t1;
+    }else if( x == 2){
+        return t2;
+    }else if( x == 3){
+        return t3;
+    }else if( x == 4){
+        return t4;
+    }else if( x == 5){
+        return t5;
+    }else if( x == 6){
+        return t6;
+    }else{
+        return t7;
+    }
+}
+
+
 const vitoriaLinha = (arr,indexLinha,jogador) => {
     //verificar se ocorreu vitoria no sentido horizontal
     //arr = posicao
@@ -75,6 +95,22 @@ const vitoriaLinha = (arr,indexLinha,jogador) => {
         if(arr[indexLinha][i] === jogador){ //<-- só interessa percorrer a linha clicada
             contador++; //se achou bolinha soma contador
             if(contador === 4){ 
+                
+                let pos = i;
+                let t;
+                console.log(pos);
+
+                console.log(indexLinha);
+
+                for(let k = pos; k >= pos-3;k--){
+                    if(k != pos){
+                        t = escolherTorre(k);
+                        t.childNodes[5-indexLinha].className = "verde";
+                    }else{
+                        //console.log("x");
+                    }
+                }
+
                 return true; //4 bolinhas = vitória
             }
         } else { 
@@ -91,11 +127,21 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
     //indexColuna captura a posição da coluna da ultima jogada
     //jogador é o número que representa o jogador (1 ou 2)
     let contador = 0; //verifica se tem 4 bolinhas em linha
+
     for(let i = 0;i < 6;i++){ 
         if(arr[i][indexColuna] === jogador){ //<-- só interessa percorrer a coluna clicada
             contador++; //se achou bolinha soma contador
+            pos = i ;
             if(contador === 4){ 
+                let t = escolherTorre(indexColuna);
+                let tam = t.childElementCount;
+                console.log(tam);
+                for(let k = tam-1; k>tam-4;k--){
+                    t.childNodes[k].className = "verde";
+                }
+
                 return true; //4 bolinhas = vitória
+
             }
         }else{
             contador = 0;
@@ -107,6 +153,10 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
 
 const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica diagonal assim --> /
     let diagonal = [];
+
+    //console.log(indexLinha);
+
+    //let obj = [];
     let i = indexLinha;
     let j = indexColuna;
     for(;i >= 0 && j < arr[0].length;){
@@ -116,6 +166,9 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
     }
     i = indexLinha + 1;
     j = indexColuna - 1;
+
+    //console.log(diagonal);
+
     for(;i < arr.length && j >= 0;){
         diagonal.unshift(arr[i][j])
         i++;
@@ -126,6 +179,66 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         if(diagonal[i] === jogador){
             contador++; //se achou bolinha soma contador
             if(contador === 4){ 
+                let topo;
+                let coluna = -1;
+                for(let x = 0; x < diagonal.length; x++){
+                    if(diagonal[i] == jogador){
+                        topo = 5-i;
+                    }
+                }
+                
+                if(topo == indexLinha){
+
+                    for(let k = 0; k < 4 ; k++){
+
+                        console.log("\n");
+
+                        console.log("lINHA: "+ indexLinha);
+                        console.log("Coluna: " + indexColuna);
+                        console.log("K: " + k);
+                        console.log("TOPO: "+topo);
+
+                        console.log("\n");
+                        
+                        if(indexLinha != topo){
+
+                            coluna = 5-indexLinha;
+
+                            t = escolherTorre(indexColuna);
+                            t.childNodes[coluna].className = "verde";
+
+                        }
+                        indexLinha++;
+                        indexColuna--;
+                        console.log("Coluna pegada: "+coluna);
+                    }
+                }else{
+                    indexColuna = indexColuna+(indexLinha-topo);
+                    for(let k = 0; k < 4 ; k++){
+
+                        console.log("\n");
+
+                        console.log("lINHA: "+ indexLinha);
+                        console.log("Coluna: " + indexColuna);
+                        console.log("K: " + k);
+                        console.log("TOPO: "+topo);
+
+                        console.log("\n");
+                        
+                        if(indexLinha != topo){
+
+                            coluna = 5-topo;
+
+                            t = escolherTorre(indexColuna);
+                            t.childNodes[coluna].className = "verde";
+
+                        }
+                        topo++;
+                        indexColuna--;
+                        console.log("Coluna pegada: "+coluna);
+                    
+                }
+            }
                 return true; //4 bolinhas = vitória
             }
         }else{
@@ -157,6 +270,69 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         if(diagonal[i] === jogador){
             contador++; //se achou bolinha soma contador
             if(contador === 4){ 
+                let topo;
+                let coluna = -1;
+                for(let x = 0; x < diagonal.length; x++){
+                    if(diagonal[i] == jogador){
+                        topo = 5-i;
+                    }
+                }
+                
+                if(topo == indexLinha){
+
+                    for(let k = 0; k < 4 ; k++){
+
+                        console.log("\n");
+
+                        console.log("lINHA: "+ indexLinha);
+                        console.log("Coluna: " + indexColuna);
+                        console.log("K: " + k);
+                        console.log("TOPO: "+topo);
+
+                        console.log("\n");
+                        
+                        if(indexLinha != topo){
+
+                            coluna = 5-indexLinha;
+
+                            t = escolherTorre(indexColuna);
+                            t.childNodes[coluna].className = "verde";
+
+                        }
+                        indexLinha++;
+                        indexColuna++;
+                        console.log("Coluna pegada: "+coluna);
+                    }
+                }else{
+                    
+                    indexColuna = indexColuna-(indexLinha-topo);
+                    for(let k = 0; k < 4 ; k++){
+
+                        console.log("\n");
+
+                        console.log("lINHA: "+ indexLinha);
+                        console.log("Coluna: " + indexColuna);
+                        console.log("K: " + k);
+                        console.log("TOPO: "+topo);
+
+                        console.log("\n");
+                        
+                        if(indexLinha != topo){
+
+                            coluna = 5-topo;
+
+                            t = escolherTorre(indexColuna);
+                            t.childNodes[coluna].className = "verde";
+
+                        }
+                        topo++;
+                        indexColuna++;
+                        console.log("Coluna pegada: "+coluna);
+                        
+                    
+                }
+                
+            }
                 return true; //4 bolinhas = vitória
             }
         }else{
@@ -204,6 +380,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
+                bolinhaX.className = "verde";
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'alerta vitoria-alerta1'; //Classe da tag p para estilizar no CSS
@@ -228,6 +405,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
                 //Se ele venceu...
+                bolinhaX.className = "verde";
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'alerta vitoria-alerta2'; //Classe da tag p para estilizar no CSS
@@ -344,3 +522,6 @@ btn_zerar.addEventListener("click", zerar=()=>{
 
     somClick.play();
 });
+
+
+

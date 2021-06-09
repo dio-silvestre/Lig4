@@ -230,6 +230,16 @@ button:active {
     display: none;
 }
 
+.verde{
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background: rgb(249,249,249);
+    background: rgb(249,249,249);
+    background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, green 50%);
+    pointer-events: none;
+}
+
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
     /* -webkit-animation-name: slideInDown; */
@@ -347,6 +357,11 @@ button:active {
     }
 
     .bolinhaJogador1{
+        height: 100px;
+        width: 100px;
+    }
+
+    .verde{
         height: 100px;
         width: 100px;
     }
