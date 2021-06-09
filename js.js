@@ -266,23 +266,34 @@ let jogadores = [];
 const pronto = document.getElementById("pronto");
 const placar = document.getElementById("caixa-placar");
 const hidden = document.querySelectorAll(".hidden");
+const jogador1 = document.getElementById("jogador1");
+const jogador2 = document.getElementById("jogador2");
 pronto.addEventListener("click", () => {
-    game.style.display = "flex";
-    form.style.display = "none";
-    placar.style.display = "flex";
-    pronto.style.display = "none";
-    caixaTimer.style.display = "block";
-
-    for (let i = 0; i < hidden.length; i++) {
-        hidden[i].style.display = "inline-block";
+    
+    if (jogador1.value === "") {
+        alert("Por favor, preencha o campo Jogador 1");
+        jogador1.focus();
     }
+    else if (jogador2.value === "") {
+        alert("Por favor, preencha o campo Jogador 2");
+        jogador2.focus();
+    } else {
+    
+        game.style.display = "flex";
+        form.style.display = "none";
+        placar.style.display = "flex";
+        pronto.style.display = "none";
+        caixaTimer.style.display = "block";
 
-    const jogador1 = document.getElementById("jogador1");
-    const jogador2 = document.getElementById("jogador2");
-    jogadores.push(jogador1.value);
-    jogadores.push(jogador2.value);
+        for (let i = 0; i < hidden.length; i++) {
+            hidden[i].style.display = "inline-block";
+        }
 
-    somClick.play();
+        jogadores.push(jogador1.value);
+        jogadores.push(jogador2.value);
+
+        somClick.play();
+    }
 });
 
 let btn_reiniciar = document.getElementById("reiniciar");
