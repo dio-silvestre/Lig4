@@ -43,27 +43,8 @@ somVitoria.src = './sounds/victoryff-swf.mp3';
 let somEmpate = new Audio();
 somEmpate.src = './sounds/game-over.wav';
 
-//FUNÇÃO COMUM:
-//function nomeFuncao(parâmetros){
-    //código...
-//}
 
-//ARROW FUNCTION
-//const nomeFuncao = (parametros) => {
-    //codigos...
-//}
-
-//FUNÇÃO ANÔNIMA:
-//function() {códigos...}
-
-//anonima:
-//(parametros) => {
-    //codigos...
-//}
-
-//anonima com return implícito:
-//(paramentros) => codigos...
-
+//Função de verificação da vitória na horizontal
 function escolherTorre(col){
     let x = col + 1;
     if(x == 1){
@@ -105,7 +86,7 @@ const vitoriaLinha = (arr,indexLinha,jogador) => {
                 for(let k = pos; k >= pos-3;k--){
                     if(k != pos){
                         t = escolherTorre(k);
-                        t.childNodes[5-indexLinha].className = "verde";
+                        t.childNodes[5-indexLinha].classList.add("verde");
                     }else{
                         //console.log("x");
                     }
@@ -137,7 +118,7 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
                 let tam = t.childElementCount;
                 console.log(tam);
                 for(let k = tam-1; k>tam-4;k--){
-                    t.childNodes[k].className = "verde";
+                    t.childNodes[k].classList.add("verde");
                 }
 
                 return true; //4 bolinhas = vitória
@@ -205,7 +186,7 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                             coluna = 5-indexLinha;
 
                             t = escolherTorre(indexColuna);
-                            t.childNodes[coluna].className = "verde";
+                            t.childNodes[coluna].classList.add("verde");
 
                         }
                         indexLinha++;
@@ -230,7 +211,7 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                             coluna = 5-topo;
 
                             t = escolherTorre(indexColuna);
-                            t.childNodes[coluna].className = "verde";
+                            t.childNodes[coluna].classList.add("verde");
 
                         }
                         topo++;
@@ -296,7 +277,7 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                             coluna = 5-indexLinha;
 
                             t = escolherTorre(indexColuna);
-                            t.childNodes[coluna].className = "verde";
+                            t.childNodes[coluna].classList.add("verde");
 
                         }
                         indexLinha++;
@@ -322,7 +303,7 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                             coluna = 5-topo;
 
                             t = escolherTorre(indexColuna);
-                            t.childNodes[coluna].className = "verde";
+                            t.childNodes[coluna].classList.add("verde");
 
                         }
                         topo++;
@@ -358,6 +339,7 @@ const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
         bolinhaX.classList.add(img);
         bolinhaX.style.borderRadius = '0';
         placarFundo.style.backgroundColor = cor;
+        placar2.style.color = 'black';
     }
 }
 
@@ -395,9 +377,11 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 somVitoria.play();
             }
             cor[0] = 0; //Alterna de jogador para a próxima jogada
+            placarFundo1.style.opacity = '0.5';
+            placarFundo2.style.opacity = '1';
         } else { //Esse bloco se refere ao jogador 2
             bolinhaX.classList.add("bolinhaJogador2"); //Classe das bolinhas do jogador 2
-            easterEgg(jogador2.value,bolinhaX,placarFundo2,'duck','yellow');
+            easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             somBolinha.play();
             if(vitoriaLinha(posicao,indexLinha,2)
@@ -420,6 +404,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 somVitoria.play();
             }
             cor[0] = 1; //Alterna de jogador para a próxima jogada
+            placarFundo1.style.opacity = '1';
+            placarFundo2.style.opacity = '0.5';
         }
         t.appendChild(bolinhaX); // Por fim, põe a bolinha criada no jogo
         if (deuEmpate(posicao)) { //Preencheram tudo
@@ -452,9 +438,10 @@ game.addEventListener("click",(e) => {
 });
 
 const iniciar = document.getElementById("iniciar");
+const regras = document.getElementById("regras");
 const form = document.querySelector(".form");
 iniciar.addEventListener("click", () => {
-    iniciar.style.display = "none";
+    regras.style.display = "none";
     form.style.display = "block";
 
     somClick.play();
