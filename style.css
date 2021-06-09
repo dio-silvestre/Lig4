@@ -42,7 +42,13 @@ header h1 {
     -o-transform: rotate(326deg);
     -ms-transform: rotate(326deg);
     transform: rotate(326deg);
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #000;
+}
+
+span {
+    color: white;
+    -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #000;
 }
 
@@ -61,13 +67,9 @@ header h1 {
     #regras p {
         margin: 1.75rem;
         text-indent: 2.5rem;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
     }
-
-span {
-    color: white;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: #000;
-}
 
 button {
     margin: 1.5rem;
@@ -80,6 +82,8 @@ button {
     outline: none;
     border-radius: 15px;
     box-shadow: 0 9px rgb(143, 143, 143);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
 }
 
 button:hover {
@@ -173,6 +177,16 @@ button:active {
     pointer-events: none;
 }
 
+.pato{
+    border-radius: 100%;
+    background-image: url(img/pato.svg);
+}
+.kenzie{
+    background-repeat: no-repeat;
+    background-image: url(img/logokenzie.svg);
+}
+
+
 .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
     padding: 20px;
     font-size: 2rem;
@@ -226,6 +240,15 @@ button:active {
     display: none;
 }
 
+.verde{
+    height: 25px;
+    width: 25px;
+    background: rgb(249,249,249);
+    background: rgb(249,249,249);
+    background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, green 50%);
+    pointer-events: none;
+}
+
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
     /* -webkit-animation-name: slideInDown; */
@@ -234,28 +257,46 @@ button:active {
     animation-duration: 1.5s;
     /* -webkit-animation-fill-mode: both; */
     animation-fill-mode: both;
-
-    transform: translateY(-100%);
     }
     @-webkit-keyframes slideInDown {
-    0% {
-    -webkit-transform: translateY(-100%);
-    visibility: visible;
-    }
-    100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-    }
+        0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+        -webkit-transform: translateY(-500px);
+        transform: translateY(-500px);
+        visibility: visible;
+        }
+        50% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+        -webkit-transform: translateY(-100px);
+        transform: translateY(-100px);
+        visibility: visible; 
+        }
+        100% {
+        animation-timing-function: ease-in;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        }
     }
     @keyframes slideInDown {
-    0% {
-    -webkit-transform: translateY(-100%);
-    visibility: visible;
-    }
-    100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-    }
+        0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+        -webkit-transform: translateY(-500px);
+        visibility: visible;
+        }
+        50% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+        -webkit-transform: translateY(-100px);
+        visibility: visible; 
+        }
+        100% {
+        animation-timing-function: ease-in;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        }
     }
 
 
@@ -354,6 +395,11 @@ button:active {
     }
 
     .bolinhaJogador1{
+        height: 100px;
+        width: 100px;
+    }
+
+    .verde{
         height: 100px;
         width: 100px;
     }
