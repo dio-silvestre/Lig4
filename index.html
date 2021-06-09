@@ -22,8 +22,8 @@
 
     <div class="form">
         <form class="jogadores-form">
-            <input type="text" id="jogador1" placeholder="Jogador 1" required>
-            <input type="text" id="jogador2" placeholder="Jogador 2" required>
+            <input type="text" id="jogador1" placeholder="Jogador 1" value ="jogador 1" required>
+            <input type="text" id="jogador2" placeholder="Jogador 2" value ="jogador 2" required>
             <button type="button" id="pronto">Pronto!</button>
         </form>
     </div>
@@ -41,12 +41,12 @@
         <div class="placar" id="placar-jogador-1">
             <p class="placar--pontos">0</p>
         </div>
+        <div id="timer">
+            <span id="valor-timer">0</span>
+        </div>
         <div class="placar" id="placar-jogador-2">
             <p class="placar--pontos">0</p>
         </div>
-    </div>
-    <div id="timer">
-        <p><span id="valor-timer">0</span> segundos</p>
     </div>
 
     <script src = "js.js"></script>
