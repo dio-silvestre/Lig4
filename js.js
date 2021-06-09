@@ -94,6 +94,7 @@ const vitoriaLinha = (arr,indexLinha,jogador) => {
     for(let i = 0;i < arr[indexLinha].length;i++) { 
         if(arr[indexLinha][i] === jogador){ //<-- só interessa percorrer a linha clicada
             contador++; //se achou bolinha soma contador
+            console.log(contador);
             if(contador === 4){ 
                 
                 let pos = i;
@@ -330,9 +331,9 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         console.log("Coluna pegada: "+coluna);
                         
                     
-                }
+                    }
                 
-            }
+                }
                 return true; //4 bolinhas = vitória
             }
         }else{
@@ -370,6 +371,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         let bolinhaX = document.createElement("div"); //a bolinha no DOM
         pos = t.childElementCount;  //variavel para ter uma referencia de qual linha foi clicada
         let indexLinha = 5-pos; //variavel com a linha clicada
+        timerAtual = setInterval(timer, 1000);
         if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
             bolinhaX.classList.add("bolinhaJogador1"); //Classe das bolinhas do jogador 1
             easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','blue');
@@ -380,13 +382,14 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
-                bolinhaX.className = "verde";
+                bolinhaX.classList.add("verde");
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'alerta vitoria-alerta1'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
+                window.clearInterval(timerAtual);
 
                 let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
@@ -405,13 +408,14 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
                 //Se ele venceu...
-                bolinhaX.className = "verde";
+                bolinhaX.classList.add("verde");
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'alerta vitoria-alerta2'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
+                window.clearInterval(timerAtual);
 
                 let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
@@ -428,20 +432,22 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             empateAlerta.innerText = 'Empate!!'; //Texto que terá na tag p
             game.appendChild(empateAlerta); //Coloca a tag p na tela
             jogoAcabou = true; //Variável para verificar se o jogo acabou
+            window.clearInterval(timerAtual);
 
             let img = document.createElement("img");
-                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
-                img.id = 'vitoria'
-                game.appendChild(img)
-                somEmpate.play();
+            img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+            img.id = 'vitoria'
+            game.appendChild(img)
+            somEmpate.play();
         }
-        timerAtual = setInterval(timer, 1000);
+        
     }
 }
 
 //Técnica Event Delegation:
 game.addEventListener("click",(e) => { 
     //'e' é o parametro event do addEventListener ele recebe e.target de tudo que recebeu o clique dentro da div game
+    game.style.pointerEvents='none';
     window.clearInterval(timerAtual);
     timerValor.innerText = '0';
     if (e.target.className === 'torre') { //só o e.target de uma torre passa
@@ -449,6 +455,7 @@ game.addEventListener("click",(e) => {
         const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
         criarBolinhas(torre,cor,posicao,indexColuna); //chama a função para criar a bola nesta torre
     }
+    game.style.pointerEvents='auto';
 });
 
 const iniciar = document.getElementById("iniciar");
