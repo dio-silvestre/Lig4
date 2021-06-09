@@ -33,27 +33,8 @@ somVitoria.src = './sounds/victoryff-swf.mp3';
 let somEmpate = new Audio();
 somEmpate.src = './sounds/game-over.wav';
 
-//FUNÇÃO COMUM:
-//function nomeFuncao(parâmetros){
-    //código...
-//}
 
-//ARROW FUNCTION
-//const nomeFuncao = (parametros) => {
-    //codigos...
-//}
-
-//FUNÇÃO ANÔNIMA:
-//function() {códigos...}
-
-//anonima:
-//(parametros) => {
-    //codigos...
-//}
-
-//anonima com return implícito:
-//(paramentros) => codigos...
-
+//Função de verificação da vitória na horizontal
 const vitoriaLinha = (arr,indexLinha,jogador) => {
     //verificar se ocorreu vitoria no sentido horizontal
     //arr = posicao
@@ -254,9 +235,10 @@ game.addEventListener("click",(e) => {
 });
 
 const iniciar = document.getElementById("iniciar");
+const regras = document.getElementById("regras");
 const form = document.querySelector(".form");
 iniciar.addEventListener("click", () => {
-    iniciar.style.display = "none";
+    regras.style.display = "none";
     form.style.display = "block";
 
     somClick.play();

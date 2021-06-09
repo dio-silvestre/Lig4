@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lig-4</title>
-    <link rel = "stylesheet" href = "style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./favicon.ico">
-    <link href="http://fonts.cdnfonts.com/css/games" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/sc-gum-kids" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/sniglet-2" rel="stylesheet">
 </head>
+
 <body>
-    
+
     <header>
-    <h1>Lig<span>4</span></h1>
-    <p>O primeiro jogador que conseguir quatro de suas fichas em uma linha (seja horizontal, vertical ou diagonal) vence.</p>
+        <h1>LIG<span>-4</span></h1>
     </header>
+
+    <div id="regras">
+        <p>Como jogar Lig-4:</p>
+        <p>Lig 4 possui uma base para encaixe das fichas azuis e vermelhas. Esta base possui 7 colunas e 6 fileiras com perfurações visíveis (de forma que se possa ver onde estão as fichas colocadas) e os jogadores se alternam colocando as fichas pela parte de cima. O objetivo do jogo é ser o primeiro jogador a conseguir formar uma sequência de 4 fichas da mesma cor, seja na horizontal, na vertical ou mesmo na diagonal.</p>
+        <p>No início do jogo cada jogador escolhe uma cor (azul ou vermelho) e recebe as 21 fichas da cor correspondente. O jogador com as fichas azuis começa a partida colocando a primeira ficha e os jogadores se revezam colocando 1 ficha de cada vez. Para vencer, os jogadores devem colocar as fichas estratégicamente na base, de forma a formar uma sequência com as 4 fichas da sua cor, ao mesmo tempo em que devem prestar atenção para bloquear as tentativas do oponente fazer o mesmo. O primeiro jogador que conseguir formar uma sequência de 4 peças é o vencedor.</p>
+        <button id="iniciar">Iniciar</button>
+    </div>
 
     <button id="reiniciar" class="hidden">Reiniciar jogo</button>
     <button id="zerar" class="hidden">Zerar placar</button>
-    <button id="iniciar">Iniciar</button>
+    
 
     <div class="form">
         <form class="jogadores-form">
@@ -27,15 +36,15 @@
             <button type="button" id="pronto">Pronto!</button>
         </form>
     </div>
-    
-    <div id = "game">
-        <div id = "t1" class="torre"></div>
-        <div id = "t2" class="torre"></div>
-        <div id = "t3" class="torre"></div>
-        <div id = "t4" class="torre"></div>
-        <div id = "t5" class="torre"></div>
-        <div id = "t6" class="torre"></div>
-        <div id = "t7" class="torre"></div>
+
+    <div id="game">
+        <div id="t1" class="torre"></div>
+        <div id="t2" class="torre"></div>
+        <div id="t3" class="torre"></div>
+        <div id="t4" class="torre"></div>
+        <div id="t5" class="torre"></div>
+        <div id="t6" class="torre"></div>
+        <div id="t7" class="torre"></div>
     </div>
     <div id="caixa-placar">
         <div class="placar" id="placar-jogador-1">
@@ -49,8 +58,9 @@
         <p><span id="valor-timer">0</span> segundos</p>
     </div>
 
-    <script src = "js.js"></script>
+    <script src="js.js"></script>
 
 
 </body>
+
 </html>
