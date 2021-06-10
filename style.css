@@ -19,10 +19,10 @@ time, audio, video {
 
 body{
     text-align: center;
-    height: 110vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/back.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/background2.jpg");
     background-size: cover;
 }
+
 img{
     position: absolute;
     
@@ -64,6 +64,7 @@ ul li span{
 
 .audio{
     display: none;
+    cursor: pointer;
 }
 /* ul li span:nth-child(1){ */ .dark{
     color:  #262626;
@@ -104,7 +105,7 @@ h1:hover{
 header h1 {
     padding-top: 120px;
     font-size: 3.5rem;
-    font-family: 'Sniglet', sans-serif;
+    font-family: var(--fonte-secundaria);
     color: #F6F6F6;
     text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
     -moz-transform: rotate(326deg);
@@ -141,6 +142,10 @@ span {
         text-indent: 2.5rem;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: #000;
+    }
+
+    .texto-completo {
+        display: none;
     }
 
 button {
@@ -219,7 +224,7 @@ button:active {
         background-color: rgba(138, 246, 123, 0.808);
     }
 
-    .paragrafo-kenzinho {
+    .paragrafo-kenzinho, .paragrafo-davis {
         margin-top: 4rem;
     }
 
@@ -245,11 +250,11 @@ button:active {
 
 .torre{
     width: 50px;
-    height: 150px;
+    height: 180px;
     border: solid 2px rgb(0, 0, 0);
     display: flex;
     flex-direction: column-reverse;
-    cursor: alias;
+    cursor: pointer;
     background: rgba(211, 213, 218, 0.808);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 }
@@ -260,26 +265,26 @@ button:active {
 
 
 .bolinhaJogador1{
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 36px;
     border-radius: 100%;
 
-    background: radial-gradient(circle at 65% 15%, white 1px, aqua 15%, darkblue 60%, aqua 100%);  
+    background: radial-gradient(circle at 65% 15%, white 1px, #0085ff 15%, darkblue 60%, aqua 100%);  
     pointer-events: none;
 }
 
 .bolinhaJogador2{
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 36px;
     border-radius: 100%;
 
-    background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(46, 27, 27) 60%, crimson 100%);
+    background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(59, 0, 0) 60%, crimson 100%);
     pointer-events: none;
 }
 
 .verde{
     height: 25px;
-    width: 25px;
+    width: 36px;
     pointer-events: none;
 }
 
@@ -293,18 +298,20 @@ button:active {
 }
 
 
-.vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     padding: 20px;
     font-size: 2rem;
     bottom: 300px;
     position: absolute;
     border: white;
     border-radius: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--fonte-secundaria);
     box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
     -webkit-box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
     color:white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
 }
 .vitoria-alerta1{
     background-color: darkblue;
@@ -412,17 +419,17 @@ button:active {
     
     .torre{
         width: 100px;
-        height: 300px;
+        height: 360px;
     }
 
     .bolinhaJogador1{
-        height: 50px;
-        width: 50px;
+        height: 60px;
+        width: 53px;
     }
     
     .bolinhaJogador2{
-        height:50px ;
-        width: 50px;
+        height:60px ;
+        width: 53px;
     }
 
     .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
@@ -456,12 +463,12 @@ button:active {
 
     .bolinhaJogador1{
         height: 75px;
-        width: 75px;
+        width: 81px;
     }
     
     .bolinhaJogador2{
         height: 75px;
-        width: 75px;
+        width: 81px;
     }
     .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
         padding: 20px;
@@ -481,6 +488,14 @@ button:active {
     header h1 {
         margin-top: 6rem;
         font-size: 7rem;
+    }
+
+    .texto-completo {
+        display: block;
+    }
+
+    .texto-reduzido {
+        display: none;
     }
 
     #reiniciar {
@@ -526,6 +541,14 @@ button:active {
         width: calc(var(--largura-display)/2);
     }
 
+    .audio{
+        display: block;
+        position: absolute;
+        right: 60px;
+        top: 80px;
+        width: 50px;
+    }
+
 }
 
 /* EFEITO 2 */
@@ -560,7 +583,7 @@ button:active {
 
     
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, img{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #vitoria{
         animation-name: efeitoSumir;
         animation-duration: 4s;
         animation-fill-mode: both;
