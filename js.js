@@ -483,8 +483,6 @@ game.addEventListener("click",(e) => {
         criarBolinhas(torre,cor,posicao,indexColuna,tempo); //chama a função para criar a bola nesta torre
     }
 
-
-    
     game.style.pointerEvents='auto';
 
 });
