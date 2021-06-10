@@ -78,7 +78,7 @@ function escolherTorre(col){
     }
 }
 
-
+// FUNÇÕES DE VERIFICAÇÃO DE VITORIA E EMPATE 
 const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
 
     let contador = 0; //verifica se tem 4 bolinhas em linha
@@ -425,6 +425,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             img.id = 'vitoria'
             game.appendChild(img)
             somEmpate.play();
+            window.setTimeout(removerImgVitoria,4000);
         }
         if(modoContraBot && cor[0] === 0){
             game.removeEventListener("click",cliqueJogador);
