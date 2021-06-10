@@ -205,6 +205,10 @@ button:active {
         background-color: rgba(138, 246, 123, 0.808);
     }
 
+    .paragrafo-kenzinho {
+        margin-top: 4rem;
+    }
+
 #jogador1 {
     background-color: rgba(78, 118, 251, 0.767);
 }
