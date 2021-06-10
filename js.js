@@ -47,6 +47,9 @@ somVitoria.src = './sounds/badass-victory.wav';
 let somEmpate = new Audio();
 somEmpate.src = './sounds/game-over.wav';
 
+let somGif = new Audio();
+somGif.src = './sounds/xomu-tera.mp3';
+
 
 //Função de verificação da vitória na horizontal
 function escolherTorre(col){
@@ -639,4 +642,8 @@ const activate2 = document.getElementById('activate2');
 activate1.addEventListener('click', changeToOne);
 activate2.addEventListener('click', changeToTwo);
 
-
+//Clica no GIF e toca uma música
+const musicaGif = document.getElementsByClassName('audio')[0];
+musicaGif.addEventListener('click', tocaMusica=()=>{
+    return somGif.paused ? somGif.play() : somGif.pause();
+});

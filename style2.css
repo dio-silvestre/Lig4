@@ -19,10 +19,10 @@ time, audio, video {
 
 body{
     text-align: center;
-    height: 110vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/back2.jpg");
-    background-size: cover;
+    background-size: 100% 100%;
 }
+
 img{
     position: absolute;
     
@@ -104,7 +104,7 @@ h1:hover{
 header h1 {
     padding-top: 120px;
     font-size: 3.5rem;
-    font-family: 'Sniglet', sans-serif;
+    font-family: var(--fonte-secundaria);
     color: #F6F6F6;
     text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
     -moz-transform: rotate(326deg);
@@ -291,11 +291,13 @@ button:active {
     position: absolute;
     border: white;
     border-radius: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--fonte-secundaria);
     box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
     -webkit-box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
     color:white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
 }
 .vitoria-alerta1{
     background-color: darkblue;
@@ -531,7 +533,7 @@ button:active {
 
 }
 
-.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, img{
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #vitoria{
     animation-name: efeitoSumir;
     animation-duration: 4s;
     animation-fill-mode: both;
