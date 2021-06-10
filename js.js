@@ -565,13 +565,31 @@ btn_bot.addEventListener("click", vsBot=()=>{
         hidden[i].style.display = "inline-block";
     }
 
+    if (jogador1.value === "") {
+        aviso.innerHTML = "Por favor, preencha o campo Jogador 1";
+        jogador1.focus();
+    }
+
     jogadores.push(jogador1.value);
+    jogador2.value = 'Kenzinho';
     jogadores.push(jogador2.value);
 
     modoContraBot = true;
 
     somClick.play();
 })
+
+//Jogar contra o bot Davis
+let btn_davis = document.getElementById("davis");
+btn_davis.addEventListener("click", vsDavis=()=>{
+    const alertaPagamento = document.getElementById("aviso-pagamento")
+     
+    alertaPagamento.className = 'alerta empate-alerta'; 
+    alertaPagamento.innerText = 'Assine no plano mensal por apenas R$ 99,90';
+    let form = document.getElementsByClassName("form")[0];
+    form.appendChild(alertaPagamento); 
+    window.clearInterval(timerAtual);
+});
 
 
 function changeToOne() {

@@ -20,7 +20,7 @@ time, audio, video {
 body{
     text-align: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/back2.jpg");
-    background-size: 100% 100%;
+    background-size: cover;
 }
 
 img{
@@ -65,6 +65,7 @@ ul li span{
 .audio{
     display: none;
     width: 70px;
+    cursor: pointer;
 }
 /* ul li span:nth-child(1){ */ .dark{
     color:  #262626;
@@ -241,7 +242,7 @@ button:active {
     border: solid 2px rgb(0, 0, 0);
     display: flex;
     flex-direction: column-reverse;
-    cursor: alias;
+    cursor: pointer;
     background: rgba(211, 213, 218, 0.808);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 }
@@ -285,7 +286,7 @@ button:active {
 }
 
 
-.vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     padding: 20px;
     font-size: 2rem;
     bottom: 300px;

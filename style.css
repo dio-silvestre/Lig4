@@ -20,7 +20,7 @@ time, audio, video {
 body{
     text-align: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/background2.jpg");
-    background-size: 100% 100%;
+    background-size: cover;
 }
 
 img{
@@ -64,6 +64,7 @@ ul li span{
 
 .audio{
     display: none;
+    cursor: pointer;
 }
 /* ul li span:nth-child(1){ */ .dark{
     color:  #262626;
@@ -223,7 +224,7 @@ button:active {
         background-color: rgba(138, 246, 123, 0.808);
     }
 
-    .paragrafo-kenzinho {
+    .paragrafo-kenzinho, .paragrafo-davis {
         margin-top: 4rem;
     }
 
@@ -249,11 +250,11 @@ button:active {
 
 .torre{
     width: 50px;
-    height: 150px;
+    height: 180px;
     border: solid 2px rgb(0, 0, 0);
     display: flex;
     flex-direction: column-reverse;
-    cursor: alias;
+    cursor: pointer;
     background: rgba(211, 213, 218, 0.808);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 }
@@ -264,8 +265,8 @@ button:active {
 
 
 .bolinhaJogador1{
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 36px;
     border-radius: 100%;
 
     background: radial-gradient(circle at 65% 15%, white 1px, #0085ff 15%, darkblue 60%, aqua 100%);  
@@ -273,8 +274,8 @@ button:active {
 }
 
 .bolinhaJogador2{
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 36px;
     border-radius: 100%;
 
     background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(59, 0, 0) 60%, crimson 100%);
@@ -283,7 +284,7 @@ button:active {
 
 .verde{
     height: 25px;
-    width: 25px;
+    width: 36px;
     pointer-events: none;
 }
 
@@ -297,7 +298,7 @@ button:active {
 }
 
 
-.vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     padding: 20px;
     font-size: 2rem;
     bottom: 300px;
@@ -418,17 +419,17 @@ button:active {
     
     .torre{
         width: 100px;
-        height: 300px;
+        height: 360px;
     }
 
     .bolinhaJogador1{
-        height: 50px;
-        width: 50px;
+        height: 60px;
+        width: 53px;
     }
     
     .bolinhaJogador2{
-        height:50px ;
-        width: 50px;
+        height:60px ;
+        width: 53px;
     }
 
     .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
@@ -462,12 +463,12 @@ button:active {
 
     .bolinhaJogador1{
         height: 75px;
-        width: 75px;
+        width: 81px;
     }
     
     .bolinhaJogador2{
         height: 75px;
-        width: 75px;
+        width: 81px;
     }
     .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
         padding: 20px;
