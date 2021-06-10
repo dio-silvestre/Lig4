@@ -65,6 +65,8 @@ ul li span{
     color:  #262626;
     background:#fff;
     border: 2px solid #000 ;
+    font-family: sans-serif;
+    letter-spacing: 3px;
    
 }
 
@@ -73,6 +75,8 @@ ul li span{
     background:#fff;
     border: 2px solid #000 ;
     display: none;
+    font-family: sans-serif;
+    letter-spacing: 3px;
 }
 
 .dark:hover{
@@ -245,9 +249,7 @@ button:active {
     height: 25px;
     width: 25px;
     border-radius: 100%;
-    background: rgb(144,145,145);
-    background: rgb(144,145,145);
-    background: radial-gradient(circle at top left, rgba(144,145,145,0.8883928571428571) 17%, rgba(37, 63, 149, 0.888) 36%, rgba(14, 29, 158, 0.911) 100%);
+    background: radial-gradient(circle at 65% 15%, white 1px, aqua 15%, darkblue 60%, aqua 100%);  
     pointer-events: none;
 }
 
@@ -255,11 +257,10 @@ button:active {
     height: 25px;
     width: 25px;
     border-radius: 100%;
-    background: rgb(249,249,249);
-    background: rgb(249,249,249);
-    background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, rgba(255,0,0,0.9108018207282913) 50%);
+    background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(46, 27, 27) 60%, crimson 100%);
     pointer-events: none;
 }
+
 
 .verde{
     height: 25px;
@@ -314,13 +315,13 @@ button:active {
     height: 3rem;
 }
 #placar-jogador-1{
-    background-color: rgba(14, 29, 158, 0.911);
+    background: radial-gradient(circle at 65% 15%, white 1px, aqua 15%, darkblue 60%, aqua 100%);  
     border-radius: 50px 0 0 50px;
     border: 2px solid white;
     border-right: none;
 }
 #placar-jogador-2{
-    background-color: rgba(255,0,0,0.9108018207282913);
+    background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(46, 27, 27) 60%, crimson 100%);
     border-radius: 0 50px 50px 0;
     border: 2px dashed white;
     border-left: none;
@@ -348,16 +349,17 @@ button:active {
 
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
-    animation-name: SlideParaBaixo;
+    animation-name: SlideParaBaixoGiratorio;
     animation-duration: 1.5s;
     animation-fill-mode: both;
     }
-    @keyframes SlideParaBaixo {
+    @keyframes SlideParaBaixoGiratorio {
         0% {
         opacity: 0;
         animation-timing-function: ease-in;
-        transform: translateY(-500px);
+        transform: translateY(-500px) rotate(-200deg);
         visibility: visible;
+        /* transform: rotate3d(0, 0, 1, -200deg); */
         }
         50% {
         opacity: 1;
@@ -367,7 +369,7 @@ button:active {
         }
         100% {
         animation-timing-function: ease-in;
-        transform: translateY(0);
+        transform: translateY(0) rotate(none);
         }
     }
     
