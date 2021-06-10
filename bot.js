@@ -1,3 +1,4 @@
+
 const automatizarJogador2 = () => {
     reiniciaTimer(timerValor,timerAtual);
     let e = {};
@@ -11,26 +12,8 @@ const automatizarJogador2 = () => {
 
 const torreAleatoria = () => Math.floor(Math.random()*7);
 
-// const DecidirClique = (e) => {
-//     for(let i = 0;i < 7;i++){
-//         const torreN = document.getElementById(`t${i+1}`);
-//         let linha = torreN.childElementCount;
-//         let coluna = i;
-//         posicao[linha][coluna] = 2;
-//         let bolinhaTeste = document.createElement("div"); 
-//         bolinhaTeste.classList.add("teste");
-//         torreN.appendChild(bolinhaTeste);
-//         if(venceu(posicao,linha,coluna,2)){
-//             posicao[linha][coluna] = 0;
-//             torreN.removeChild(bolinhaTeste);
-//             cliqueJogador(e);
-//             break;
-//         } else {
-//             posicao[linha][coluna] = 0;
-//             torreN.removeChild(bolinhaTeste);
-//             if(i === 6){
-                
-//             }
-//         }
+// const colunaVitoriosa = (matriz,ultimaJogadaKenzinho) => {
+//     for(let i = ultimaJogadaKenzinho[0];i >= 0;i--){
+
 //     }
 // }
