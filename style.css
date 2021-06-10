@@ -13,12 +13,14 @@ time, audio, video {
 
 :root{
     --largura-display: 280px;
+    --fonte-principal: 'SC Gum Kids', sans-serif;
+    --fonte-secundaria: 'Sniglet', sans-serif;
 }
 
 body{
     text-align: center;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./back.jpg");
+    height: 110vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/back.jpg");
     background-size: cover;
 }
 img{
@@ -27,16 +29,14 @@ img{
 }
 
 header {
+    margin-bottom: 3rem;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 3rem;
+    justify-content: center;
 }
 
 header h1 {
-    font-size: 5rem;
-    font-family: 'Games', sans-serif;
+    font-size: 4.5rem;
+    font-family: 'Sniglet', sans-serif;
     color: #F6F6F6;
     text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
     -moz-transform: rotate(326deg);
@@ -44,15 +44,10 @@ header h1 {
     -o-transform: rotate(326deg);
     -ms-transform: rotate(326deg);
     transform: rotate(326deg);
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #000;
-}
-
-header p {
-    color: #F6F6F6;
-    font-size: 1.25rem;
-    font-family: 'Games', sans-serif;
-    margin: 2rem;
+    margin-bottom: 0;
+    max-width: 350px;
 }
 
 span {
@@ -61,17 +56,38 @@ span {
     -webkit-text-stroke-color: #000;
 }
 
+#regras {
+    color: #F6F6F6;
+    font-size: 2rem;
+    font-family: var(--fonte-principal);
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+    #regras p {
+        margin: 1.75rem;
+        text-indent: 2.5rem;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+    }
+
 button {
     margin: 1.5rem;
     background: rgba(211, 213, 218, 0.808);
     border: solid 2px rgb(0, 0, 0);
-    font-family: 'Games', sans-serif;
+    font-family: var(--fonte-secundaria);
     font-size: 1rem;
     padding: 1.25rem;
     cursor: pointer;
     outline: none;
     border-radius: 15px;
     box-shadow: 0 9px rgb(143, 143, 143);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
 }
 
 button:hover {
@@ -86,12 +102,7 @@ button:active {
     transition-duration: 0.25s;
   }
 
-#iniciar {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
+#iniciar {}
 
 .hidden {
     display: none;
@@ -99,6 +110,11 @@ button:active {
 
 .form {
     display: none;
+    font-size: 2.25rem;
+    font-family: var(--fonte-principal);
+    color: #F6F6F6;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 .jogadores-form {
@@ -108,17 +124,36 @@ button:active {
 }
 
     .jogadores-form input {
-        font-size: 1.25rem;
-        font-family: 'Games', sans-serif;
-        margin: 0.5rem;
+        font-size: 1.5rem;
+        font-family: var(--fonte-principal);
+        margin: 3rem 0;
         padding: 0.75rem;
         border: solid 2px rgb(0, 0, 0);
         border-radius: 15px;
     }
 
-    .jogadores-form button:active {
+    .aviso-kenzie span {
+        color: rgba(78, 118, 251, 0.767);
+    }
+
+    .aviso-pato span {
+        color: rgba(255, 54, 54, 0.767)
+    }
+
+    .jogadores-form button:active,
+    #iniciar:active,
+    #reiniciar:active,
+    #zerar:active {
         background-color: rgba(138, 246, 123, 0.808);
     }
+
+#jogador1 {
+    background-color: rgba(78, 118, 251, 0.767);
+}
+
+#jogador2 {
+    background-color: rgba(255, 54, 54, 0.767);
+}
 
 #game{
     height: 200px;
@@ -167,7 +202,7 @@ button:active {
     pointer-events: none;
 }
 
-.duck{
+.pato{
     border-radius: 100%;
     background-image: url(img/pato.svg);
 }
@@ -181,10 +216,9 @@ button:active {
     padding: 20px;
     font-size: 2rem;
     bottom: 300px;
-
     position: absolute;
     border: white;
-    bottom: 300px;
+    border-radius: 30px;
     font-family: Arial, Helvetica, sans-serif;
     box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
     -webkit-box-shadow: -1px -2px 27px 58px rgba(0,0,0,0.75);
@@ -211,31 +245,33 @@ button:active {
 .placar{
     background-color: white;
     width: 50%;
-    border-bottom: 2px dashed black;
-    border-top: 2px dashed black;
     height: 3rem;
 }
 #placar-jogador-1{
     background-color: rgba(14, 29, 158, 0.911);
     border-radius: 50px 0 0 50px;
-    border-left: 2px dashed black;
+    border: 2px solid white;
+    border-right: none;
 }
 #placar-jogador-2{
     background-color: rgba(255,0,0,0.9108018207282913);
     border-radius: 0 50px 50px 0;
-    border-right: 2px dashed black;
+    border: 2px dashed white;
+    border-left: none;
+    opacity: 0.6;
 }
 .placar--pontos{
     color: white;
     font-size: 2.5rem;
+    font-family: sans-serif;
     font-weight: bold;
     margin: 0;
 }
 
 #timer{
     display: none;
-    border-top: 2px dashed black;
-    border-bottom: 2px dashed black;
+    background-color: white;
+    border: 2px solid black;
     justify-content: center;
     align-items: center;
     height: 3rem;
@@ -245,7 +281,6 @@ button:active {
 .verde{
     height: 25px;
     width: 25px;
-    border-radius: 100%;
     background: rgb(249,249,249);
     background: rgb(249,249,249);
     background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, green 50%);
@@ -262,26 +297,44 @@ button:active {
     animation-fill-mode: both;
     }
     @-webkit-keyframes slideInDown {
-    0% {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-    visibility: visible;
-    }
-    100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-    }
+        0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+        -webkit-transform: translateY(-500px);
+        transform: translateY(-500px);
+        visibility: visible;
+        }
+        50% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+        -webkit-transform: translateY(-100px);
+        transform: translateY(-100px);
+        visibility: visible; 
+        }
+        100% {
+        animation-timing-function: ease-in;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        }
     }
     @keyframes slideInDown {
-    0% {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-    visibility: visible;
-    }
-    100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-    }
+        0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+        -webkit-transform: translateY(-500px);
+        visibility: visible;
+        }
+        50% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+        -webkit-transform: translateY(-100px);
+        visibility: visible; 
+        }
+        100% {
+        animation-timing-function: ease-in;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        }
     }
 
 
@@ -289,6 +342,12 @@ button:active {
     :root{
         --largura-display: 400px;
     }
+
+    header h1 {
+        margin-top: 4rem;
+        font-size: 5.5rem;
+    }
+
     #game{
         height: 300px;
         width: var(--largura-display);
@@ -360,6 +419,15 @@ button:active {
 @media (min-width:801px) { 
     :root{
         --largura-display: 800px;
+    }
+
+    header h1 {
+        margin-top: 6rem;
+        font-size: 7rem;
+    }
+
+    #reiniciar {
+        margin-top: 2rem;
     }
 
     #game{
