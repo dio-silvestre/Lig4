@@ -14,7 +14,8 @@
 </head>
 
 <body>
-    <nav>
+        <img class ="audio" src="beemo.gif" onclick="playAudio('xomu-tera.mp3')">   
+        <nav>
         <ul>
             <li>
                 <span id="activate1" class="dark">Estilo 1</span>
@@ -33,18 +34,22 @@
         <button id="iniciar">Iniciar</button>
     </div>
 
-    <button id="reiniciar" class="hidden">Reiniciar jogo</button>
+    <button id="reiniciar" class="hidden">Nova partida</button>
     <button id="zerar" class="hidden">Zerar placar</button>
+    <button id="trocar-nome" class="hidden">Trocar nomes</button>
     
 
     <div class="form">
         <form class="jogadores-form">
-            <input type="text" id="jogador1" placeholder="Jogador 1" value="Kenzie">
+            <input type="text" id="jogador1" placeholder="Jogador 1" value="jogador1">
             <p class="aviso-kenzie">Não utilize nomes como, por exemplo, <span>"Kenzie"</span>.</p>
-            <input type="text" id="jogador2" placeholder="Jogador 2" value="pato">
+
+            <input type="text" id="jogador2" placeholder="Jogador 2" value="jogador2">
             <p class="aviso-pato">Não utilize nomes como, por exemplo, <span>"pato"</span>.</p>
             <button type="button" id="pronto">Pronto!</button>
             <p id="aviso-nome"></p>
+            <p class="paragrafo-kenzinho">É iniciante? Que tal jogar contra o Kenzinho?</p>
+            <button type="button" id="kenzinho">TOPO!</button>
         </form>
     </div>
     <div id="caixa-placar">
@@ -69,8 +74,9 @@
         <div id="t7" class="torre"></div>
     </div>
 
-
+    <script src="bot.js"></script>
     <script src="js.js"></script>
+    
 </body>
 
 </html>
