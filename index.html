@@ -14,7 +14,9 @@
 </head>
 
 <body>
-        <nav>
+    <img class ="audio" src="./img/beemo.gif">
+
+    <nav>
         <ul>
             <li>
                 <span id="activate1" class="dark">Estilo 1</span>
@@ -28,8 +30,10 @@
 
     <div id="regras">
         <p>Como jogar Lig-4:</p>
-        <p>Lig 4 possui uma base para encaixe das fichas azuis e vermelhas. Esta base possui 7 colunas e 6 fileiras com perfurações visíveis (de forma que se possa ver onde estão as fichas colocadas) e os jogadores se alternam colocando as fichas pela parte de cima. O objetivo do jogo é ser o primeiro jogador a conseguir formar uma sequência de 4 fichas da mesma cor, seja na horizontal, na vertical ou mesmo na diagonal.</p>
-        <p>No início do jogo cada jogador escolhe uma cor (azul ou vermelho) e recebe as 21 fichas da cor correspondente. O jogador com as fichas azuis começa a partida colocando a primeira ficha e os jogadores se revezam colocando 1 ficha de cada vez. Para vencer, os jogadores devem colocar as fichas estratégicamente na base, de forma a formar uma sequência com as 4 fichas da sua cor, ao mesmo tempo em que devem prestar atenção para bloquear as tentativas do oponente fazer o mesmo. O primeiro jogador que conseguir formar uma sequência de 4 peças é o vencedor.</p>
+        <p class="texto-completo">Lig 4 possui uma base para encaixe das fichas azuis e vermelhas. Esta base possui 7 colunas e 6 fileiras com perfurações visíveis (de forma que se possa ver onde estão as fichas colocadas) e os jogadores se alternam colocando as fichas pela parte de cima. O objetivo do jogo é ser o primeiro jogador a conseguir formar uma sequência de 4 fichas da mesma cor, seja na horizontal, na vertical ou mesmo na diagonal.</p>
+        <p class="texto-completo">No início do jogo cada jogador escolhe uma cor (azul ou vermelho) e recebe as 21 fichas da cor correspondente. O jogador com as fichas azuis começa a partida colocando a primeira ficha e os jogadores se revezam colocando 1 ficha de cada vez. Para vencer, os jogadores devem colocar as fichas estratégicamente na base, de forma a formar uma sequência com as 4 fichas da sua cor, ao mesmo tempo em que devem prestar atenção para bloquear as tentativas do oponente fazer o mesmo. O primeiro jogador que conseguir formar uma sequência de 4 peças é o vencedor.</p>
+        <p class="texto-reduzido">No início do jogo cada jogador escolhe uma cor (azul ou vermelho) e recebe as 21 fichas da cor correspondente.</p>
+        <p class="texto-reduzido">O objetivo do jogo é ser o primeiro jogador a conseguir formar uma sequência de 4 fichas da mesma cor, seja na horizontal, na vertical ou mesmo na diagonal.</p>
         <button id="iniciar">Iniciar</button>
     </div>
 
@@ -40,15 +44,18 @@
 
     <div class="form">
         <form class="jogadores-form">
-            <input type="text" id="jogador1" placeholder="Jogador 1" value="jogador1">
+            <input type="text" id="jogador1" placeholder="Jogador 1">
             <p class="aviso-kenzie">Não utilize nomes como, por exemplo, <span>"Kenzie"</span>.</p>
 
-            <input type="text" id="jogador2" placeholder="Jogador 2" value="jogador2">
+            <input type="text" id="jogador2" placeholder="Jogador 2">
             <p class="aviso-pato">Não utilize nomes como, por exemplo, <span>"pato"</span>.</p>
             <button type="button" id="pronto">Pronto!</button>
             <p id="aviso-nome"></p>
             <p class="paragrafo-kenzinho">É iniciante? Que tal jogar contra o Kenzinho?</p>
             <button type="button" id="kenzinho">TOPO!</button>
+            <p class="paragrafo-davis">Já conhece bem o jogo? Que tal desafiar o Davis?</p>
+            <button type="button" id="davis">DESAFIO ACEITO!</button>
+            <p id="aviso-pagamento"></p>
         </form>
     </div>
     <div id="caixa-placar">
