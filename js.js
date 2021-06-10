@@ -343,6 +343,8 @@ const deuEmpate = (arr) => {
 
 const timer = () => {
     timerValor.innerText = Number(timerValor.innerText)+1;
+    if(timerValor.innerText == 10){
+    }
 }
 
 const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
@@ -498,8 +500,6 @@ game.addEventListener("click",(e) => {
             const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
             criarBolinhas(torre,cor,posicao,indexColuna,tempo); //chama a função para criar a bola nesta torre
         }
-
-
         
         game.style.pointerEvents='auto';
 
