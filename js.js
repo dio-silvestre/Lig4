@@ -78,7 +78,7 @@ function escolherTorre(col){
     }
 }
 
-
+// FUNÇÕES DE VERIFICAÇÃO DE VITORIA E EMPATE 
 const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
 
     let contador = 0; //verifica se tem 4 bolinhas em linha
@@ -285,6 +285,7 @@ const venceu = (arr,indexLinha,indexColuna,jogador) => vitoriaLinha(arr,indexLin
                                                     || vitoriaDiagonal1(arr,indexLinha,indexColuna,jogador) 
                                                     || vitoriaDiagonal2(arr,indexLinha,indexColuna,jogador);
 
+//TIMER                                                
 const timer = () => {
     let tempo = Number(timerValor.innerText)+1;
     timerValor.innerText = tempo;
@@ -316,6 +317,7 @@ const timer = () => {
     }
 }
 
+//EASTEREGG
 const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
     if(nome.toLowerCase() === img){
         bolinhaX.classList.add(img);
@@ -326,6 +328,7 @@ const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
     }
 }
 
+//FUNÇÕES DE SUPORTE
 const PegarNumeroAleatorio = (min, max) => Math.random() * (max - min) + min;
 
 const removerImgVitoria = () => {
@@ -337,8 +340,13 @@ const removerImgVitoria = () => {
     }
 }
 
+const reiniciaTimer = (timerParaZerar,timerIniciado) => {
+    window.clearInterval(timerIniciado);
+    timerParaZerar.innerText = '0';
+}
 
 
+//FUNÇÃO DA JOGADA!!!!
 const criarBolinhas = (t,cor,posicao,indexColuna) => { 
     // t = a torre no DOM
     // cor = jogador desse turno
@@ -425,6 +433,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             img.id = 'vitoria'
             game.appendChild(img)
             somEmpate.play();
+            window.setTimeout(removerImgVitoria,4000);
         }
         if(modoContraBot && cor[0] === 0){
             game.removeEventListener("click",cliqueJogador);
@@ -435,11 +444,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
     }
 }
 
-const reiniciaTimer = (timerParaZerar,timerIniciado) => {
-    window.clearInterval(timerIniciado);
-    timerParaZerar.innerText = '0';
-}
-
+//MANIPULADOR DE EVENTO DO CLIQUE DO JOGADOR
 const cliqueJogador = (e) => {
     reiniciaTimer(timerValor,timerAtual);
     if (e.target.className === 'torre') {
@@ -449,6 +454,7 @@ const cliqueJogador = (e) => {
     }
 }
 
+//OUVINTE DO CLIQUE DO JOGADOR
 game.addEventListener("click",cliqueJogador);
 
 //Iniciar jogo indo para a tela de definir nomes para os jogadores
