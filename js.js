@@ -15,6 +15,8 @@ const hidden = document.querySelectorAll(".hidden");
 const jogador1 = document.getElementById("jogador1");
 const jogador2 = document.getElementById("jogador2");
 
+
+
 let jogadores = [];
 
 let cor = [];   //variavel para alternar de jogador em cada turno
@@ -48,6 +50,16 @@ somEmpate.src = './sounds/game-over.wav';
 
 //Função de verificação da vitória na horizontal
 function escolherTorre(col){
+
+    const t1 = document.getElementById("t1");
+    const t2 = document.getElementById("t2");
+    const t3 = document.getElementById("t3");
+    const t4 = document.getElementById("t4");
+    const t5 = document.getElementById("t5");
+    const t6 = document.getElementById("t6");
+    const t7 = document.getElementById("t7");
+
+
     let x = col + 1;
     if(x == 1){
         return t1;
@@ -376,6 +388,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
 
     }
 
+    
+
     if (t.childElementCount !== 6 && jogoAcabou === false) { //condição para adicionar bolinha
         let bolinhaX = document.createElement("div"); //a bolinha no DOM
         pos = t.childElementCount;  //variavel para ter uma referencia de qual linha foi clicada
@@ -474,18 +488,20 @@ const reiniciaTimer = (timerParaZerar,timerIniciado) => {
 game.addEventListener("click",(e) => { 
     //'e' é o parametro event do addEventListener ele recebe e.target de tudo que recebeu o clique dentro da div game
     game.style.pointerEvents='none';
-    let tempo = timerValor.innerText;
-    reiniciaTimer(timerValor,timerAtual);
 
-    if (e.target.className === 'torre') { //só o e.target de uma torre passa
-        const torre = e.target; //só pra deixar mais explícito que é uma torre
-        const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
-        criarBolinhas(torre,cor,posicao,indexColuna,tempo); //chama a função para criar a bola nesta torre
-    }
+        
+
+        if (e.target.className === 'torre'&& e.target.childElementCount != 6) { //só o e.target de uma torre passa
+            let tempo = timerValor.innerText;
+            reiniciaTimer(timerValor,timerAtual);
+            const torre = e.target; //só pra deixar mais explícito que é uma torre
+            const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
+            criarBolinhas(torre,cor,posicao,indexColuna,tempo); //chama a função para criar a bola nesta torre
+        }
 
 
-    
-    game.style.pointerEvents='auto';
+        
+        game.style.pointerEvents='auto';
 
 });
 
