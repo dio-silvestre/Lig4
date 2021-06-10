@@ -61,6 +61,10 @@ ul li span{
     
 }
 
+.audio{
+    display: none;
+    width: 70px;
+}
 /* ul li span:nth-child(1){ */ .dark{
     color:  #262626;
     background:#fff;
@@ -452,6 +456,7 @@ button:active {
     #caixa-placar{
         width: calc(var(--largura-display)/2);
     }
+
 }     
 @media (min-width:801px) { 
     :root{
@@ -506,6 +511,14 @@ button:active {
 
     #caixa-placar{
         width: calc(var(--largura-display)/2);
+    }
+
+    .audio{
+        display: block;
+        position: absolute;
+        right: 60px;
+        top: 80px;
+        width: 50px;
     }
 
 }
