@@ -221,8 +221,8 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         indexColuna--;
                         console.log("Coluna pegada: "+coluna);
                     
-                }
-            }
+                    }   
+                }   
                 return true; //4 bolinhas = vitória
             }
         }else{
@@ -374,7 +374,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
-                window.clearInterval(timerAtual);
+                reiniciaTimer(timerValor,timerAtual);
 
                 let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
@@ -406,7 +406,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
-                window.clearInterval(timerAtual);
+                reiniciaTimer(timerValor,timerAtual);
 
                 let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
@@ -441,12 +441,16 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
     }
 }
 
+const reiniciaTimer = (timerParaZerar,timerIniciado) => {
+    window.clearInterval(timerIniciado);
+    timerParaZerar.innerText = '0';
+}
+
 //Técnica Event Delegation:
 game.addEventListener("click",(e) => { 
     //'e' é o parametro event do addEventListener ele recebe e.target de tudo que recebeu o clique dentro da div game
     game.style.pointerEvents='none';
-    window.clearInterval(timerAtual);
-    timerValor.innerText = '0';
+    reiniciaTimer(timerValor,timerAtual);
     if (e.target.className === 'torre') { //só o e.target de uma torre passa
         const torre = e.target; //só pra deixar mais explícito que é uma torre
         const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
@@ -495,6 +499,7 @@ pronto.addEventListener("click", () => {
 
 let btn_reiniciar = document.getElementById("reiniciar");
 btn_reiniciar.addEventListener("click", reiniciar=()=>{
+    reiniciaTimer(timerValor,timerAtual);
     let pai = document.querySelectorAll('.torre');
     for(let i=0; i<pai.length; i++){
         pai[i].innerHTML = "";
