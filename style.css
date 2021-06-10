@@ -28,6 +28,7 @@ img{
     
 }
 
+
 ul{
     position: absolute;
     top:20px;
@@ -407,6 +408,7 @@ button:active {
     header h1 {
         margin-top: 4rem;
         font-size: 5.5rem;
+        padding-top: 10px;
     }
 
     #game{

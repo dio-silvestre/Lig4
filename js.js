@@ -22,7 +22,7 @@ let modoContraBot = false;
 let cor = [];   //variavel para alternar de jogador em cada turno
 cor[0] = 1;
 
-let jogoAcabou = false; //booleano para parar o jogo quando acabar
+let jogoAcabou = false;
 
 let posicao = [
     [0,0,0,0,0,0,0],
@@ -81,17 +81,13 @@ function escolherTorre(col){
     }
 }
 
-
+// FUNÇÕES DE VERIFICAÇÃO DE VITORIA E EMPATE 
 const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
-    //verificar se ocorreu vitoria no sentido horizontal
-    //arr = posicao
-    //indexLinha captura a posição da linha da ultima jogada
-    //jogador é o número que representa o jogador (1 ou 2)
 
     let contador = 0; //verifica se tem 4 bolinhas em linha
     for(let i = 0;i < arr[indexLinha].length;i++) { 
-        if(arr[indexLinha][i] === jogador){ //<-- só interessa percorrer a linha clicada
-            contador++; //se achou bolinha soma contador
+        if(arr[indexLinha][i] === jogador){
+            contador++;
             
             if(contador === 4){ 
                 
@@ -102,31 +98,24 @@ const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
                     if(indexColuna != k){
                         t = escolherTorre(k);
                         t.childNodes[5-indexLinha].classList.add("verde");
-                    }else{
-                        //console.log("x");
                     }
                 }
 
-                return true; //4 bolinhas = vitória
+                return true;
             }
         } else { 
             contador = 0;
-            //se achou um valor diferente do número do jogador ao percorrer a linha tem que reiniciar a contagem, porque só interessa se encontrar quatro seguidos
         }
     }
-    return false; // percorreu tudo e não retornou true é porque não tem 4 bolinhas seguidas
+    return false;
 }
 
 const vitoriaColuna = (arr,indexColuna,jogador) => {
-    //verificar se ocorreu vitoria no sentido vertical
-    //arr = posicao
-    //indexColuna captura a posição da coluna da ultima jogada
-    //jogador é o número que representa o jogador (1 ou 2)
-    let contador = 0; //verifica se tem 4 bolinhas em linha
+    let contador = 0;
 
     for(let i = 0;i < 6;i++){ 
-        if(arr[i][indexColuna] === jogador){ //<-- só interessa percorrer a coluna clicada
-            contador++; //se achou bolinha soma contador
+        if(arr[i][indexColuna] === jogador){
+            contador++;
             pos = i ;
             if(contador === 4){ 
                 let t = escolherTorre(indexColuna);
@@ -135,23 +124,19 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
                     t.childNodes[k].classList.add("verde");
                 }
 
-                return true; //4 bolinhas = vitória
+                return true;
 
             }
         }else{
             contador = 0;
-            //se achou um valor diferente do número do jogador ao percorrer a coluna tem que reiniciar a contagem, porque só interessa se encontrar quatro seguidos
         }
     }
-    return false; // percorreu tudo e não retornou true é porque não tem 4 bolinhas seguidas
+    return false;
 }
 
 const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica diagonal assim --> /
     let diagonal = [];
 
-    //console.log(indexLinha);
-
-    //let obj = [];
     let i = indexLinha;
     let j = indexColuna;
     for(;i >= 0 && j < arr[0].length;){
@@ -162,38 +147,27 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
     i = indexLinha + 1;
     j = indexColuna - 1;
 
-    //console.log(diagonal);
-
     for(;i < arr.length && j >= 0;){
         diagonal.unshift(arr[i][j])
         i++;
         j--;
     }
-    let contador = 0; //verifica se tem 4 bolinhas em linha
+    let contador = 0;
     for(i = 0;i < diagonal.length;i++){ 
         if(diagonal[i] === jogador){
-            contador++; //se achou bolinha soma contador
+            contador++;
             if(contador === 4){ 
                 let topo;
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = 5-i;
+                        topo = diagonal.lengthdiagonal.length-11-i;
                     }
                 }
                 
                 if(topo == indexLinha){
 
                     for(let k = 0; k < 4 ; k++){
-
-                        console.log("\n");
-
-                        console.log("lINHA: "+ indexLinha);
-                        console.log("Coluna: " + indexColuna);
-                        console.log("K: " + k);
-                        console.log("TOPO: "+topo);
-
-                        console.log("\n");
                         
                         if(indexLinha != topo){
 
@@ -205,20 +179,10 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         }
                         indexLinha++;
                         indexColuna--;
-                        console.log("Coluna pegada: "+coluna);
                     }
                 }else{
                     indexColuna = indexColuna+(indexLinha-topo);
                     for(let k = 0; k < 4 ; k++){
-
-                        console.log("\n");
-
-                        console.log("lINHA: "+ indexLinha);
-                        console.log("Coluna: " + indexColuna);
-                        console.log("K: " + k);
-                        console.log("TOPO: "+topo);
-
-                        console.log("\n");
                         
                         if(indexLinha != topo){
 
@@ -230,15 +194,13 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         }
                         topo++;
                         indexColuna--;
-                        console.log("Coluna pegada: "+coluna);
                     
                     }   
                 }   
-                return true; //4 bolinhas = vitória
+                return true;
             }
         }else{
             contador = 0;
-            //se achou um valor diferente do número do jogador ao percorrer tem que reiniciar a contagem, porque só interessa se encontrar quatro seguidos
         }
     }
     return false;
@@ -260,31 +222,22 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         i++;
         j++;
     }
-    let contador = 0; //verifica se tem 4 bolinhas em linha
+    let contador = 0;
     for(i = 0;i < diagonal.length;i++){ 
         if(diagonal[i] === jogador){
-            contador++; //se achou bolinha soma contador
+            contador++;
             if(contador === 4){ 
                 let topo;
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = 5-i;
+                        topo = diagonal.length-1-i;
                     }
                 }
                 
                 if(topo == indexLinha){
 
                     for(let k = 0; k < 4 ; k++){
-
-                        console.log("\n");
-
-                        console.log("lINHA: "+ indexLinha);
-                        console.log("Coluna: " + indexColuna);
-                        console.log("K: " + k);
-                        console.log("TOPO: "+topo);
-
-                        console.log("\n");
                         
                         if(indexLinha != topo){
 
@@ -296,21 +249,11 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         }
                         indexLinha++;
                         indexColuna++;
-                        console.log("Coluna pegada: "+coluna);
                     }
                 }else{
                     
                     indexColuna = indexColuna-(indexLinha-topo);
                     for(let k = 0; k < 4 ; k++){
-
-                        console.log("\n");
-
-                        console.log("lINHA: "+ indexLinha);
-                        console.log("Coluna: " + indexColuna);
-                        console.log("K: " + k);
-                        console.log("TOPO: "+topo);
-
-                        console.log("\n");
                         
                         if(indexLinha != topo){
 
@@ -321,25 +264,21 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
 
                         }
                         topo++;
-                        indexColuna++;
-                        console.log("Coluna pegada: "+coluna);
-                        
+                        indexColuna++;                  
                     
                     }
                 
                 }
-                return true; //4 bolinhas = vitória
+                return true;
             }
         }else{
             contador = 0;
-            //se achou um valor diferente do número do jogador ao percorrer tem que reiniciar a contagem, porque só interessa se encontrar quatro seguidos
         }
     }
     return false;
 }
 
 const deuEmpate = (arr) => {
-    //verifica se preencheu tudo
     let newArr = [].concat(...arr);
     return !newArr.includes(0);
 }
@@ -349,42 +288,26 @@ const venceu = (arr,indexLinha,indexColuna,jogador) => vitoriaLinha(arr,indexLin
                                                     || vitoriaDiagonal1(arr,indexLinha,indexColuna,jogador) 
                                                     || vitoriaDiagonal2(arr,indexLinha,indexColuna,jogador);
 
+//TIMER                                                
 const timer = () => {
-    timerValor.innerText = Number(timerValor.innerText)+1;
-}
-
-const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
-    if(nome.toLowerCase() === img){
-        bolinhaX.classList.add(img);
-        bolinhaX.style.borderRadius = '0';
-        placarFundo.style.backgroundColor = cor;
-        placar2.style.color = 'black';
-        body.style.backgroundImage = "url(./img/fundo-de-moedas.jpg)";
-    }
-}
-
-const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => { 
-    // t = a torre no DOM
-    // cor = jogador desse turno
-    // posicao = registro de onde estão as bolinhas em uma matriz
-    //indeXColuna = o index da coluna pego usando DOM   
-    
+    let tempo = Number(timerValor.innerText)+1;
+    timerValor.innerText = tempo;
     if(tempo > 9){
         if(cor[0] == 1){
             placar2.innerText = Number(placar2.innerText)+1;
-            let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
-            vitoriaAlerta.className = 'alerta vitoria-alerta2'; //Classe da tag p para estilizar no CSS
-            vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; //Texto que terá na tag p
-            game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
-            jogoAcabou = true; //Variável para verificar se o jogo acabou
+            let vitoriaAlerta = document.createElement("p"); 
+            vitoriaAlerta.className = 'alerta vitoria-alerta2';
+            vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; 
+            game.appendChild(vitoriaAlerta); 
+            jogoAcabou = true; 
             reiniciaTimer(timerValor,timerAtual);
         }else{
             placar1.innerText = Number(placar1.innerText)+1;
-            let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
-            vitoriaAlerta.className = 'alerta vitoria-alerta1'; //Classe da tag p para estilizar no CSS
-            vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; //Texto que terá na tag p
-            game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
-            jogoAcabou = true; //Variável para verificar se o jogo acabou
+            let vitoriaAlerta = document.createElement("p");
+            vitoriaAlerta.className = 'alerta vitoria-alerta1'; 
+            vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`;
+            game.appendChild(vitoriaAlerta); 
+            jogoAcabou = true; 
             reiniciaTimer(timerValor,timerAtual);
         }
 
@@ -395,92 +318,28 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
         somVitoria.play();
 
     }
+}
 
-    
+//EASTEREGG
+const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
+    if(nome.toLowerCase() === img){
+        bolinhaX.classList.add(img);
+        bolinhaX.style.borderRadius = '0';
+        placarFundo.style.backgroundColor = cor;
+        placar2.style.color = 'black';
+        body.style.backgroundImage = "url(./img/fundo-de-moedas.jpg)";
+    }
+}
 
-    if (t.childElementCount !== 6 && jogoAcabou === false) { //condição para adicionar bolinha
-        let bolinhaX = document.createElement("div"); //a bolinha no DOM
-        pos = t.childElementCount;  //variavel para ter uma referencia de qual linha foi clicada
-        let indexLinha = 5-pos; //variavel com a linha clicada
-        timerAtual = setInterval(timer, 1000);
-        if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
-            bolinhaX.classList.add("bolinhaJogador1"); //Classe das bolinhas do jogador 1
-            easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','dodgerblue');
-            posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
-            somBolinha.play();
-            if(venceu(posicao,indexLinha,indexColuna,1)) {
-                //Se ele venceu...
-                bolinhaX.classList.add("verde");
-                placar1.innerText = Number(placar1.innerText)+1;
-                let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
-                vitoriaAlerta.className = 'alerta vitoria-alerta1'; //Classe da tag p para estilizar no CSS
-                vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; //Texto que terá na tag p
-                game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
-                jogoAcabou = true; //Variável para verificar se o jogo acabou
-                reiniciaTimer(timerValor,timerAtual);
+//FUNÇÕES DE SUPORTE
+const PegarNumeroAleatorio = (min, max) => Math.random() * (max - min) + min;
 
-                let img = document.createElement("img");
-                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
-                img.id = 'vitoria';
-                game.appendChild(img)
-                somVitoria.play();
-            }
-            cor[0] = 0; //Alterna de jogador para a próxima jogada
-            placarFundo1.style.opacity = '0.6';
-            placarFundo1.style.border = '2px dashed white';
-            placarFundo1.style.borderRight = 'none';
-            placarFundo2.style.opacity = '1';
-            placarFundo2.style.border = '2px solid white';
-            placarFundo2.style.borderLeft = 'none';
-        } else { //Esse bloco se refere ao jogador 2
-            bolinhaX.classList.add("bolinhaJogador2"); //Classe das bolinhas do jogador 2
-            easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
-            posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
-            somBolinha.play();
-            if(venceu(posicao,indexLinha,indexColuna,2)) {
-                //Se ele venceu...
-                bolinhaX.classList.add("verde");
-                placar2.innerText = Number(placar2.innerText)+1;
-                let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
-                vitoriaAlerta.className = 'alerta vitoria-alerta2'; //Classe da tag p para estilizar no CSS
-                vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; //Texto que terá na tag p
-                game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
-                jogoAcabou = true; //Variável para verificar se o jogo acabou
-                reiniciaTimer(timerValor,timerAtual);
-
-                let img = document.createElement("img");
-                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
-                img.id = 'vitoria';
-                game.appendChild(img)
-                somVitoria.play();
-            }
-            cor[0] = 1; //Alterna de jogador para a próxima jogada
-            placarFundo1.style.opacity = '1';
-            placarFundo1.style.border = '2px solid white';
-            placarFundo1.style.borderRight = 'none';
-            placarFundo2.style.opacity = '0.6';
-            placarFundo2.style.border = '2px dashed white';
-            placarFundo2.style.borderLeft = 'none';
-        }
-        t.appendChild(bolinhaX); // Por fim, põe a bolinha criada no jogo
-        if (deuEmpate(posicao)) { //Preencheram tudo
-            let empateAlerta = document.createElement("p"); //Cria tag p para por a mensagem
-            empateAlerta.className = 'alerta empate-alerta'; //Classe da tag p para estilizar no CSS
-            empateAlerta.innerText = 'Empate!!'; //Texto que terá na tag p
-            game.appendChild(empateAlerta); //Coloca a tag p na tela
-            jogoAcabou = true; //Variável para verificar se o jogo acabou
-            window.clearInterval(timerAtual);
-
-            let img = document.createElement("img");
-            img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
-            img.id = 'vitoria'
-            game.appendChild(img)
-            somEmpate.play();
-        }
-        if(modoContraBot && cor[0] === 0){
-            game.removeEventListener("click",cliqueJogador);
-            window.setTimeout(automatizarJogador2,2000); // BOT AQUI!!
-        }
+const removerImgVitoria = () => {
+    let mensagemVitoria = document.getElementsByClassName("alerta");
+    let imagemVitoria = document.getElementById("vitoria");
+    for (let i = 0; i < mensagemVitoria.length; i++) {
+        mensagemVitoria[i].remove();
+        imagemVitoria.remove();
     }
 }
 
@@ -489,16 +348,116 @@ const reiniciaTimer = (timerParaZerar,timerIniciado) => {
     timerParaZerar.innerText = '0';
 }
 
-const cliqueJogador = (e) => {
-    reiniciaTimer(timerValor,timerAtual);
-    let tempo = timerValor.innerText;
-    if (e.target.className === 'torre') { //só o e.target de uma torre passa
-        const torre = e.target; //só pra deixar mais explícito que é uma torre
-        const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
-        criarBolinhas(torre,cor,posicao,indexColuna,tempo); //chama a função para criar a bola nesta torre
+
+//FUNÇÃO DA JOGADA!!!!
+const criarBolinhas = (t,cor,posicao,indexColuna) => { 
+    // t = a torre no DOM
+    // cor = jogador desse turno
+    // posicao = registro de onde estão as bolinhas em uma matriz
+    // indeXColuna = o index da coluna pego usando DOM   
+
+    
+
+    if (t.childElementCount !== 6 && jogoAcabou === false) {
+        let bolinhaX = document.createElement("div"); 
+        pos = t.childElementCount; 
+        let indexLinha = 5-pos; 
+        timerAtual = setInterval(timer, 1000);
+        if(cor[0] === 1){ 
+            bolinhaX.classList.add("bolinhaJogador1"); 
+            easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','dodgerblue');
+            posicao[indexLinha][indexColuna] = 1; 
+            somBolinha.play();
+            if(venceu(posicao,indexLinha,indexColuna,1)) {
+                bolinhaX.classList.add("verde");
+                placar1.innerText = Number(placar1.innerText)+1;
+                let vitoriaAlerta = document.createElement("p"); 
+                vitoriaAlerta.className = 'alerta vitoria-alerta1'; 
+                vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; 
+                game.appendChild(vitoriaAlerta); 
+                jogoAcabou = true; 
+                reiniciaTimer(timerValor,timerAtual);
+
+                let img = document.createElement("img");
+                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+                img.id = 'vitoria';
+                game.appendChild(img)
+                somVitoria.play();
+                window.setTimeout(removerImgVitoria,4000);
+            }
+            cor[0] = 0;
+            placarFundo1.style.opacity = '0.6';
+            placarFundo1.style.border = '2px dashed white';
+            placarFundo1.style.borderRight = 'none';
+            placarFundo2.style.opacity = '1';
+            placarFundo2.style.border = '2px solid white';
+            placarFundo2.style.borderLeft = 'none';
+        } else { 
+            bolinhaX.classList.add("bolinhaJogador2");
+            easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
+            posicao[indexLinha][indexColuna] = 2;
+            somBolinha.play();
+            if(venceu(posicao,indexLinha,indexColuna,2)) {
+                bolinhaX.classList.add("verde");
+                placar2.innerText = Number(placar2.innerText)+1;
+                let vitoriaAlerta = document.createElement("p"); 
+                vitoriaAlerta.className = 'alerta vitoria-alerta2'; 
+                vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`;
+                game.appendChild(vitoriaAlerta);
+                jogoAcabou = true;
+                reiniciaTimer(timerValor,timerAtual);
+
+                let img = document.createElement("img");
+                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+                img.id = 'vitoria';
+                game.appendChild(img)
+                somVitoria.play();
+                window.setTimeout(removerImgVitoria,4000);
+            }
+            cor[0] = 1;
+            placarFundo1.style.opacity = '1';
+            placarFundo1.style.border = '2px solid white';
+            placarFundo1.style.borderRight = 'none';
+            placarFundo2.style.opacity = '0.6';
+            placarFundo2.style.border = '2px dashed white';
+            placarFundo2.style.borderLeft = 'none';
+        }
+        t.appendChild(bolinhaX);
+        if (deuEmpate(posicao)) { 
+            let empateAlerta = document.createElement("p"); 
+            empateAlerta.className = 'alerta empate-alerta'; 
+            empateAlerta.innerText = 'Empate!!'; 
+            game.appendChild(empateAlerta); 
+            jogoAcabou = true; 
+            window.clearInterval(timerAtual);
+
+            let img = document.createElement("img");
+            img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+            img.id = 'vitoria'
+            game.appendChild(img)
+            somEmpate.play();
+            window.setTimeout(removerImgVitoria,4000);
+        }
+        if(modoContraBot && cor[0] === 0){
+            game.removeEventListener("click",cliqueJogador);
+            let delay = PegarNumeroAleatorio(1000, 5000);
+            window.setTimeout(automatizarJogador2,delay); // KENZINHO AQUI!!
+            
+        }
     }
 }
 
+//MANIPULADOR DE EVENTO DO CLIQUE DO JOGADOR
+const cliqueJogador = (e) => {
+    reiniciaTimer(timerValor,timerAtual);
+    if (e.target.className === 'torre') {
+        const torre = e.target; 
+        const indexColuna = Number(torre.id[1]) - 1; 
+        criarBolinhas(torre,cor,posicao,indexColuna);
+    }
+}
+
+//OUVINTE DO CLIQUE DO JOGADOR
 game.addEventListener("click",cliqueJogador);
 
 //Iniciar jogo indo para a tela de definir nomes para os jogadores
@@ -560,12 +519,7 @@ const reiniciar = () => {
             [0,0,0,0,0,0,0]
             ];
 
-    let mensagemVitoria = document.getElementsByClassName("alerta");
-    let imagemVitoria = document.getElementById("vitoria");
-    for (let i = 0; i < mensagemVitoria.length; i++) {
-        mensagemVitoria[i].remove();
-        imagemVitoria.remove();
-    }
+    removerImgVitoria();
 
     somClick.play();
 };
