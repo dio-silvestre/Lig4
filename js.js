@@ -498,6 +498,7 @@ const cliqueJogador = (e) => {
 
 game.addEventListener("click",cliqueJogador);
 
+//Iniciar jogo indo para a tela de definir nomes para os jogadores
 const iniciar = document.getElementById("iniciar");
 const regras = document.getElementById("regras");
 const form = document.querySelector(".form");
@@ -508,6 +509,7 @@ iniciar.addEventListener("click", () => {
     somClick.play();
 });
 
+//Tela de nomes dos jogadores vai para o jogo
 pronto.addEventListener("click", () => {
     
     if (jogador1.value === "") {
@@ -522,7 +524,6 @@ pronto.addEventListener("click", () => {
         game.style.display = "flex";
         form.style.display = "none";
         placar.style.display = "flex";
-        pronto.style.display = "none";
         caixaTimer.style.display = "flex";
 
         for (let i = 0; i < hidden.length; i++) {
@@ -534,11 +535,10 @@ pronto.addEventListener("click", () => {
 
         somClick.play();
     }
-    modoContraBot = boxBot.checked;
 });
 
-let btn_reiniciar = document.getElementById("reiniciar");
-btn_reiniciar.addEventListener("click", reiniciar=()=>{
+//Inicia uma nova partida sem zerar o placar
+const reiniciar = () => {
     reiniciaTimer(timerValor,timerAtual);
     let pai = document.querySelectorAll('.torre');
     for(let i=0; i<pai.length; i++){
@@ -563,8 +563,12 @@ btn_reiniciar.addEventListener("click", reiniciar=()=>{
     }
 
     somClick.play();
-});
+};
 
+let btn_reiniciar = document.getElementById("reiniciar");
+btn_reiniciar.addEventListener("click", reiniciar);
+
+//Zera somente o placar
 let btn_zerar = document.getElementById("zerar");
 btn_zerar.addEventListener("click", zerar=()=>{
     placar1.innerText = Number('0');
@@ -572,6 +576,42 @@ btn_zerar.addEventListener("click", zerar=()=>{
 
     somClick.play();
 });
+
+//Alterar os nomes dos jogadores
+let btn_trocarNomes = document.getElementById("trocar-nome");
+btn_trocarNomes.addEventListener("click", trocarNomes=()=> {
+    
+    game.style.display = "none";
+    form.style.display = "block";
+    placar.style.display = "none";
+    caixaTimer.style.display = "none";
+
+    for (let i = 0; i < hidden.length; i++) {
+        hidden[i].style.display = "none";
+    }
+
+    reiniciar();
+});
+
+//Jogar contra o bot Kenzinho
+let btn_bot = document.getElementById("kenzinho");
+btn_bot.addEventListener("click", vsBot=()=>{
+    game.style.display = "flex";
+    form.style.display = "none";
+    placar.style.display = "flex";
+    caixaTimer.style.display = "flex";
+
+    for (let i = 0; i < hidden.length; i++) {
+        hidden[i].style.display = "inline-block";
+    }
+
+    jogadores.push(jogador1.value);
+    jogadores.push(jogador2.value);
+
+    modoContraBot = true;
+
+    somClick.play();
+})
 
 
 function changeToOne() {
