@@ -50,6 +50,16 @@ somEmpate.src = './sounds/game-over.wav';
 
 //Função de verificação da vitória na horizontal
 function escolherTorre(col){
+
+    const t1 = document.getElementById("t1");
+    const t2 = document.getElementById("t2");
+    const t3 = document.getElementById("t3");
+    const t4 = document.getElementById("t4");
+    const t5 = document.getElementById("t5");
+    const t6 = document.getElementById("t6");
+    const t7 = document.getElementById("t7");
+
+
     let x = col + 1;
     if(x == 1){
         return t1;
@@ -382,6 +392,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
         somVitoria.play();
 
     }
+
+    
 
     if (t.childElementCount !== 6 && jogoAcabou === false) { //condição para adicionar bolinha
         let bolinhaX = document.createElement("div"); //a bolinha no DOM
