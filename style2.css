@@ -31,7 +31,7 @@ img{
 ul{
     position: absolute;
     top:20px;
-    right:20px;
+    right:40px;
     margin: 0;
     padding: 0;
     width:100px;
@@ -62,16 +62,23 @@ ul li span{
 }
 
 /* ul li span:nth-child(1){ */ .dark{
-    background:  #262626;
-    color:#fff;
+    color:  #262626;
+    background:#fff;
+    border: 2px solid #000 ;
+ 
 }
 
 /* ul li span:nth-child(2){*/ .light{
     color:  #262626;
     background:#fff;
+    border: 2px solid #000 ;
+       display: none;
 }
 
-
+.dark:hover{
+    transform: scale(1.4, 1.4);
+    transition: 0.4s;
+}
 
 
 header {

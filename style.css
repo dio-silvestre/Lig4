@@ -28,11 +28,69 @@ img{
     
 }
 
+ul{
+    position: absolute;
+    top:20px;
+    right:40px;
+    margin: 0;
+    padding: 0;
+    width:100px;
+    height:30px;
+    z-index:1;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+ul li{
+    list-style: none;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+
+}
+
+ul li span{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    width: 100% ;
+    
+}
+
+/* ul li span:nth-child(1){ */ .dark{
+    color:  #262626;
+    background:#fff;
+    border: 2px solid #000 ;
+    display: none;
+}
+
+/* ul li span:nth-child(2){*/ .light{
+    color:  #262626;
+    background:#fff;
+    border: 2px solid #000 ;
+}
+
+.light:hover{
+    transform: scale(1.4, 1.4);
+    transition: 0.4s;
+}
+
+
+
 header {
     margin-bottom: 3rem;
     display: flex;
     justify-content: center;
 }
+h1:hover{
+    transition: 2s;
+    transform: rotate(-34deg)
+}
+
 
 header h1 {
     font-size: 4.5rem;
@@ -48,10 +106,6 @@ header h1 {
     -webkit-text-stroke-color: #000;
     margin-bottom: 0;
     max-width: 350px;
-}
-h1:hover{
-    transition: 2s;
-    transform: rotate(-34deg)
 }
 
 span {
@@ -514,3 +568,22 @@ button:active {
     transform: scale3d(1, 1, 1);
     }
     }
+
+
+    .verde {
+            animation-name: tremer;
+            animation-duration: 0.5s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            }
+            @keyframes tremer {
+            0%, 100% {
+            transform: translate3d(0, 0, 0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+            transform: translate3d(-5px, 0, 0);
+            }
+            20%, 40%, 60%, 80% {
+            transform: translate3d(5px, 0, 0);
+            }
+        }
