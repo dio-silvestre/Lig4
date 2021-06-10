@@ -573,6 +573,7 @@ let btn_zerar = document.getElementById("zerar");
 btn_zerar.addEventListener("click", zerar=()=>{
     placar1.innerText = Number('0');
     placar2.innerText = Number('0');
+    reiniciaTimer(timerValor,timerAtual); 
 
     somClick.play();
 });
