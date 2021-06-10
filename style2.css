@@ -53,7 +53,13 @@ ul li{
     transition: 0.5s;
 
 }
+#aviso-pagamento{
+        
+    display: flex;
+    justify-content: center;
+    margin: 50px;
 
+}
 ul li span{
     display: block;
     height: 30px;
@@ -445,7 +451,14 @@ button:active {
         height: 450px;
         width: var(--largura-display);
     }
-    
+    #aviso-pagamento{
+        
+        display: flex;
+        justify-content: center;
+        margin: 50px;
+        font-size: 3rem;
+
+    }
     .torre{
         width: 100px;
         height: 450px;
@@ -474,6 +487,13 @@ button:active {
 @media (min-width:801px) { 
     :root{
         --largura-display: 800px;
+    }
+
+    #aviso-pagamento{
+        margin-left: 60%;
+        position: absolute;
+        right: 600px;
+        width:500px;
     }
 
     header h1 {
