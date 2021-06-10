@@ -220,18 +220,24 @@ button:active {
     width: calc(var(--largura-display)/2);
     margin: 1rem auto;
     justify-content: space-around;
+    align-items: center;
 }
 .placar{
     background-color: white;
     width: 50%;
+    border-bottom: 2px dashed black;
+    border-top: 2px dashed black;
+    height: 3rem;
 }
 #placar-jogador-1{
     background-color: rgba(14, 29, 158, 0.911);
     border-radius: 50px 0 0 50px;
+    border-left: 2px dashed black;
 }
 #placar-jogador-2{
     background-color: rgba(255,0,0,0.9108018207282913);
     border-radius: 0 50px 50px 0;
+    border-right: 2px dashed black;
 }
 .placar--pontos{
     color: white;
@@ -242,6 +248,12 @@ button:active {
 
 #timer{
     display: none;
+    border-top: 2px dashed black;
+    border-bottom: 2px dashed black;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    min-width: 2rem;
 }
 
 .verde{
@@ -344,6 +356,10 @@ button:active {
         width: calc(var(--largura-display)/2);
     }
 
+    #timer{
+        min-width: 4rem;
+        font-size: 2rem;
+    }
 }
 @media (min-width:600px) {
     :root{
@@ -441,7 +457,7 @@ button:active {
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    }
+}
     @-webkit-keyframes rubberBand {
     0% {
     -webkit-transform: scale3d(1, 1, 1);
