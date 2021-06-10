@@ -434,7 +434,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
             easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(venceu(posicao,indexLinha,indexColuna,1)) {
+            if(venceu(posicao,indexLinha,indexColuna,2)) {
                 //Se ele venceu...
                 bolinhaX.classList.add("verde");
                 placar2.innerText = Number(placar2.innerText)+1;
@@ -573,6 +573,7 @@ let btn_zerar = document.getElementById("zerar");
 btn_zerar.addEventListener("click", zerar=()=>{
     placar1.innerText = Number('0');
     placar2.innerText = Number('0');
+    reiniciaTimer(timerValor,timerAtual); 
 
     somClick.play();
 });
