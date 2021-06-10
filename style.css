@@ -241,6 +241,9 @@ button:active {
 #jogador2 {
     background-color: rgba(255, 54, 54, 0.767);
 }
+.teste{
+    display: none;
+}
 
 #game{
     height: 200px;
