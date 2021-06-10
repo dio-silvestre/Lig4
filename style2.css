@@ -20,7 +20,7 @@ time, audio, video {
 body{
     text-align: center;
     height: 110vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/back.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/back2.jpg");
     background-size: cover;
 }
 img{
@@ -65,20 +65,20 @@ ul li span{
     color:  #262626;
     background:#fff;
     border: 2px solid #000 ;
-    display: none;
+ 
 }
 
 /* ul li span:nth-child(2){*/ .light{
     color:  #262626;
     background:#fff;
     border: 2px solid #000 ;
+       display: none;
 }
 
-.light:hover{
+.dark:hover{
     transform: scale(1.4, 1.4);
     transition: 0.4s;
 }
-
 
 
 header {
@@ -260,13 +260,6 @@ button:active {
     pointer-events: none;
 }
 
-.verde{
-    height: 25px;
-    width: 25px;
-    pointer-events: none;
-    border: green 2px solid;
-}
-
 .pato{
     border-radius: 100%;
     background-image: url(img/pato.svg);
@@ -343,7 +336,14 @@ button:active {
     min-width: 2rem;
 }
 
-
+.verde{
+    height: 25px;
+    width: 25px;
+    background: rgb(249,249,249);
+    background: rgb(249,249,249);
+    background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, green 50%);
+    pointer-events: none;
+}
 
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
@@ -506,8 +506,6 @@ button:active {
     .verde{
         height: 100px;
         width: 100px;
-        
-        
     }
     
     .bolinhaJogador2{
@@ -570,22 +568,3 @@ button:active {
     transform: scale3d(1, 1, 1);
     }
     }
-
-
-    .verde {
-            animation-name: tremer;
-            animation-duration: 0.5s;
-            animation-fill-mode: both;
-            animation-iteration-count: infinite;
-            }
-            @keyframes tremer {
-            0%, 100% {
-            transform: translate3d(0, 0, 0);
-            }
-            10%, 30%, 50%, 70%, 90% {
-            transform: translate3d(-5px, 0, 0);
-            }
-            20%, 40%, 60%, 80% {
-            transform: translate3d(5px, 0, 0);
-            }
-        }

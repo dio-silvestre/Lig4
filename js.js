@@ -67,7 +67,7 @@ function escolherTorre(col){
 }
 
 
-const vitoriaLinha = (arr,indexLinha,jogador) => {
+const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
     //verificar se ocorreu vitoria no sentido horizontal
     //arr = posicao
     //indexLinha captura a posição da linha da ultima jogada
@@ -82,12 +82,9 @@ const vitoriaLinha = (arr,indexLinha,jogador) => {
                 
                 let pos = i;
                 let t;
-                console.log(pos);
-
-                console.log(indexLinha);
-
-                for(let k = pos; k >= pos-3;k--){
-                    if(k != pos){
+            
+                for(let k = pos; k > pos-4;k--){
+                    if(indexColuna != k){
                         t = escolherTorre(k);
                         t.childNodes[5-indexLinha].classList.add("verde");
                     }else{
@@ -119,7 +116,6 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
             if(contador === 4){ 
                 let t = escolherTorre(indexColuna);
                 let tam = t.childElementCount;
-                console.log(tam);
                 for(let k = tam-1; k>tam-4;k--){
                     t.childNodes[k].classList.add("verde");
                 }
@@ -362,7 +358,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','dodgerblue');
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(vitoriaLinha(posicao,indexLinha,1) 
+            if(vitoriaLinha(posicao,indexLinha,indexColuna,1) 
                 || vitoriaColuna(posicao,indexColuna,1) 
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
@@ -394,7 +390,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(vitoriaLinha(posicao,indexLinha,2)
+            if(vitoriaLinha(posicao,indexLinha,indexColuna,2)
                 || vitoriaColuna(posicao,indexColuna,2)
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
@@ -534,4 +530,24 @@ btn_zerar.addEventListener("click", zerar=()=>{
 });
 
 
+function changeToOne() {
+    const s1 = document.getElementById('s1');
+    const s2 = document.getElementById('s2');
 
+    s2.disabled = true;
+    s1.disabled = false;
+}
+
+function changeToTwo() {
+    const s1 = document.getElementById('s1');
+    const s2 = document.getElementById('s2');
+
+    s1.disabled = true;
+    s2.disabled = false;
+}
+
+const activate1 = document.getElementById('activate1');
+const activate2 = document.getElementById('activate2');
+
+activate1.addEventListener('click', changeToOne);
+activate2.addEventListener('click', changeToTwo);
