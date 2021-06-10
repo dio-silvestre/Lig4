@@ -15,7 +15,9 @@ const hidden = document.querySelectorAll(".hidden");
 const jogador1 = document.getElementById("jogador1");
 const jogador2 = document.getElementById("jogador2");
 
+const boxBot = document.getElementById('box-bot');
 let jogadores = [];
+let modoContraBot = false;
 
 let cor = [];   //variavel para alternar de jogador em cada turno
 cor[0] = 1;
@@ -48,6 +50,16 @@ somEmpate.src = './sounds/game-over.wav';
 
 //Função de verificação da vitória na horizontal
 function escolherTorre(col){
+
+    const t1 = document.getElementById("t1");
+    const t2 = document.getElementById("t2");
+    const t3 = document.getElementById("t3");
+    const t4 = document.getElementById("t4");
+    const t5 = document.getElementById("t5");
+    const t6 = document.getElementById("t6");
+    const t7 = document.getElementById("t7");
+
+
     let x = col + 1;
     if(x == 1){
         return t1;
@@ -329,6 +341,11 @@ const deuEmpate = (arr) => {
     return !newArr.includes(0);
 }
 
+const venceu = (arr,indexLinha,indexColuna,jogador) => vitoriaLinha(arr,indexLinha,indexColuna,jogador) 
+                                                    || vitoriaColuna(arr,indexColuna,jogador) 
+                                                    || vitoriaDiagonal1(arr,indexLinha,indexColuna,jogador) 
+                                                    || vitoriaDiagonal2(arr,indexLinha,indexColuna,jogador);
+
 const timer = () => {
     timerValor.innerText = Number(timerValor.innerText)+1;
 }
@@ -376,6 +393,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
 
     }
 
+    
+
     if (t.childElementCount !== 6 && jogoAcabou === false) { //condição para adicionar bolinha
         let bolinhaX = document.createElement("div"); //a bolinha no DOM
         pos = t.childElementCount;  //variavel para ter uma referencia de qual linha foi clicada
@@ -386,10 +405,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
             easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','dodgerblue');
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(vitoriaLinha(posicao,indexLinha,indexColuna,1) 
-                || vitoriaColuna(posicao,indexColuna,1) 
-                || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
-                || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
+            if(venceu(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
                 bolinhaX.classList.add("verde");
                 placar1.innerText = Number(placar1.innerText)+1;
@@ -418,10 +434,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
             easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(vitoriaLinha(posicao,indexLinha,indexColuna,2)
-                || vitoriaColuna(posicao,indexColuna,2)
-                || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
-                || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
+            if(venceu(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
                 bolinhaX.classList.add("verde");
                 placar2.innerText = Number(placar2.innerText)+1;
@@ -461,7 +474,10 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
             game.appendChild(img)
             somEmpate.play();
         }
-        
+        if(modoContraBot && cor[0] === 0){
+            game.removeEventListener("click",cliqueJogador);
+            window.setTimeout(automatizarJogador2,2000); // BOT AQUI!!
+        }
     }
 }
 
@@ -470,22 +486,17 @@ const reiniciaTimer = (timerParaZerar,timerIniciado) => {
     timerParaZerar.innerText = '0';
 }
 
-//Técnica Event Delegation:
-game.addEventListener("click",(e) => { 
-    //'e' é o parametro event do addEventListener ele recebe e.target de tudo que recebeu o clique dentro da div game
-    game.style.pointerEvents='none';
-    let tempo = timerValor.innerText;
+const cliqueJogador = (e) => {
     reiniciaTimer(timerValor,timerAtual);
-
+    let tempo = timerValor.innerText;
     if (e.target.className === 'torre') { //só o e.target de uma torre passa
         const torre = e.target; //só pra deixar mais explícito que é uma torre
         const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
         criarBolinhas(torre,cor,posicao,indexColuna,tempo); //chama a função para criar a bola nesta torre
     }
+}
 
-    game.style.pointerEvents='auto';
-
-});
+game.addEventListener("click",cliqueJogador);
 
 //Iniciar jogo indo para a tela de definir nomes para os jogadores
 const iniciar = document.getElementById("iniciar");
@@ -581,6 +592,26 @@ btn_trocarNomes.addEventListener("click", trocarNomes=()=> {
 
     reiniciar();
 });
+
+//Jogar contra o bot Kenzinho
+let btn_bot = document.getElementById("kenzinho");
+btn_bot.addEventListener("click", vsBot=()=>{
+    game.style.display = "flex";
+    form.style.display = "none";
+    placar.style.display = "flex";
+    caixaTimer.style.display = "flex";
+
+    for (let i = 0; i < hidden.length; i++) {
+        hidden[i].style.display = "inline-block";
+    }
+
+    jogadores.push(jogador1.value);
+    jogadores.push(jogador2.value);
+
+    modoContraBot = true;
+
+    somClick.play();
+})
 
 
 function changeToOne() {
