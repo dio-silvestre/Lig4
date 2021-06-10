@@ -590,6 +590,3 @@ activate1.addEventListener('click', changeToOne);
 activate2.addEventListener('click', changeToTwo);
 
 
-function playAudio(link) {    
-    new Audio(link).play()
-  }; 

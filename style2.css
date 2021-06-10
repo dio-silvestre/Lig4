@@ -26,6 +26,7 @@ body{
 img{
     position: absolute;
     
+    
 }
 
 ul{
@@ -102,7 +103,8 @@ h1:hover{
 
 
 header h1 {
-    font-size: 4.5rem;
+    padding-top: 120px;
+    font-size: 3.5rem;
     font-family: 'Sniglet', sans-serif;
     color: #F6F6F6;
     text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
@@ -125,7 +127,7 @@ span {
 
 #regras {
     color: #F6F6F6;
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-family: var(--fonte-principal);
     max-width: 60rem;
     display: flex;
@@ -319,13 +321,13 @@ button:active {
     height: 3rem;
 }
 #placar-jogador-1{
-    background: radial-gradient(circle at 65% 15%, white 1px, aqua 15%, darkblue 60%, aqua 100%);  
+    background: radial-gradient(circle at 65% 15%, white 1px, rgb(0, 132, 255) 15%, rgb(0, 25, 139) 60%, aqua 100%);  
     border-radius: 50px 0 0 50px;
     border: 2px solid white;
     border-right: none;
 }
 #placar-jogador-2{
-    background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(46, 27, 27) 60%, crimson 100%);
+    background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 67, 20) 15%, rgb(46, 35, 27) 60%, crimson 100%);
     border-radius: 0 50px 50px 0;
     border: 2px dashed white;
     border-left: none;
@@ -384,9 +386,14 @@ button:active {
         --largura-display: 400px;
     }
 
+    #regras {
+        font-size: 2rem;
+    }
+    
     header h1 {
         margin-top: 4rem;
         font-size: 5.5rem;
+        padding-top: 10px;
     }
 
     #game{
@@ -523,51 +530,38 @@ button:active {
 
 }
 
-/* EFEITO 2 */
-.vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
-    animation-name: efeitoBorracha;
-    animation-duration: 1s;
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, img{
+    animation-name: efeitoSumir;
+    animation-duration: 4s;
     animation-fill-mode: both;
 }
-    @keyframes efeitoBorracha {
+    @keyframes efeitoSumir {
     0% {
-    transform: scale3d(1, 1, 1);
+    opacity: 1;
     }
-    30% {
-    transform: scale3d(1.25, 0.75, 1);
-    }
-    40% {
-    transform: scale3d(0.75, 1.25, 1);
-    }
-    50% {
-    transform: scale3d(1.15, 0.85, 1);
-    }
-    65% {
-    transform: scale3d(.95, 1.05, 1);
-    }
-    75% {
-    transform: scale3d(1.05, .95, 1);
+    50%{
+        opacity: 1;
     }
     100% {
-    transform: scale3d(1, 1, 1);
+    opacity: 0;
     }
     }
 
 
-    .verde {
-        animation-name: tremer;
-        animation-duration: 0.5s;
-        animation-fill-mode: both;
-        animation-iteration-count: infinite;
-        }
-    @keyframes tremer {
-        0%, 100% {
-        transform: translate3d(0, 0, 0);
-        }
-        10%, 30%, 50%, 70%, 90% {
-        transform: translate3d(-5px, 0, 0);
-        }
-        20%, 40%, 60%, 80% {
-        transform: translate3d(5px, 0, 0);
-        }
+.verde {
+    animation-name: tremer;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
     }
+@keyframes tremer {
+    0%, 100% {
+    transform: translate3d(0, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-5px, 0, 0);
+    }
+    20%, 40%, 60%, 80% {
+    transform: translate3d(5px, 0, 0);
+    }
+}
