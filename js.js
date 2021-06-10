@@ -95,13 +95,13 @@ const vitoriaLinha = (arr,indexLinha,jogador) => {
         if(arr[indexLinha][i] === jogador){ //<-- só interessa percorrer a linha clicada
             contador++; //se achou bolinha soma contador
             if(contador === 4){ 
+                console.log(arr);
+
+                console.log("ERRO");
                 
                 let pos = i;
                 let t;
-                console.log(pos);
-
-                console.log(indexLinha);
-
+            
                 for(let k = pos; k >= pos-3;k--){
                     if(k != pos){
                         t = escolherTorre(k);
@@ -135,7 +135,6 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
             if(contador === 4){ 
                 let t = escolherTorre(indexColuna);
                 let tam = t.childElementCount;
-                console.log(tam);
                 for(let k = tam-1; k>tam-4;k--){
                     t.childNodes[k].className = "verde";
                 }
