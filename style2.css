@@ -65,20 +65,21 @@ ul li span{
     color:  #262626;
     background:#fff;
     border: 2px solid #000 ;
- 
+   
 }
 
 /* ul li span:nth-child(2){*/ .light{
     color:  #262626;
     background:#fff;
     border: 2px solid #000 ;
-       display: none;
+    display: none;
 }
 
 .dark:hover{
     transform: scale(1.4, 1.4);
-    transition: 0.4s;
+    transition: 0.4s; 
 }
+
 
 
 header {
@@ -260,6 +261,13 @@ button:active {
     pointer-events: none;
 }
 
+.verde{
+    height: 25px;
+    width: 25px;
+    pointer-events: none;
+    border: green 2px solid;
+}
+
 .pato{
     border-radius: 100%;
     background-image: url(img/pato.svg);
@@ -336,64 +344,33 @@ button:active {
     min-width: 2rem;
 }
 
-.verde{
-    height: 25px;
-    width: 25px;
-    background: rgb(249,249,249);
-    background: rgb(249,249,249);
-    background: radial-gradient(circle at top left, rgba(249,249,249,0.8883928571428571) 0%, green 50%);
-    pointer-events: none;
-}
+
 
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
-    /* -webkit-animation-name: slideInDown; */
-    animation-name: slideInDown;
-    /* -webkit-animation-duration: 1s; */
+    animation-name: SlideParaBaixo;
     animation-duration: 1.5s;
-    /* -webkit-animation-fill-mode: both; */
     animation-fill-mode: both;
     }
-    @-webkit-keyframes slideInDown {
+    @keyframes SlideParaBaixo {
         0% {
         opacity: 0;
         animation-timing-function: ease-in;
-        -webkit-transform: translateY(-500px);
         transform: translateY(-500px);
         visibility: visible;
         }
         50% {
         opacity: 1;
         animation-timing-function: ease-out;
-        -webkit-transform: translateY(-100px);
         transform: translateY(-100px);
         visibility: visible; 
         }
         100% {
         animation-timing-function: ease-in;
-        -webkit-transform: translateY(0);
         transform: translateY(0);
         }
     }
-    @keyframes slideInDown {
-        0% {
-        opacity: 0;
-        animation-timing-function: ease-in;
-        -webkit-transform: translateY(-500px);
-        visibility: visible;
-        }
-        50% {
-        opacity: 1;
-        animation-timing-function: ease-out;
-        -webkit-transform: translateY(-100px);
-        visibility: visible; 
-        }
-        100% {
-        animation-timing-function: ease-in;
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        }
-    }
+    
 
 
 @media (min-width:480px) {
@@ -506,6 +483,8 @@ button:active {
     .verde{
         height: 100px;
         width: 100px;
+        
+        
     }
     
     .bolinhaJogador2{
@@ -531,40 +510,49 @@ button:active {
 
 /* EFEITO 2 */
 .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
-    -webkit-animation-name: rubberBand;
-    animation-name: rubberBand;
-    -webkit-animation-duration: 1s;
+    animation-name: efeitoBorracha;
     animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
-    @-webkit-keyframes rubberBand {
+    @keyframes efeitoBorracha {
     0% {
-    -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
     }
     30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
     transform: scale3d(1.25, 0.75, 1);
     }
     40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
     transform: scale3d(0.75, 1.25, 1);
     }
     50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
     transform: scale3d(1.15, 0.85, 1);
     }
     65% {
-    -webkit-transform: scale3d(.95, 1.05, 1);
     transform: scale3d(.95, 1.05, 1);
     }
     75% {
-    -webkit-transform: scale3d(1.05, .95, 1);
     transform: scale3d(1.05, .95, 1);
     }
     100% {
-    -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
     }
+    }
+
+
+    .verde {
+        animation-name: tremer;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        }
+    @keyframes tremer {
+        0%, 100% {
+        transform: translate3d(0, 0, 0);
+        }
+        10%, 30%, 50%, 70%, 90% {
+        transform: translate3d(-5px, 0, 0);
+        }
+        20%, 40%, 60%, 80% {
+        transform: translate3d(5px, 0, 0);
+        }
     }

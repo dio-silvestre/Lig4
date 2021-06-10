@@ -540,6 +540,25 @@ button:active {
     }
     }
 
+    
+
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, img{
+        animation-name: efeitoSumir;
+        animation-duration: 4s;
+        animation-fill-mode: both;
+    }
+        @keyframes efeitoSumir {
+        0% {
+        opacity: 1;
+        }
+        50%{
+            opacity: 1;
+        }
+        100% {
+        opacity: 0;
+        }
+        }
+
 
     .verde {
         animation-name: tremer;
