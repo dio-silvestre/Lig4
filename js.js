@@ -99,8 +99,6 @@ const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
                     if(indexColuna != k){
                         t = escolherTorre(k);
                         t.childNodes[5-indexLinha].classList.add("verde");
-                    }else{
-                        //console.log("x");
                     }
                 }
 
@@ -146,9 +144,6 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
 const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica diagonal assim --> /
     let diagonal = [];
 
-    //console.log(indexLinha);
-
-    //let obj = [];
     let i = indexLinha;
     let j = indexColuna;
     for(;i >= 0 && j < arr[0].length;){
@@ -158,8 +153,6 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
     }
     i = indexLinha + 1;
     j = indexColuna - 1;
-
-    //console.log(diagonal);
 
     for(;i < arr.length && j >= 0;){
         diagonal.unshift(arr[i][j])
@@ -175,22 +168,13 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = 5-i;
+                        topo = diagonal.lengthdiagonal.length-11-i;
                     }
                 }
                 
                 if(topo == indexLinha){
 
                     for(let k = 0; k < 4 ; k++){
-
-                        console.log("\n");
-
-                        console.log("lINHA: "+ indexLinha);
-                        console.log("Coluna: " + indexColuna);
-                        console.log("K: " + k);
-                        console.log("TOPO: "+topo);
-
-                        console.log("\n");
                         
                         if(indexLinha != topo){
 
@@ -202,20 +186,10 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         }
                         indexLinha++;
                         indexColuna--;
-                        console.log("Coluna pegada: "+coluna);
                     }
                 }else{
                     indexColuna = indexColuna+(indexLinha-topo);
                     for(let k = 0; k < 4 ; k++){
-
-                        console.log("\n");
-
-                        console.log("lINHA: "+ indexLinha);
-                        console.log("Coluna: " + indexColuna);
-                        console.log("K: " + k);
-                        console.log("TOPO: "+topo);
-
-                        console.log("\n");
                         
                         if(indexLinha != topo){
 
@@ -227,7 +201,6 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         }
                         topo++;
                         indexColuna--;
-                        console.log("Coluna pegada: "+coluna);
                     
                     }   
                 }   
@@ -266,22 +239,13 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = 5-i;
+                        topo = diagonal.length-1-i;
                     }
                 }
                 
                 if(topo == indexLinha){
 
                     for(let k = 0; k < 4 ; k++){
-
-                        console.log("\n");
-
-                        console.log("lINHA: "+ indexLinha);
-                        console.log("Coluna: " + indexColuna);
-                        console.log("K: " + k);
-                        console.log("TOPO: "+topo);
-
-                        console.log("\n");
                         
                         if(indexLinha != topo){
 
@@ -293,21 +257,11 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         }
                         indexLinha++;
                         indexColuna++;
-                        console.log("Coluna pegada: "+coluna);
                     }
                 }else{
                     
                     indexColuna = indexColuna-(indexLinha-topo);
                     for(let k = 0; k < 4 ; k++){
-
-                        console.log("\n");
-
-                        console.log("lINHA: "+ indexLinha);
-                        console.log("Coluna: " + indexColuna);
-                        console.log("K: " + k);
-                        console.log("TOPO: "+topo);
-
-                        console.log("\n");
                         
                         if(indexLinha != topo){
 
@@ -318,9 +272,7 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
 
                         }
                         topo++;
-                        indexColuna++;
-                        console.log("Coluna pegada: "+coluna);
-                        
+                        indexColuna++;                  
                     
                     }
                 
@@ -347,25 +299,8 @@ const venceu = (arr,indexLinha,indexColuna,jogador) => vitoriaLinha(arr,indexLin
                                                     || vitoriaDiagonal2(arr,indexLinha,indexColuna,jogador);
 
 const timer = () => {
-    timerValor.innerText = Number(timerValor.innerText)+1;
-}
-
-const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
-    if(nome.toLowerCase() === img){
-        bolinhaX.classList.add(img);
-        bolinhaX.style.borderRadius = '0';
-        placarFundo.style.backgroundColor = cor;
-        placar2.style.color = 'black';
-        body.style.backgroundImage = "url(./img/fundo-de-moedas.jpg)";
-    }
-}
-
-const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => { 
-    // t = a torre no DOM
-    // cor = jogador desse turno
-    // posicao = registro de onde estão as bolinhas em uma matriz
-    //indeXColuna = o index da coluna pego usando DOM   
-    
+    let tempo = Number(timerValor.innerText)+1;
+    timerValor.innerText = tempo;
     if(tempo > 9){
         if(cor[0] == 1){
             placar2.innerText = Number(placar2.innerText)+1;
@@ -392,6 +327,25 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
         somVitoria.play();
 
     }
+}
+
+const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
+    if(nome.toLowerCase() === img){
+        bolinhaX.classList.add(img);
+        bolinhaX.style.borderRadius = '0';
+        placarFundo.style.backgroundColor = cor;
+        placar2.style.color = 'black';
+        body.style.backgroundImage = "url(./img/fundo-de-moedas.jpg)";
+    }
+}
+
+const PegarNumeroAleatorio = (min, max) => Math.random() * (max - min) + min;
+
+const criarBolinhas = (t,cor,posicao,indexColuna) => { 
+    // t = a torre no DOM
+    // cor = jogador desse turno
+    // posicao = registro de onde estão as bolinhas em uma matriz
+    //indeXColuna = o index da coluna pego usando DOM   
 
     
 
@@ -406,7 +360,6 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             somBolinha.play();
             if(venceu(posicao,indexLinha,indexColuna,1)) {
-                //Se ele venceu...
                 bolinhaX.classList.add("verde");
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
@@ -435,7 +388,6 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             somBolinha.play();
             if(venceu(posicao,indexLinha,indexColuna,2)) {
-                //Se ele venceu...
                 bolinhaX.classList.add("verde");
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
@@ -476,7 +428,8 @@ const criarBolinhas = (t,cor,posicao,indexColuna,tempo) => {
         }
         if(modoContraBot && cor[0] === 0){
             game.removeEventListener("click",cliqueJogador);
-            window.setTimeout(automatizarJogador2,2000); // BOT AQUI!!
+            let deley = PegarNumeroAleatorio(1000, 5000);
+            window.setTimeout(automatizarJogador2,deley); // BOT AQUI!!
         }
     }
 }
@@ -488,11 +441,10 @@ const reiniciaTimer = (timerParaZerar,timerIniciado) => {
 
 const cliqueJogador = (e) => {
     reiniciaTimer(timerValor,timerAtual);
-    let tempo = timerValor.innerText;
     if (e.target.className === 'torre') { //só o e.target de uma torre passa
         const torre = e.target; //só pra deixar mais explícito que é uma torre
         const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
-        criarBolinhas(torre,cor,posicao,indexColuna,tempo); //chama a função para criar a bola nesta torre
+        criarBolinhas(torre,cor,posicao,indexColuna); //chama a função para criar a bola nesta torre
     }
 }
 
