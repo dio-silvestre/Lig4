@@ -586,7 +586,7 @@ btn_davis.addEventListener("click", vsDavis=()=>{
     const alertaPagamento = document.getElementById("aviso-pagamento")
      
     alertaPagamento.className = 'alerta empate-alerta'; 
-    alertaPagamento.innerText = 'Assine no plano mensal por apenas R$ 99,90';
+    alertaPagamento.innerText = 'Assine nosso plano mensal por apenas R$ 99,90';
     let form = document.getElementsByClassName("form")[0];
     form.appendChild(alertaPagamento); 
     window.clearInterval(timerAtual);
