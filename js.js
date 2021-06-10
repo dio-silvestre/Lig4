@@ -1,11 +1,13 @@
 const game = document.getElementById("game");
 
+const body = document.getElementsByTagName("body")[0];
 const placar1 = document.getElementsByClassName("placar--pontos")[0];
 const placarFundo1 = placar1.closest('.placar');
 const placar2 = document.getElementsByClassName("placar--pontos")[1];
 const placarFundo2 = placar2.closest('.placar');
-const timerValor = document.querySelector("#valor-timer")
-const caixaTimer = document.getElementById("timer")
+const timerValor = document.querySelector("#valor-timer");
+const caixaTimer = document.getElementById("timer");
+const aviso = document.getElementById("aviso-nome");
 
 const pronto = document.getElementById("pronto");
 const placar = document.getElementById("caixa-placar");
@@ -38,7 +40,7 @@ let somBolinha = new Audio();
 somBolinha.src = './sounds/boing-sfx.mp3';
 
 let somVitoria = new Audio();
-somVitoria.src = './sounds/victoryff-swf.mp3';
+somVitoria.src = './sounds/badass-victory.wav';
 
 let somEmpate = new Audio();
 somEmpate.src = './sounds/game-over.wav';
@@ -340,6 +342,7 @@ const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
         bolinhaX.style.borderRadius = '0';
         placarFundo.style.backgroundColor = cor;
         placar2.style.color = 'black';
+        body.style.backgroundImage = "url(./img/fundo-de-moedas.jpg)";
     }
 }
 
@@ -354,7 +357,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         let indexLinha = 5-pos; //variavel com a linha clicada
         if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
             bolinhaX.classList.add("bolinhaJogador1"); //Classe das bolinhas do jogador 1
-            easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','blue');
+            easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','dodgerblue');
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             somBolinha.play();
             if(vitoriaLinha(posicao,indexLinha,1) 
@@ -377,8 +380,12 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 somVitoria.play();
             }
             cor[0] = 0; //Alterna de jogador para a próxima jogada
-            placarFundo1.style.opacity = '0.5';
+            placarFundo1.style.opacity = '0.6';
+            placarFundo1.style.border = '2px dashed white';
+            placarFundo1.style.borderRight = 'none';
             placarFundo2.style.opacity = '1';
+            placarFundo2.style.border = '2px solid white';
+            placarFundo2.style.borderLeft = 'none';
         } else { //Esse bloco se refere ao jogador 2
             bolinhaX.classList.add("bolinhaJogador2"); //Classe das bolinhas do jogador 2
             easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
@@ -405,7 +412,11 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             }
             cor[0] = 1; //Alterna de jogador para a próxima jogada
             placarFundo1.style.opacity = '1';
-            placarFundo2.style.opacity = '0.5';
+            placarFundo1.style.border = '2px solid white';
+            placarFundo1.style.borderRight = 'none';
+            placarFundo2.style.opacity = '0.6';
+            placarFundo2.style.border = '2px dashed white';
+            placarFundo2.style.borderLeft = 'none';
         }
         t.appendChild(bolinhaX); // Por fim, põe a bolinha criada no jogo
         if (deuEmpate(posicao)) { //Preencheram tudo
@@ -450,11 +461,11 @@ iniciar.addEventListener("click", () => {
 pronto.addEventListener("click", () => {
     
     if (jogador1.value === "") {
-        alert("Por favor, preencha o campo Jogador 1");
+        aviso.innerHTML = "Por favor, preencha o campo Jogador 1";
         jogador1.focus();
     }
     else if (jogador2.value === "") {
-        alert("Por favor, preencha o campo Jogador 2");
+        aviso.innerHTML = "Por favor, preencha o campo Jogador 2";
         jogador2.focus();
     } else {
     
