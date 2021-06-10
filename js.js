@@ -509,7 +509,7 @@ iniciar.addEventListener("click", () => {
     somClick.play();
 });
 
-//Tela de nomes dos jogadores vai para o jogo
+//Sai da tela de nomes dos jogadores e inicia o jogo
 pronto.addEventListener("click", () => {
     
     if (jogador1.value === "") {
@@ -532,6 +532,8 @@ pronto.addEventListener("click", () => {
 
         jogadores.push(jogador1.value);
         jogadores.push(jogador2.value);
+
+        modoContraBot = false;
 
         somClick.play();
     }
