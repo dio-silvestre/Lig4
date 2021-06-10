@@ -67,7 +67,7 @@ function escolherTorre(col){
 }
 
 
-const vitoriaLinha = (arr,indexLinha,jogador) => {
+const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
     //verificar se ocorreu vitoria no sentido horizontal
     //arr = posicao
     //indexLinha captura a posição da linha da ultima jogada
@@ -81,12 +81,9 @@ const vitoriaLinha = (arr,indexLinha,jogador) => {
                 
                 let pos = i;
                 let t;
-                console.log(pos);
-
-                console.log(indexLinha);
-
-                for(let k = pos; k >= pos-3;k--){
-                    if(k != pos){
+            
+                for(let k = pos; k > pos-4;k--){
+                    if(indexColuna != k){
                         t = escolherTorre(k);
                         t.childNodes[5-indexLinha].classList.add("verde");
                     }else{
@@ -118,7 +115,6 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
             if(contador === 4){ 
                 let t = escolherTorre(indexColuna);
                 let tam = t.childElementCount;
-                console.log(tam);
                 for(let k = tam-1; k>tam-4;k--){
                     t.childNodes[k].classList.add("verde");
                 }
@@ -360,12 +356,12 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','dodgerblue');
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(vitoriaLinha(posicao,indexLinha,1) 
+            if(vitoriaLinha(posicao,indexLinha,indexColuna,1) 
                 || vitoriaColuna(posicao,indexColuna,1) 
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
-                bolinhaX.className = "verde";
+                bolinhaX.classList.add("verde");
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'alerta vitoria-alerta1'; //Classe da tag p para estilizar no CSS
@@ -391,12 +387,12 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(vitoriaLinha(posicao,indexLinha,2)
+            if(vitoriaLinha(posicao,indexLinha,indexColuna,2)
                 || vitoriaColuna(posicao,indexColuna,2)
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
                 //Se ele venceu...
-                bolinhaX.className = "verde";
+                bolinhaX.classList.add("verde");
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'alerta vitoria-alerta2'; //Classe da tag p para estilizar no CSS
