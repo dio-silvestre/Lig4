@@ -67,7 +67,7 @@ function escolherTorre(col){
 }
 
 
-const vitoriaLinha = (arr,indexLinha,jogador) => {
+const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
     //verificar se ocorreu vitoria no sentido horizontal
     //arr = posicao
     //indexLinha captura a posição da linha da ultima jogada
@@ -77,16 +77,14 @@ const vitoriaLinha = (arr,indexLinha,jogador) => {
     for(let i = 0;i < arr[indexLinha].length;i++) { 
         if(arr[indexLinha][i] === jogador){ //<-- só interessa percorrer a linha clicada
             contador++; //se achou bolinha soma contador
+            console.log(contador);
             if(contador === 4){ 
                 
                 let pos = i;
                 let t;
-                console.log(pos);
-
-                console.log(indexLinha);
-
-                for(let k = pos; k >= pos-3;k--){
-                    if(k != pos){
+            
+                for(let k = pos; k > pos-4;k--){
+                    if(indexColuna != k){
                         t = escolherTorre(k);
                         t.childNodes[5-indexLinha].classList.add("verde");
                     }else{
@@ -118,7 +116,6 @@ const vitoriaColuna = (arr,indexColuna,jogador) => {
             if(contador === 4){ 
                 let t = escolherTorre(indexColuna);
                 let tam = t.childElementCount;
-                console.log(tam);
                 for(let k = tam-1; k>tam-4;k--){
                     t.childNodes[k].classList.add("verde");
                 }
@@ -220,8 +217,8 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         indexColuna--;
                         console.log("Coluna pegada: "+coluna);
                     
-                }
-            }
+                    }   
+                }   
                 return true; //4 bolinhas = vitória
             }
         }else{
@@ -313,9 +310,9 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         console.log("Coluna pegada: "+coluna);
                         
                     
-                }
+                    }
                 
-            }
+                }
                 return true; //4 bolinhas = vitória
             }
         }else{
@@ -355,23 +352,25 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
         let bolinhaX = document.createElement("div"); //a bolinha no DOM
         pos = t.childElementCount;  //variavel para ter uma referencia de qual linha foi clicada
         let indexLinha = 5-pos; //variavel com a linha clicada
+        timerAtual = setInterval(timer, 1000);
         if(cor[0] === 1){ //Esse bloco se refere ao jogador 1
             bolinhaX.classList.add("bolinhaJogador1"); //Classe das bolinhas do jogador 1
             easterEgg(jogador1.value,bolinhaX,placarFundo1,'kenzie','dodgerblue');
             posicao[indexLinha][indexColuna] = 1; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(vitoriaLinha(posicao,indexLinha,1) 
+            if(vitoriaLinha(posicao,indexLinha,indexColuna,1) 
                 || vitoriaColuna(posicao,indexColuna,1) 
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,1)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,1)) {
                 //Se ele venceu...
-                bolinhaX.className = "verde";
+                bolinhaX.classList.add("verde");
                 placar1.innerText = Number(placar1.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); // Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'alerta vitoria-alerta1'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = `${jogadores[0]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
+                reiniciaTimer(timerValor,timerAtual);
 
                 let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
@@ -391,18 +390,19 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             easterEgg(jogador2.value,bolinhaX,placarFundo2,'pato','yellow');
             posicao[indexLinha][indexColuna] = 2; //salva posicao da bolinha adicionada
             somBolinha.play();
-            if(vitoriaLinha(posicao,indexLinha,2)
+            if(vitoriaLinha(posicao,indexLinha,indexColuna,2)
                 || vitoriaColuna(posicao,indexColuna,2)
                 || vitoriaDiagonal1(posicao,indexLinha,indexColuna,2)
                 || vitoriaDiagonal2(posicao,indexLinha,indexColuna,2)) {
                 //Se ele venceu...
-                bolinhaX.className = "verde";
+                bolinhaX.classList.add("verde");
                 placar2.innerText = Number(placar2.innerText)+1;
                 let vitoriaAlerta = document.createElement("p"); //Cria tag p para por a mensagem
                 vitoriaAlerta.className = 'alerta vitoria-alerta2'; //Classe da tag p para estilizar no CSS
                 vitoriaAlerta.innerText = `${jogadores[1]} venceu!!`; //Texto que terá na tag p
                 game.appendChild(vitoriaAlerta); //Coloca a tag p na tela
                 jogoAcabou = true; //Variável para verificar se o jogo acabou
+                reiniciaTimer(timerValor,timerAtual);
 
                 let img = document.createElement("img");
                 img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
@@ -425,27 +425,34 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             empateAlerta.innerText = 'Empate!!'; //Texto que terá na tag p
             game.appendChild(empateAlerta); //Coloca a tag p na tela
             jogoAcabou = true; //Variável para verificar se o jogo acabou
+            window.clearInterval(timerAtual);
 
             let img = document.createElement("img");
-                img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
-                img.id = 'vitoria'
-                game.appendChild(img)
-                somEmpate.play();
+            img.setAttribute('src', 'https://i.pinimg.com/originals/8c/a1/02/8ca102a811768049d3c329f9d471130a.gif');
+            img.id = 'vitoria'
+            game.appendChild(img)
+            somEmpate.play();
         }
-        timerAtual = setInterval(timer, 1000);
+        
     }
+}
+
+const reiniciaTimer = (timerParaZerar,timerIniciado) => {
+    window.clearInterval(timerIniciado);
+    timerParaZerar.innerText = '0';
 }
 
 //Técnica Event Delegation:
 game.addEventListener("click",(e) => { 
     //'e' é o parametro event do addEventListener ele recebe e.target de tudo que recebeu o clique dentro da div game
-    window.clearInterval(timerAtual);
-    timerValor.innerText = '0';
+    game.style.pointerEvents='none';
+    reiniciaTimer(timerValor,timerAtual);
     if (e.target.className === 'torre') { //só o e.target de uma torre passa
         const torre = e.target; //só pra deixar mais explícito que é uma torre
         const indexColuna = Number(torre.id[1]) - 1; //o id das torres tem o índice delas +1 (t1, t2, t3...) OBS: talvez seja melhor usar dataset
         criarBolinhas(torre,cor,posicao,indexColuna); //chama a função para criar a bola nesta torre
     }
+    game.style.pointerEvents='auto';
 });
 
 const iniciar = document.getElementById("iniciar");
@@ -488,6 +495,7 @@ pronto.addEventListener("click", () => {
 
 let btn_reiniciar = document.getElementById("reiniciar");
 btn_reiniciar.addEventListener("click", reiniciar=()=>{
+    reiniciaTimer(timerValor,timerAtual);
     let pai = document.querySelectorAll('.torre');
     for(let i=0; i<pai.length; i++){
         pai[i].innerHTML = "";
@@ -522,4 +530,24 @@ btn_zerar.addEventListener("click", zerar=()=>{
 });
 
 
+function changeToOne() {
+    const s1 = document.getElementById('s1');
+    const s2 = document.getElementById('s2');
 
+    s2.disabled = true;
+    s1.disabled = false;
+}
+
+function changeToTwo() {
+    const s1 = document.getElementById('s1');
+    const s2 = document.getElementById('s2');
+
+    s1.disabled = true;
+    s2.disabled = false;
+}
+
+const activate1 = document.getElementById('activate1');
+const activate2 = document.getElementById('activate2');
+
+activate1.addEventListener('click', changeToOne);
+activate2.addEventListener('click', changeToTwo);
