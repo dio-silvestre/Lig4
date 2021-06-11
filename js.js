@@ -357,7 +357,7 @@ const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
     if(nome.toLowerCase() === img){
         bolinhaX.classList.add(img);
         bolinhaX.style.borderRadius = '0';
-        placarFundo.style.backgroundColor = cor;
+        placarFundo.classList.add(cor);
         placar2.style.color = 'black';
         body.classList.add('fundo-easter-egg');
     }
@@ -455,7 +455,6 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             placarFundo2.style.borderLeft = 'none';
             //variável para o Kenzinho:
             ultimaJogadaKenzinho = [indexLinha,indexColuna];
-            console.log(ultimaJogadaKenzinho);
         }
         t.appendChild(bolinhaX);
         if (deuEmpate(posicao)) { 
@@ -576,6 +575,8 @@ btn_zerar.addEventListener("click", zerar=()=>{
 let btn_trocarNomes = document.getElementById("trocar-nome");
 btn_trocarNomes.addEventListener("click", trocarNomes=()=> {
     body.classList.remove('fundo-easter-egg');
+    placarFundo1.classList.remove('dodgerblue');
+    placarFundo2.classList.remove('yellow');
     jogadores = [];
     game.style.display = "none";
     form.style.display = "block";

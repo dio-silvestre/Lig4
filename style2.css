@@ -33,9 +33,11 @@ body{
     background-size: cover;
 }
 
+/* CLASSE DO EASTER EGG */
 .fundo-easter-egg{
     background-image: url(./img/fundo-de-moedas.jpg);
 }
+/* CLASSE DO EASTER EGG */
 
 img{
     position: absolute;
@@ -347,19 +349,29 @@ button:active {
     width: 50%;
     height: 3rem;
 }
-#placar-jogador-1{
+.placar-jogador-1{
     background: radial-gradient(circle at 65% 15%, white 1px, rgb(0, 132, 255) 15%, rgb(0, 25, 139) 60%, aqua 100%);  
     border-radius: 50px 0 0 50px;
     border: 2px solid white;
     border-right: none;
 }
-#placar-jogador-2{
+.placar-jogador-2{
     background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 67, 20) 15%, rgb(46, 35, 27) 60%, crimson 100%);
     border-radius: 0 50px 50px 0;
     border: 2px dashed white;
     border-left: none;
     opacity: 0.6;
 }
+
+/* CLASSES EASTER-EGG */
+.dodgerblue{
+    background: dodgerblue;
+}
+.yellow{
+    background: yellow;
+}
+/* CLASSES EASTER-EGG */
+
 .placar--pontos{
     color: white;
     font-size: 2.5rem;
