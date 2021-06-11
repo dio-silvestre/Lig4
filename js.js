@@ -18,6 +18,7 @@ const jogador2 = document.getElementById("jogador2");
 const boxBot = document.getElementById('box-bot');
 let jogadores = [];
 let modoContraBot = false;
+let ultimaJogadaKenzinho = [];
 
 let cor = [];   //variavel para alternar de jogador em cada turno
 cor[0] = 1;
@@ -452,6 +453,9 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             placarFundo2.style.opacity = '0.6';
             placarFundo2.style.border = '2px dashed white';
             placarFundo2.style.borderLeft = 'none';
+            //variável para o Kenzinho:
+            ultimaJogadaKenzinho = [indexLinha,indexColuna];
+            console.log(ultimaJogadaKenzinho);
         }
         t.appendChild(bolinhaX);
         if (deuEmpate(posicao)) { 
@@ -616,7 +620,7 @@ btn_davis.addEventListener("click", vsDavis=()=>{
     const alertaPagamento = document.getElementById("aviso-pagamento")
      
     alertaPagamento.className = 'alerta empate-alerta'; 
-    alertaPagamento.innerText = 'Assine no plano mensal por apenas R$ 99,90';
+    alertaPagamento.innerText = 'Assine nosso plano mensal por apenas R$ 99,90';
     let form = document.getElementsByClassName("form")[0];
     form.appendChild(alertaPagamento); 
     window.clearInterval(timerAtual);
