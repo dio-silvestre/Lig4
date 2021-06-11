@@ -359,7 +359,7 @@ const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
         bolinhaX.style.borderRadius = '0';
         placarFundo.style.backgroundColor = cor;
         placar2.style.color = 'black';
-        body.style.backgroundImage = "url(./img/fundo-de-moedas.jpg)";
+        body.classList.add('fundo-easter-egg');
     }
 }
 
@@ -575,6 +575,7 @@ btn_zerar.addEventListener("click", zerar=()=>{
 //Alterar os nomes dos jogadores
 let btn_trocarNomes = document.getElementById("trocar-nome");
 btn_trocarNomes.addEventListener("click", trocarNomes=()=> {
+    body.classList.remove('fundo-easter-egg');
     jogadores = [];
     game.style.display = "none";
     form.style.display = "block";

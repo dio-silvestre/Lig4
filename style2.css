@@ -33,6 +33,10 @@ body{
     background-size: cover;
 }
 
+.fundo-easter-egg{
+    background-image: url(./img/fundo-de-moedas.jpg);
+}
+
 img{
     position: absolute;
 }
