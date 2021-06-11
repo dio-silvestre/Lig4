@@ -49,7 +49,6 @@ ul li{
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
-
 }
 
 ul li span{
@@ -57,7 +56,6 @@ ul li span{
     height: 30px;
     line-height: 30px;
     width: 100% ;
-    
 }
 
 .audio{
@@ -87,7 +85,6 @@ ul li span{
     transform: scale(1.4, 1.4);
     transition: 0.4s; 
 }
-
 
 
 header {
@@ -221,12 +218,22 @@ button:active {
         margin-top: 4rem;
     }
 
+    #aviso-pagamento{
+        display: flex;
+        justify-content: center;
+        margin: 50px;
+    }
+
 #jogador1 {
     background-color: rgba(78, 118, 251, 0.767);
 }
 
 #jogador2 {
     background-color: rgba(255, 54, 54, 0.767);
+}
+
+.teste{
+    display: none;
 }
 
 #game{
@@ -256,7 +263,6 @@ button:active {
     background: rgba(255, 255, 255, 0.87);
 }
 
-
 .bolinhaJogador1{
     height: 30px;
     width: 36px;
@@ -278,7 +284,6 @@ button:active {
     height: 25px;
     width: 36px;
     pointer-events: none;
-    border: green 2px solid;
 }
 
 .pato{
@@ -437,22 +442,39 @@ button:active {
 
     #caixa-placar{
         width: calc(var(--largura-display)/2);
+        position: relative;
+        top: -60px;
     }
 
     #timer{
         min-width: 4rem;
         font-size: 2rem;
     }
+
+    .hidden{
+        position: relative;
+        top: -50px;
+        margin-top: 44px;
+        margin-bottom: 20px;
+    }
 }
 @media (min-width:600px) {
     :root{
         --largura-display: 600px;
     }
+
     #game{
         height: 450px;
         width: var(--largura-display);
     }
-    
+
+    #aviso-pagamento{
+        display: flex;
+        justify-content: center;
+        margin: 50px;
+        font-size: 3rem;
+    }
+
     .torre{
         width: 100px;
         height: 450px;
@@ -460,12 +482,12 @@ button:active {
 
     .bolinhaJogador1{
         height: 75px;
-        width: 75px;
+        width: 81px;
     }
     
     .bolinhaJogador2{
         height: 75px;
-        width: 75px;
+        width: 81px;
     }
     .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
         padding: 20px;
@@ -475,6 +497,12 @@ button:active {
 
     #caixa-placar{
         width: calc(var(--largura-display)/2);
+        top: 0px;
+    }
+
+    .hidden{
+        position: relative;
+        top: 0px
     }
 
 }     
@@ -518,8 +546,6 @@ button:active {
     .verde{
         height: 100px;
         width: 100px;
-        
-        
     }
     
     .bolinhaJogador2{

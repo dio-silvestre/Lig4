@@ -49,7 +49,6 @@ ul li{
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
-
 }
 
 ul li span{
@@ -87,7 +86,6 @@ ul li span{
     transform: scale(1.4, 1.4);
     transition: 0.4s;
 }
-
 
 
 header {
@@ -186,10 +184,6 @@ button:active {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
-.form label{
-    font-size: 1rem;
-    font-family: sans-serif;
-}
 
 .jogadores-form {
     display: flex;
@@ -225,12 +219,22 @@ button:active {
         margin-top: 4rem;
     }
 
+    #aviso-pagamento{
+        display: flex;
+        justify-content: center;
+        margin: 50px;
+    }
+
 #jogador1 {
     background-color: rgba(78, 118, 251, 0.767);
 }
 
 #jogador2 {
     background-color: rgba(255, 54, 54, 0.767);
+}
+
+.teste{
+    display: none;
 }
 
 #game{
@@ -260,12 +264,10 @@ button:active {
     background: rgba(255, 255, 255, 0.87);
 }
 
-
 .bolinhaJogador1{
     height: 30px;
     width: 36px;
     border-radius: 100%;
-
     background: radial-gradient(circle at 65% 15%, white 1px, #0085ff 15%, darkblue 60%, aqua 100%);  
     pointer-events: none;
 }
@@ -274,7 +276,6 @@ button:active {
     height: 30px;
     width: 36px;
     border-radius: 100%;
-
     background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(59, 0, 0) 60%, crimson 100%);
     pointer-events: none;
 }
@@ -441,20 +442,37 @@ button:active {
 
     #caixa-placar{
         width: calc(var(--largura-display)/2);
+        position: relative;
+        top: -60px;
     }
 
     #timer{
         min-width: 4rem;
         font-size: 2rem;
     }
+
+    .hidden{
+        position: relative;
+        top: -50px;
+        margin-top: 44px;
+        margin-bottom: 20px;
+    }
 }
 @media (min-width:600px) {
     :root{
         --largura-display: 600px;
     }
+
     #game{
         height: 450px;
         width: var(--largura-display);
+    }
+
+    #aviso-pagamento{
+        display: flex;
+        justify-content: center;
+        margin: 50px;
+        font-size: 3rem;
     }
     
     .torre{
@@ -479,6 +497,12 @@ button:active {
 
     #caixa-placar{
         width: calc(var(--largura-display)/2);
+        top: 0px;
+    }
+
+    .hidden{
+        position: relative;
+        top: 0px
     }
 }     
 @media (min-width:801px) { 
@@ -584,38 +608,38 @@ button:active {
 
     
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #vitoria{
-        animation-name: efeitoSumir;
-        animation-duration: 4s;
-        animation-fill-mode: both;
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #vitoria{
+    animation-name: efeitoSumir;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+    @keyframes efeitoSumir {
+    0% {
+    opacity: 1;
     }
-        @keyframes efeitoSumir {
-        0% {
+    50%{
         opacity: 1;
-        }
-        50%{
-            opacity: 1;
-        }
-        100% {
-        opacity: 0;
-        }
-        }
-
-
-    .verde {
-        animation-name: tremer;
-        animation-duration: 0.5s;
-        animation-fill-mode: both;
-        animation-iteration-count: infinite;
-        }
-    @keyframes tremer {
-        0%, 100% {
-        transform: translate3d(0, 0, 0);
-        }
-        10%, 30%, 50%, 70%, 90% {
-        transform: translate3d(-5px, 0, 0);
-        }
-        20%, 40%, 60%, 80% {
-        transform: translate3d(5px, 0, 0);
-        }
     }
+    100% {
+    opacity: 0;
+    }
+    }
+
+
+.verde {
+    animation-name: tremer;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    }
+@keyframes tremer {
+    0%, 100% {
+    transform: translate3d(0, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-5px, 0, 0);
+    }
+    20%, 40%, 60%, 80% {
+    transform: translate3d(5px, 0, 0);
+    }
+}

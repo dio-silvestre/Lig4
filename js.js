@@ -161,7 +161,7 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = diagonal.lengthdiagonal.length-11-i;
+                        topo = diagonal.length-1-i;
                     }
                 }
                 
@@ -301,6 +301,7 @@ const timer = () => {
             game.appendChild(vitoriaAlerta); 
             jogoAcabou = true; 
             reiniciaTimer(timerValor,timerAtual);
+            
         }else{
             placar1.innerText = Number(placar1.innerText)+1;
             let vitoriaAlerta = document.createElement("p");
@@ -316,7 +317,7 @@ const timer = () => {
         img.id = 'vitoria';
         game.appendChild(img)
         somVitoria.play();
-
+        window.setTimeout(removerImgVitoria,3500);
     }
 }
 
@@ -383,7 +384,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 img.id = 'vitoria';
                 game.appendChild(img)
                 somVitoria.play();
-                window.setTimeout(removerImgVitoria,4000);
+                window.setTimeout(removerImgVitoria,3500);
             }
             cor[0] = 0;
             placarFundo1.style.opacity = '0.6';
@@ -412,7 +413,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 img.id = 'vitoria';
                 game.appendChild(img)
                 somVitoria.play();
-                window.setTimeout(removerImgVitoria,4000);
+                window.setTimeout(removerImgVitoria,3500);
             }
             cor[0] = 1;
             placarFundo1.style.opacity = '1';
@@ -436,7 +437,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             img.id = 'vitoria'
             game.appendChild(img)
             somEmpate.play();
-            window.setTimeout(removerImgVitoria,4000);
+            window.setTimeout(removerImgVitoria,3500);
         }
         if(modoContraBot && cor[0] === 0){
             game.removeEventListener("click",cliqueJogador);
@@ -545,15 +546,10 @@ btn_trocarNomes.addEventListener("click", trocarNomes=()=> {
     form.style.display = "block";
     placar.style.display = "none";
     caixaTimer.style.display = "none";
+
     
     for (let i = 0; i < hidden.length; i++) {
         hidden[i].style.display = "none";
-    }
-
-    if (s2.disabled === true) {
-        changeToOne();
-    } else {
-        changeToTwo();
     }
 
     reiniciar();
@@ -585,11 +581,11 @@ btn_bot.addEventListener("click", vsBot=()=>{
     somClick.play();
 })
 
-//Jogar contra o bot Davis
+//Jogar contra o bot Davis #sqn
 let btn_davis = document.getElementById("davis");
 btn_davis.addEventListener("click", vsDavis=()=>{
-    let alertaPagamento = document.createElement("p")
-    alertaPagamento.id = "aviso-pagamento"; 
+    let alertaPagamento = document.createElement("p");
+    alertaPagamento.id = "aviso-pagamento";
     alertaPagamento.innerText = "Assine nosso plano mensal por apenas R$ 99,90";
     let form = document.getElementsByClassName("form")[0];
     form.appendChild(alertaPagamento);
