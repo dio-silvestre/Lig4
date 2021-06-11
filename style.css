@@ -19,15 +19,13 @@ time, audio, video {
 
 body{
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/background2.jpg");
+    background-image: linear-gradient(rgb(255 255 255 / 53%),rgb(75 75 75 / 50%)) , url("./img/background2.jpg");
     background-size: cover;
 }
 
 img{
     position: absolute;
-    
 }
-
 
 ul{
     position: absolute;
@@ -64,6 +62,7 @@ ul li span{
 
 .audio{
     display: none;
+    width: 70px;
     cursor: pointer;
 }
 /* ul li span:nth-child(1){ */ .dark{
@@ -175,8 +174,6 @@ button:active {
     transition-duration: 0.25s;
   }
 
-#iniciar {}
-
 .hidden {
     display: none;
 }
@@ -245,7 +242,7 @@ button:active {
     align-items: flex-end;
     justify-content: space-around;
     margin: auto;
-    padding-bottom:20px;
+    padding-bottom: 20px;
 }
 
 .torre{
@@ -319,7 +316,7 @@ button:active {
 .vitoria-alerta2{
     background-color: rgb(139, 0, 0);
 }
-.empate-alerta{
+.empate-alerta, #aviso-pagamento{
     background-color: rgb(0, 139, 58);
 }
 
@@ -367,6 +364,7 @@ button:active {
     align-items: center;
     height: 3rem;
     min-width: 2rem;
+    font-family: emoji;
 }
 
 
@@ -374,7 +372,7 @@ button:active {
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
     animation-name: SlideParaBaixoGiratorio;
-    animation-duration: 1.5s;
+    animation-duration: 1.3s;
     animation-fill-mode: both;
     }
     @keyframes SlideParaBaixoGiratorio {
@@ -386,12 +384,13 @@ button:active {
         /* transform: rotate3d(0, 0, 1, -200deg); */
         }
         50% {
-        opacity: 1;
+        opacity: 0.5;
         animation-timing-function: ease-out;
         transform: translateY(-100px);
         visibility: visible; 
         }
         100% {
+        opacity: 1;
         animation-timing-function: ease-in;
         transform: translateY(0) rotate(none);
         }
@@ -403,9 +402,11 @@ button:active {
     :root{
         --largura-display: 400px;
     }
+
     #regras {
         font-size: 2rem;
     }
+
     header h1 {
         margin-top: 4rem;
         font-size: 5.5rem;
@@ -432,7 +433,7 @@ button:active {
         width: 53px;
     }
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
         padding: 20px;
         font-size: 3rem;
         bottom: 300px;
@@ -470,7 +471,7 @@ button:active {
         height: 75px;
         width: 81px;
     }
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
         padding: 20px;
         font-size: 5rem;
         bottom: 300px;
@@ -527,7 +528,7 @@ button:active {
         width: 100px;
     }
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     padding: 20px;
     font-size: 7rem;
     bottom: 300px;
@@ -552,7 +553,7 @@ button:active {
 }
 
 /* EFEITO 2 */
-.vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     animation-name: efeitoBorracha;
     animation-duration: 1s;
     animation-fill-mode: both;

@@ -25,8 +25,6 @@ body{
 
 img{
     position: absolute;
-    
-    
 }
 
 ul{
@@ -145,6 +143,10 @@ span {
         -webkit-text-stroke-color: #000;
     }
 
+    .texto-completo {
+        display: none;
+    }
+
 button {
     margin: 1.5rem;
     background: rgba(211, 213, 218, 0.808);
@@ -171,8 +173,6 @@ button:active {
     transform: translateY(4px);
     transition-duration: 0.25s;
   }
-
-#iniciar {}
 
 .hidden {
     display: none;
@@ -217,6 +217,10 @@ button:active {
         background-color: rgba(138, 246, 123, 0.808);
     }
 
+    .paragrafo-kenzinho, .paragrafo-davis {
+        margin-top: 4rem;
+    }
+
 #jogador1 {
     background-color: rgba(78, 118, 251, 0.767);
 }
@@ -234,11 +238,12 @@ button:active {
     align-items: flex-end;
     justify-content: space-around;
     margin: auto;
+    padding-bottom: 20px;
 }
 
 .torre{
     width: 50px;
-    height: 150px;
+    height: 180px;
     border: solid 2px rgb(0, 0, 0);
     display: flex;
     flex-direction: column-reverse;
@@ -253,16 +258,16 @@ button:active {
 
 
 .bolinhaJogador1{
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 36px;
     border-radius: 100%;
     background: radial-gradient(circle at 65% 15%, white 1px, aqua 15%, darkblue 60%, aqua 100%);  
     pointer-events: none;
 }
 
 .bolinhaJogador2{
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 36px;
     border-radius: 100%;
     background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(46, 27, 27) 60%, crimson 100%);
     pointer-events: none;
@@ -271,7 +276,7 @@ button:active {
 
 .verde{
     height: 25px;
-    width: 25px;
+    width: 36px;
     pointer-events: none;
     border: green 2px solid;
 }
@@ -307,7 +312,7 @@ button:active {
 .vitoria-alerta2{
     background-color: rgb(139, 0, 0);
 }
-.empate-alerta{
+.empate-alerta, #aviso-pagamento{
     background-color: rgb(0, 139, 58);
 }
 
@@ -355,6 +360,7 @@ button:active {
     align-items: center;
     height: 3rem;
     min-width: 2rem;
+    font-family: emoji;
 }
 
 
@@ -362,7 +368,7 @@ button:active {
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
     animation-name: SlideParaBaixoGiratorio;
-    animation-duration: 1.5s;
+    animation-duration: 1.3s;
     animation-fill-mode: both;
     }
     @keyframes SlideParaBaixoGiratorio {
@@ -374,12 +380,13 @@ button:active {
         /* transform: rotate3d(0, 0, 1, -200deg); */
         }
         50% {
-        opacity: 1;
+        opacity: 0.5;
         animation-timing-function: ease-out;
         transform: translateY(-100px);
         visibility: visible; 
         }
         100% {
+        opacity: 1;
         animation-timing-function: ease-in;
         transform: translateY(0) rotate(none);
         }
@@ -409,20 +416,20 @@ button:active {
     
     .torre{
         width: 100px;
-        height: 300px;
+        height: 360px;
     }
 
     .bolinhaJogador1{
-        height: 50px;
-        width: 50px;
+        height: 60px;
+        width: 53px;
     }
     
     .bolinhaJogador2{
-        height:50px ;
-        width: 50px;
+        height:60px ;
+        width: 53px;
     }
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
         padding: 20px;
         font-size: 3rem;
         bottom: 300px;
@@ -460,7 +467,7 @@ button:active {
         height: 75px;
         width: 75px;
     }
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
         padding: 20px;
         font-size: 5rem;
         bottom: 300px;
@@ -479,6 +486,14 @@ button:active {
     header h1 {
         margin-top: 6rem;
         font-size: 7rem;
+    }
+
+    .texto-completo {
+        display: block;
+    }
+
+    .texto-reduzido {
+        display: none;
     }
 
     #reiniciar {
@@ -512,7 +527,7 @@ button:active {
         width: 100px;
     }
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     padding: 20px;
     font-size: 7rem;
     bottom: 300px;
@@ -535,6 +550,37 @@ button:active {
     }
 
 }
+
+/* EFEITO 2 */
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
+    animation-name: efeitoBorracha;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+    @keyframes efeitoBorracha {
+    0% {
+    transform: scale3d(1, 1, 1);
+    }
+    30% {
+    transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+    transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+    transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+    transform: scale3d(.95, 1.05, 1);
+    }
+    75% {
+    transform: scale3d(1.05, .95, 1);
+    }
+    100% {
+    transform: scale3d(1, 1, 1);
+    }
+    }
+
 
 .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #vitoria{
     animation-name: efeitoSumir;

@@ -320,7 +320,7 @@ const timer = () => {
     }
 }
 
-//EASTEREGG
+//EASTER EGG
 const easterEgg = (nome,bolinhaX,placarFundo,img,cor) => {
     if(nome.toLowerCase() === img){
         bolinhaX.classList.add(img);
@@ -540,14 +540,20 @@ btn_zerar.addEventListener("click", zerar=()=>{
 //Alterar os nomes dos jogadores
 let btn_trocarNomes = document.getElementById("trocar-nome");
 btn_trocarNomes.addEventListener("click", trocarNomes=()=> {
-    
+    jogadores = [];
     game.style.display = "none";
     form.style.display = "block";
     placar.style.display = "none";
     caixaTimer.style.display = "none";
-
+    
     for (let i = 0; i < hidden.length; i++) {
         hidden[i].style.display = "none";
+    }
+
+    if (s2.disabled === true) {
+        changeToOne();
+    } else {
+        changeToTwo();
     }
 
     reiniciar();
@@ -582,28 +588,26 @@ btn_bot.addEventListener("click", vsBot=()=>{
 //Jogar contra o bot Davis
 let btn_davis = document.getElementById("davis");
 btn_davis.addEventListener("click", vsDavis=()=>{
-    const alertaPagamento = document.getElementById("aviso-pagamento")
-     
-    alertaPagamento.className = 'alerta empate-alerta'; 
-    alertaPagamento.innerText = 'Assine no plano mensal por apenas R$ 99,90';
+    let alertaPagamento = document.createElement("p")
+    alertaPagamento.id = "aviso-pagamento"; 
+    alertaPagamento.innerText = "Assine nosso plano mensal por apenas R$ 99,90";
     let form = document.getElementsByClassName("form")[0];
-    form.appendChild(alertaPagamento); 
-    window.clearInterval(timerAtual);
+    form.appendChild(alertaPagamento);
+
+    let removerAlerta = document.getElementById("aviso-pagamento");
+    setTimeout(function() { removerAlerta.remove(); }, 4000);
 });
 
+//Alteração de temas
+const s1 = document.getElementById('s1');
+const s2 = document.getElementById('s2');
 
 function changeToOne() {
-    const s1 = document.getElementById('s1');
-    const s2 = document.getElementById('s2');
-
     s2.disabled = true;
     s1.disabled = false;
 }
 
 function changeToTwo() {
-    const s1 = document.getElementById('s1');
-    const s2 = document.getElementById('s2');
-
     s1.disabled = true;
     s2.disabled = false;
 }
