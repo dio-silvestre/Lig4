@@ -11,6 +11,16 @@ time, audio, video {
 	vertical-align: baseline;
 }
 
+@font-face {
+    font-family: 'SC Gum Kids';
+    src: url('./fonts/SCGumKids.ttf');
+}
+
+@font-face {
+    font-family: 'Sniglet';
+    src: url('./fonts/Sniglet.ttf');
+}
+
 :root{
     --largura-display: 280px;
     --fonte-principal: 'SC Gum Kids', sans-serif;
