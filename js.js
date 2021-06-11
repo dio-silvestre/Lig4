@@ -82,6 +82,14 @@ function escolherTorre(col){
     }
 }
 
+function baixo(arr,indexLinha, indeXColuna, topo){
+    if(topo == indexLinha){
+        baixo = topo +2;
+    }else{
+
+    }
+}
+
 // FUNÇÕES DE VERIFICAÇÃO DE VITORIA E EMPATE 
 const vitoriaLinha = (arr,indexLinha,indexColuna,jogador) => {
 
@@ -158,16 +166,26 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         if(diagonal[i] === jogador){
             contador++;
             if(contador === 4){ 
+                console.log("DIAGONAL 1");
                 let topo;
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = diagonal.length-1-i;
+                        topo = 5-i;
                     }
+                }
+
+                let topoColuna = indexColuna +(indexLinha-topo);
+
+                if(diagonal.length == 5 && topo == 2 && topoColuna != 0){
+                    topo = topo -1;
+                }
+
+                if(diagonal.length == 4&& topo == 2 && topoColuna != 6){
+                    topo = topo -2;
                 }
                 
                 if(topo == indexLinha){
-
                     for(let k = 0; k < 4 ; k++){
                         
                         if(indexLinha != topo){
@@ -197,7 +215,8 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         indexColuna--;
                     
                     }   
-                }   
+                }
+                console.log("\n");   
                 return true;
             }
         }else{
@@ -228,20 +247,30 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         if(diagonal[i] === jogador){
             contador++;
             if(contador === 4){ 
+                console.log("DIAGONAL 2");
                 let topo;
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = diagonal.length-1-i;
+                        topo = 5-i;
                     }
+                    
+                }
+            
+                let topoColuna = indexColuna-(indexLinha-topo);
+                if(diagonal.length == 5 && topo == 2 && topoColuna != 6){
+                    topo = topo -1;
+                }
+
+                if(diagonal.length == 4 && topo == 2 && topoColuna != 0){
+                    topo = topo -2;
                 }
                 
                 if(topo == indexLinha){
-
+                    
                     for(let k = 0; k < 4 ; k++){
                         
                         if(indexLinha != topo){
-
                             coluna = 5-indexLinha;
 
                             t = escolherTorre(indexColuna);
@@ -270,6 +299,7 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                     }
                 
                 }
+                console.log("\n");
                 return true;
             }
         }else{
