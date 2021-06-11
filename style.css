@@ -19,15 +19,13 @@ time, audio, video {
 
 body{
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("./img/background2.jpg");
+    background-image: linear-gradient(rgb(255 255 255 / 53%),rgb(75 75 75 / 50%)) , url("./img/background2.jpg");
     background-size: cover;
 }
 
 img{
     position: absolute;
-    
 }
-
 
 ul{
     position: absolute;
@@ -51,7 +49,6 @@ ul li{
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
-
 }
 
 ul li span{
@@ -64,6 +61,7 @@ ul li span{
 
 .audio{
     display: none;
+    width: 70px;
     cursor: pointer;
 }
 /* ul li span:nth-child(1){ */ .dark{
@@ -88,7 +86,6 @@ ul li span{
     transform: scale(1.4, 1.4);
     transition: 0.4s;
 }
-
 
 
 header {
@@ -175,8 +172,6 @@ button:active {
     transition-duration: 0.25s;
   }
 
-#iniciar {}
-
 .hidden {
     display: none;
 }
@@ -188,10 +183,6 @@ button:active {
     color: #F6F6F6;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
-}
-.form label{
-    font-size: 1rem;
-    font-family: sans-serif;
 }
 
 .jogadores-form {
@@ -227,13 +218,13 @@ button:active {
     .paragrafo-kenzinho, .paragrafo-davis {
         margin-top: 4rem;
     }
+
     #aviso-pagamento{
-        
         display: flex;
         justify-content: center;
         margin: 50px;
-
     }
+
 #jogador1 {
     background-color: rgba(78, 118, 251, 0.767);
 }
@@ -241,6 +232,7 @@ button:active {
 #jogador2 {
     background-color: rgba(255, 54, 54, 0.767);
 }
+
 .teste{
     display: none;
 }
@@ -254,7 +246,7 @@ button:active {
     align-items: flex-end;
     justify-content: space-around;
     margin: auto;
-    padding-bottom:20px;
+    padding-bottom: 20px;
 }
 
 .torre{
@@ -272,12 +264,10 @@ button:active {
     background: rgba(255, 255, 255, 0.87);
 }
 
-
 .bolinhaJogador1{
     height: 30px;
     width: 36px;
     border-radius: 100%;
-
     background: radial-gradient(circle at 65% 15%, white 1px, #0085ff 15%, darkblue 60%, aqua 100%);  
     pointer-events: none;
 }
@@ -286,7 +276,6 @@ button:active {
     height: 30px;
     width: 36px;
     border-radius: 100%;
-
     background: radial-gradient(circle at 65% 15%, white 1px, rgb(220, 20, 37) 15%, rgb(59, 0, 0) 60%, crimson 100%);
     pointer-events: none;
 }
@@ -307,7 +296,7 @@ button:active {
 }
 
 
-.vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     padding: 20px;
     font-size: 2rem;
     bottom: 300px;
@@ -328,7 +317,7 @@ button:active {
 .vitoria-alerta2{
     background-color: rgb(139, 0, 0);
 }
-.empate-alerta{
+.empate-alerta, #aviso-pagamento{
     background-color: rgb(0, 139, 58);
 }
 
@@ -376,6 +365,7 @@ button:active {
     align-items: center;
     height: 3rem;
     min-width: 2rem;
+    font-family: emoji;
 }
 
 
@@ -383,7 +373,7 @@ button:active {
 /* EFEITO 1 */
 .bolinhaJogador1, .bolinhaJogador2 {
     animation-name: SlideParaBaixoGiratorio;
-    animation-duration: 1.5s;
+    animation-duration: 1.3s;
     animation-fill-mode: both;
     }
     @keyframes SlideParaBaixoGiratorio {
@@ -395,12 +385,13 @@ button:active {
         /* transform: rotate3d(0, 0, 1, -200deg); */
         }
         50% {
-        opacity: 1;
+        opacity: 0.5;
         animation-timing-function: ease-out;
         transform: translateY(-100px);
         visibility: visible; 
         }
         100% {
+        opacity: 1;
         animation-timing-function: ease-in;
         transform: translateY(0) rotate(none);
         }
@@ -412,9 +403,11 @@ button:active {
     :root{
         --largura-display: 400px;
     }
+
     #regras {
         font-size: 2rem;
     }
+
     header h1 {
         margin-top: 4rem;
         font-size: 5.5rem;
@@ -441,7 +434,7 @@ button:active {
         width: 53px;
     }
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
         padding: 20px;
         font-size: 3rem;
         bottom: 300px;
@@ -466,21 +459,20 @@ button:active {
     }
 }
 @media (min-width:600px) {
-    
     :root{
         --largura-display: 600px;
     }
+
+    #game{
+        height: 450px;
+        width: var(--largura-display);
+    }
+
     #aviso-pagamento{
-        
         display: flex;
         justify-content: center;
         margin: 50px;
         font-size: 3rem;
-
-    }
-    #game{
-        height: 450px;
-        width: var(--largura-display);
     }
     
     .torre{
@@ -497,7 +489,7 @@ button:active {
         height: 75px;
         width: 81px;
     }
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
         padding: 20px;
         font-size: 5rem;
         bottom: 300px;
@@ -518,12 +510,6 @@ button:active {
         --largura-display: 800px;
     }
 
-    #aviso-pagamento{
-        margin-left: 60%;
-        position: absolute;
-        right: 600px;
-        width:500px;
-    }
     header h1 {
         margin-top: 6rem;
         font-size: 7rem;
@@ -566,7 +552,7 @@ button:active {
         width: 100px;
     }
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     padding: 20px;
     font-size: 7rem;
     bottom: 300px;
@@ -591,7 +577,7 @@ button:active {
 }
 
 /* EFEITO 2 */
-.vitoria-alerta1,.vitoria-alerta2, .empate-alerta{
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #aviso-pagamento{
     animation-name: efeitoBorracha;
     animation-duration: 1s;
     animation-fill-mode: both;
@@ -622,38 +608,38 @@ button:active {
 
     
 
-    .vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #vitoria{
-        animation-name: efeitoSumir;
-        animation-duration: 4s;
-        animation-fill-mode: both;
+.vitoria-alerta1,.vitoria-alerta2, .empate-alerta, #vitoria{
+    animation-name: efeitoSumir;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+    @keyframes efeitoSumir {
+    0% {
+    opacity: 1;
     }
-        @keyframes efeitoSumir {
-        0% {
+    50%{
         opacity: 1;
-        }
-        50%{
-            opacity: 1;
-        }
-        100% {
-        opacity: 0;
-        }
-        }
-
-
-    .verde {
-        animation-name: tremer;
-        animation-duration: 0.5s;
-        animation-fill-mode: both;
-        animation-iteration-count: infinite;
-        }
-    @keyframes tremer {
-        0%, 100% {
-        transform: translate3d(0, 0, 0);
-        }
-        10%, 30%, 50%, 70%, 90% {
-        transform: translate3d(-5px, 0, 0);
-        }
-        20%, 40%, 60%, 80% {
-        transform: translate3d(5px, 0, 0);
-        }
     }
+    100% {
+    opacity: 0;
+    }
+    }
+
+
+.verde {
+    animation-name: tremer;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    }
+@keyframes tremer {
+    0%, 100% {
+    transform: translate3d(0, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-5px, 0, 0);
+    }
+    20%, 40%, 60%, 80% {
+    transform: translate3d(5px, 0, 0);
+    }
+}
