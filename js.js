@@ -18,6 +18,7 @@ const jogador2 = document.getElementById("jogador2");
 const boxBot = document.getElementById('box-bot');
 let jogadores = [];
 let modoContraBot = false;
+let ultimaJogadaKenzinho = [];
 
 let cor = [];   //variavel para alternar de jogador em cada turno
 cor[0] = 1;
@@ -78,6 +79,14 @@ function escolherTorre(col){
         return t6;
     }else{
         return t7;
+    }
+}
+
+function baixo(arr,indexLinha, indeXColuna, topo){
+    if(topo == indexLinha){
+        baixo = topo +2;
+    }else{
+
     }
 }
 
@@ -157,16 +166,26 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         if(diagonal[i] === jogador){
             contador++;
             if(contador === 4){ 
+                console.log("DIAGONAL 1");
                 let topo;
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = diagonal.length-1-i;
+                        topo = 5-i;
                     }
+                }
+
+                let topoColuna = indexColuna +(indexLinha-topo);
+
+                if(diagonal.length == 5 && topo == 2 && topoColuna != 0){
+                    topo = topo -1;
+                }
+
+                if(diagonal.length == 4&& topo == 2 && topoColuna != 6){
+                    topo = topo -2;
                 }
                 
                 if(topo == indexLinha){
-
                     for(let k = 0; k < 4 ; k++){
                         
                         if(indexLinha != topo){
@@ -196,7 +215,8 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         indexColuna--;
                     
                     }   
-                }   
+                }
+                console.log("\n");   
                 return true;
             }
         }else{
@@ -227,20 +247,30 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         if(diagonal[i] === jogador){
             contador++;
             if(contador === 4){ 
+                console.log("DIAGONAL 2");
                 let topo;
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = diagonal.length-1-i;
+                        topo = 5-i;
                     }
+                    
+                }
+            
+                let topoColuna = indexColuna-(indexLinha-topo);
+                if(diagonal.length == 5 && topo == 2 && topoColuna != 6){
+                    topo = topo -1;
+                }
+
+                if(diagonal.length == 4 && topo == 2 && topoColuna != 0){
+                    topo = topo -2;
                 }
                 
                 if(topo == indexLinha){
-
+                    
                     for(let k = 0; k < 4 ; k++){
                         
                         if(indexLinha != topo){
-
                             coluna = 5-indexLinha;
 
                             t = escolherTorre(indexColuna);
@@ -269,6 +299,7 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                     }
                 
                 }
+                console.log("\n");
                 return true;
             }
         }else{
@@ -422,6 +453,9 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             placarFundo2.style.opacity = '0.6';
             placarFundo2.style.border = '2px dashed white';
             placarFundo2.style.borderLeft = 'none';
+            //variável para o Kenzinho:
+            ultimaJogadaKenzinho = [indexLinha,indexColuna];
+            console.log(ultimaJogadaKenzinho);
         }
         t.appendChild(bolinhaX);
         if (deuEmpate(posicao)) { 
