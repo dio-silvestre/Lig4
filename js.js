@@ -47,6 +47,9 @@ somVitoria.src = './sounds/badass-victory.wav';
 let somEmpate = new Audio();
 somEmpate.src = './sounds/game-over.wav';
 
+let somGif = new Audio();
+somGif.src = './sounds/xomu-tera.mp3';
+
 
 //Função de verificação da vitória na horizontal
 function escolherTorre(col){
@@ -75,6 +78,14 @@ function escolherTorre(col){
         return t6;
     }else{
         return t7;
+    }
+}
+
+function baixo(arr,indexLinha, indeXColuna, topo){
+    if(topo == indexLinha){
+        baixo = topo +2;
+    }else{
+
     }
 }
 
@@ -154,12 +165,23 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         if(diagonal[i] === jogador){
             contador++;
             if(contador === 4){ 
+                console.log("DIAGONAL 1");
                 let topo;
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
                     if(diagonal[i] == jogador){
-                        topo = diagonal.lengthdiagonal.length-11-i;
+                        topo = 5-i;
                     }
+                }
+
+                let topoColuna = indexColuna +(indexLinha-topo);
+
+                if(diagonal.length == 5 && topo == 2 && topoColuna != 0){
+                    topo = topo -1;
+                }
+
+                if(diagonal.length == 4&& topo == 2 && topoColuna != 6){
+                    topo = topo -2;
                 }
                 
                 if(topo == indexLinha){
@@ -177,7 +199,6 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         indexColuna--;
                     }
                 }else{
-                    console.log("y");
                     indexColuna = indexColuna+(indexLinha-topo);
                     for(let k = 0; k < 4 ; k++){
                         
@@ -193,7 +214,8 @@ const vitoriaDiagonal1 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         indexColuna--;
                     
                     }   
-                }   
+                }
+                console.log("\n");   
                 return true;
             }
         }else{
@@ -224,18 +246,27 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
         if(diagonal[i] === jogador){
             contador++;
             if(contador === 4){ 
+                console.log("DIAGONAL 2");
                 let topo;
                 let coluna = -1;
                 for(let x = 0; x < diagonal.length; x++){
-                    console.log("VERIFICAR DIAGONAL: "+diagonal);
                     if(diagonal[i] == jogador){
-                        topo = diagonal.length-1-i;
+                        topo = 5-i;
                     }
-                    console.log("VERIFICAR TOPO: "+topo);
+                    
+                }
+            
+                let topoColuna = indexColuna-(indexLinha-topo);
+                if(diagonal.length == 5 && topo == 2 && topoColuna != 6){
+                    topo = topo -1;
+                }
+
+                if(diagonal.length == 4 && topo == 2 && topoColuna != 0){
+                    topo = topo -2;
                 }
                 
                 if(topo == indexLinha){
-                    console.log("x1");
+                    
                     for(let k = 0; k < 4 ; k++){
                         
                         if(indexLinha != topo){
@@ -249,7 +280,6 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                         indexColuna++;
                     }
                 }else{
-                    console.log("y1");
                     
                     indexColuna = indexColuna-(indexLinha-topo);
                     for(let k = 0; k < 4 ; k++){
@@ -268,6 +298,7 @@ const vitoriaDiagonal2 = (arr,indexLinha,indexColuna,jogador) => { //verifica di
                     }
                 
                 }
+                console.log("\n");
                 return true;
             }
         }else{
@@ -300,6 +331,7 @@ const timer = () => {
             game.appendChild(vitoriaAlerta); 
             jogoAcabou = true; 
             reiniciaTimer(timerValor,timerAtual);
+            
         }else{
             placar1.innerText = Number(placar1.innerText)+1;
             let vitoriaAlerta = document.createElement("p");
@@ -315,7 +347,7 @@ const timer = () => {
         img.id = 'vitoria';
         game.appendChild(img)
         somVitoria.play();
-
+        window.setTimeout(removerImgVitoria,3500);
     }
 }
 
@@ -382,7 +414,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 img.id = 'vitoria';
                 game.appendChild(img)
                 somVitoria.play();
-                window.setTimeout(removerImgVitoria,4000);
+                window.setTimeout(removerImgVitoria,3500);
             }
             cor[0] = 0;
             placarFundo1.style.opacity = '0.6';
@@ -411,7 +443,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
                 img.id = 'vitoria';
                 game.appendChild(img)
                 somVitoria.play();
-                window.setTimeout(removerImgVitoria,4000);
+                window.setTimeout(removerImgVitoria,3500);
             }
             cor[0] = 1;
             placarFundo1.style.opacity = '1';
@@ -435,7 +467,7 @@ const criarBolinhas = (t,cor,posicao,indexColuna) => {
             img.id = 'vitoria'
             game.appendChild(img)
             somEmpate.play();
-            window.setTimeout(removerImgVitoria,4000);
+            window.setTimeout(removerImgVitoria,3500);
         }
         if(modoContraBot && cor[0] === 0){
             game.removeEventListener("click",cliqueJogador);
@@ -470,7 +502,7 @@ iniciar.addEventListener("click", () => {
     somClick.play();
 });
 
-//Tela de nomes dos jogadores vai para o jogo
+//Sai da tela de nomes dos jogadores e inicia o jogo
 pronto.addEventListener("click", () => {
     
     if (jogador1.value === "") {
@@ -493,6 +525,8 @@ pronto.addEventListener("click", () => {
 
         jogadores.push(jogador1.value);
         jogadores.push(jogador2.value);
+
+        modoContraBot = false;
 
         somClick.play();
     }
@@ -562,13 +596,31 @@ btn_bot.addEventListener("click", vsBot=()=>{
         hidden[i].style.display = "inline-block";
     }
 
+    if (jogador1.value === "") {
+        aviso.innerHTML = "Por favor, preencha o campo Jogador 1";
+        jogador1.focus();
+    }
+
     jogadores.push(jogador1.value);
+    jogador2.value = 'Kenzinho';
     jogadores.push(jogador2.value);
 
     modoContraBot = true;
 
     somClick.play();
 })
+
+//Jogar contra o bot Davis
+let btn_davis = document.getElementById("davis");
+btn_davis.addEventListener("click", vsDavis=()=>{
+    const alertaPagamento = document.getElementById("aviso-pagamento")
+     
+    alertaPagamento.className = 'alerta empate-alerta'; 
+    alertaPagamento.innerText = 'Assine no plano mensal por apenas R$ 99,90';
+    let form = document.getElementsByClassName("form")[0];
+    form.appendChild(alertaPagamento); 
+    window.clearInterval(timerAtual);
+});
 
 
 function changeToOne() {
@@ -593,4 +645,8 @@ const activate2 = document.getElementById('activate2');
 activate1.addEventListener('click', changeToOne);
 activate2.addEventListener('click', changeToTwo);
 
-
+//Clica no GIF e toca uma música
+const musicaGif = document.getElementsByClassName('audio')[0];
+musicaGif.addEventListener('click', tocaMusica=()=>{
+    return somGif.paused ? somGif.play() : somGif.pause();
+});
